@@ -1,10 +1,12 @@
-// import React from 'react';
+
+import { MyContextProvider } from '../../Context/Context';
 import { useRoutes, BrowserRouter } from 'react-router-dom'
 import { Nav } from '../../Components/Nav/Nav';
 import { Home } from '../Home/Home';
 import { QuienesSomos } from '../QuienesSomos/QuienesSomos';
 import { Planes } from '../Planes/Planes';
 import { PeticionesSolicitadas } from '../PeticionesSolicitadas/PeticionesSolicitadas';
+import { Proyectos } from '../Proyectos/Proyectos'
 import { ProyectosRealizados } from '../ProyectosRealizados/ProyectosRealizados';
 import { ProyectosDisponibles } from '../ProyectosDisponibles/ProyectosDisponibles';
 import { Contacto } from '../Contacto/Contacto';
@@ -37,6 +39,10 @@ const AppRoutes = () =>{
       {
         path: '/peticiones-solicitadas',
         element: <PeticionesSolicitadas />
+      },
+      {
+        path: '/proyectos',
+        element: <Proyectos />
       },
       {
         path: '/proyectos-realizados',
@@ -99,12 +105,12 @@ const AppRoutes = () =>{
 
 function App () {
     return (
-            // <MyContextProvider>
-                <BrowserRouter>
-                    <Nav />
-                    <AppRoutes />
-                </BrowserRouter>
-            // </MyContextProvider>
+      <MyContextProvider>
+        <BrowserRouter>
+          <Nav />
+          <AppRoutes />
+        </BrowserRouter>
+      </MyContextProvider>
     );
 }
 
