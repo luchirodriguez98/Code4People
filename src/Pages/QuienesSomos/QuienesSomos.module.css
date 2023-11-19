@@ -1,7 +1,7 @@
 .quote{
     position: relative;
     font-weight: 600;
-    margin: 40px 0;
+    margin: 20px 0;
 }
 .quote img{
     position: absolute;
@@ -10,7 +10,7 @@
 }
 .quote p{
     margin: 20px 0 0 30px;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 400;
 }
 .grid{
@@ -41,7 +41,9 @@
     border-radius: 10px;
     height: 20px;
     font-weight: 600;
-    margin-bottom: 170px;
+    margin-bottom: 200px;
+    padding: 2px 15px;
+    width: 100%;
 }
 .containerText{
     display: flex;
@@ -57,11 +59,10 @@
 }
 .imageBackground{
     position: absolute;
-    top: 550px;
+    top: 560px;
     right: -150px;
-    width: 300px;
+    width: auto;
     height: 300px;
-    z-index: -1;
 }
 @media (min-width:768px) {
     

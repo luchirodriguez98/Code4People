@@ -22,8 +22,10 @@ function QuienesSomos () {
                 <p className={`${styles.text}`}>De las pequeñas y medianas empresas españolas no tiene previsto invertir en digitalización, al menos en los próximos tres años.</p>
             </article>
         </span>
-        <button className={`${styles.button}`}>REGISTRATE AHORA</button>
-        <img className={`${styles.imageBackground}`} src="../../../assets/1-removebg-preview.png" alt="" />
+        <NavLink to="/registro">
+            <button className={`${styles.button}`}>REGISTRATE AHORA</button>
+        </NavLink>
+        <img className={`${styles.imageBackground}`} src="../../../assets/1-removebg.png" alt="" />
         <span>
             <span className={`${styles.containerText}`}>
                 <p className={`${styles.title}`}>El Futuro</p>
