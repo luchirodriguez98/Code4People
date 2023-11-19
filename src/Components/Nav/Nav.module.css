@@ -41,14 +41,12 @@ img{
 .listItem a{
     text-decoration: none;
 }
+
 .navLink{
     color:white;
 }
-.navLinkActive{
-    color:#CF7CDD;
-}
 
-.navLinkActive{
+.navLinkActive, .violetLink{
     color:#CF7CDD;
 }
 
@@ -61,6 +59,4 @@ img{
     .menuMobile{
         display: none;
     }
-
-
 }

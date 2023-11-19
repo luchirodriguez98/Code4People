@@ -1,6 +1,11 @@
+import { Layout } from '../../Components/Layout/Layout'
+import styles from './Login.module.css'
+
 function Login () {
     return (
-        <h1>Login</h1>
+        <Layout>
+            <h1 className={`${styles.title}`}>Login</h1>
+        </Layout>
     )
 }
 

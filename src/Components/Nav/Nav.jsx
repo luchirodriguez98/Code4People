@@ -51,7 +51,6 @@ const Nav = () =>{
                 </li>
                 <li className={`${styles.listItem}`}>
                     <NavLink 
-                        // className={`${location} ? {${styles.navLink} : ''}`}
                         to="/proyectos"
                         className={location === '/proyectos' ? `${styles.navLinkActive}` : `${styles.navLink}`}
                     >
@@ -69,7 +68,9 @@ const Nav = () =>{
             </ul>
             {/* parte izquierda */}
             <span>
-                <Boton texto={'IDENTIFICATE'} />
+                <NavLink to="/login">
+                    <Boton texto={'IDENTIFICATE'} />
+                </NavLink>
             </span>
             <div className={`${styles.menuMobile}`}>
                 <Bars3Icon className={`${styles.menuMobileIcon}`} onClick={toggleModal}></Bars3Icon>
@@ -100,6 +101,11 @@ const Nav = () =>{
                             <li onClick={toggleModal}>
                                 <NavLink to="/proyectos-disponibles">
                                     <p>PROYECTOS DISPONIBLES</p>
+                                </NavLink>
+                            </li>
+                            <li onClick={toggleModal}>
+                                <NavLink to="/registro" >
+                                    <p className={`${styles.violetLink}`}>IDENTIFICATE</p>
                                 </NavLink>
                             </li>
                             <li onClick={toggleModal}>
