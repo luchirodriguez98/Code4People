@@ -2,6 +2,7 @@
 import { MyContextProvider } from '../../Context/Context';
 import { useRoutes, BrowserRouter } from 'react-router-dom'
 import { Nav } from '../../Components/Nav/Nav';
+import { Layout } from '../../Components/Layout/Layout';
 import { Home } from '../Home/Home';
 import { QuienesSomos } from '../QuienesSomos/QuienesSomos';
 import { Planes } from '../Planes/Planes';
@@ -23,7 +24,7 @@ import { Peticion } from '../Peticion/Peticion';
 import { NotFound } from '../NotFound/NotFound';
 
 const AppRoutes = () =>{
-  useRoutes([
+  let routes = useRoutes([
       {
         path: '/',
         element: <Home />
@@ -100,7 +101,9 @@ const AppRoutes = () =>{
         path: '/*',
         element: <NotFound />
       },
-    ])};
+    ])
+  return routes
+  };
 
 
 function App () {
@@ -108,7 +111,9 @@ function App () {
       <MyContextProvider>
         <BrowserRouter>
           <Nav />
+          <Layout>
           <AppRoutes />
+          </Layout>
         </BrowserRouter>
       </MyContextProvider>
     );
