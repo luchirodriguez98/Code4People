@@ -1,6 +1,6 @@
 .nav{
     width: 100vw;
-    height: 20%;
+    height: 15%;
     background-color: black;
     display: flex;
     flex-direction: row;
@@ -9,6 +9,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 1.25rem;
+    top: 0;
 }
 img{
     width: 4rem;
