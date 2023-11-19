@@ -1,7 +1,7 @@
 // import { useContext } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { useToggle } from '../../Hooks/useToggle'
-import { Boton } from "../Boton/Boton";
+import { BotonNav } from "../BotonNav/BotonNav";
 import { Modal } from '../Modal/Modal'
 import { Bars3Icon } from '@heroicons/react/24/solid'
 import styles from './Nav.module.css'
@@ -69,7 +69,7 @@ const Nav = () =>{
             {/* parte izquierda */}
             <span>
                 <NavLink to="/login">
-                    <Boton texto={'IDENTIFICATE'} />
+                    <BotonNav texto={'IDENTIFICATE'} />
                 </NavLink>
             </span>
             <div className={`${styles.menuMobile}`}>

@@ -1,7 +1,7 @@
-import styles from './Boton.module.css'
+import styles from './BotonNav.module.css'
 
 // eslint-disable-next-line react/prop-types
-function Boton({texto}) {
+function BotonNav({texto}) {
     return(
         <div className={`${styles.boton}`}>
             {texto}
@@ -9,4 +9,4 @@ function Boton({texto}) {
     )
 }
 
-export {Boton}
+export {BotonNav}
