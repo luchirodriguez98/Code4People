@@ -1,8 +1,16 @@
+@import url('https://fonts.cdnfonts.com/css/blanka');
+
 .body{
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+.body .title{
+    font-family: 'Blanka', sans-serif;
+    font-size: 85px;
+    margin-bottom: 25px;
+    text-align: center;
 }
 .body img{
     width: 100%;
@@ -10,7 +18,7 @@
     height: auto;
     margin-bottom: 20px;
 }
-.body .title{
+.body .titleSmall{
     font-size: 20px;
     font-weight: 200;
 }
@@ -46,9 +54,10 @@
         background-position: 319px 31px;
         background-size: 500px;
         background-repeat: no-repeat;
+        height: 80vh;
     }
-    .body img{
-        margin:20px 0 10px;
+    .body .title{
+        margin: 50px 0 10px;
     }
     .body .text{
         text-align: start;

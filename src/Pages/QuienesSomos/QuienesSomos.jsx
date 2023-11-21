@@ -11,7 +11,7 @@ function QuienesSomos () {
     return (
         <div className={`${styles.body}`}>
         <span className={`${styles.quote}`}>
-            <img src="../../../assets/Copia_de_Logotipo_marca_personal_minimalista_moderno_tipográfico_con_iniciales_banco_y_negro-removebg-preview.png" alt="" />
+            <img src="../../../assets/comillas.png" alt="" />
             <p>El 40% de las compañías que no se digitalicen cerrarán en los próximos 5 años.</p>
         </span>
         <span className={`${styles.grid}`}>
