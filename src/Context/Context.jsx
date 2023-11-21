@@ -7,11 +7,14 @@ const MyContextProvider = ({children}) =>{
 
     const [user, setUser] = useState('');
 
+    const buttonToRender = user ? "MI CUENTA" : "REGISTRATE AHORA"
+
     return(
         <MyContext.Provider
             value={{
                 user,
-                setUser
+                setUser,
+                buttonToRender
             }}
         >
             {children}

@@ -7,7 +7,6 @@ function QuienesSomos () {
 
     const context = useContext(MyContext);
 
-    const buttonToRender = context.user ? "MI CUENTA" : "REGISTRATE AHORA;"
 
     return (
         <div className={`${styles.body}`}>
@@ -30,8 +29,8 @@ function QuienesSomos () {
             </article>
         </span>
         <span className={`${styles.buttonContainer}`}>
-            <NavLink to="/registro">
-                <div className={`${styles.button}`}>{buttonToRender}</div>
+            <NavLink to={context.user ? '/cuenta' : '/registro'}>
+                <div className={`${styles.button}`}>{context.buttonToRender}</div>
             </NavLink>
         </span>
         {/* <img className={`${styles.imageBackground}`} src="../../../assets/1-removebg.png" alt="" /> */}

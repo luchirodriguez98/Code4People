@@ -5,6 +5,8 @@ import { BotonNav } from "../BotonNav/BotonNav";
 import { Modal } from '../Modal/Modal'
 import { Bars3Icon } from '@heroicons/react/24/solid'
 import styles from './Nav.module.css'
+import { useContext } from "react";
+import { MyContext } from "../../Context/Context";
 
 
 const Nav = () =>{
@@ -12,6 +14,8 @@ const Nav = () =>{
     const [isModalOpen, toggleModal] = useToggle(false);
 
     const location = useLocation().pathname;
+
+    const context = useContext(MyContext);
  
     return(
         <nav className={`${styles.nav}`}>
@@ -68,8 +72,8 @@ const Nav = () =>{
             </ul>
             {/* parte izquierda */}
             <span>
-                <NavLink to="/login">
-                    <BotonNav texto={'IDENTIFICATE'} />
+                <NavLink to={context.user ? '/cuenta' : '/registro'}>
+                    <BotonNav texto={context.buttonToRender} />
                 </NavLink>
             </span>
             <div className={`${styles.menuMobile}`}>
@@ -104,8 +108,8 @@ const Nav = () =>{
                                 </NavLink>
                             </li>
                             <li onClick={toggleModal}>
-                                <NavLink to="/registro" >
-                                    <p className={`${styles.violetLink}`}>IDENTIFICATE</p>
+                                <NavLink to={context.user ? '/cuenta' : '/registro'} >
+                                    <p className={`${styles.violetLink}`}>{context.buttonToRender}</p>
                                 </NavLink>
                             </li>
                             <li onClick={toggleModal}>

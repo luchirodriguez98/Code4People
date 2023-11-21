@@ -1,6 +1,6 @@
 .nav{
     width: 100vw;
-    height: 15%;
+    height: auto;
     background-color: black;
     display: flex;
     flex-direction: row;
@@ -12,8 +12,8 @@
     top: 0;
 }
 img{
-    width: 4rem;
-    height: 4rem;
+    width: 3.5rem;
+    height: 3.5rem;
 }
 .menuMobile{
     width: 3rem;
