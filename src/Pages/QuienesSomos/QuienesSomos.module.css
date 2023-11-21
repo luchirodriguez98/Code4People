@@ -1,29 +1,29 @@
 .quote{
     position: relative;
-    margin: 16px 0 40px;
 }
 .quote img{
     position: absolute;
     width: 30px;
     height: 30px;
+    top: -15px;
 }
 .quote p{
-    margin: 20px 0 0 30px;
+    margin: 40px 0 0 30px;
     font-size: 16px;
     font-weight: 400;
 }
 .grid{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto;
     gap: 30px;
+    margin-top: 50px;
 }
 .grid article{
     width: 100%;
 }
 .grid article:nth-child(3){
     grid-row: 2;  
-    grid-column: 1 / span 2;
+    grid-column: 1 / 3;
     margin-bottom: 30px;
 }
 .title{
@@ -35,10 +35,9 @@
     color: rgb(136, 136, 136);
 }
 .buttonContainer{
-    width: 100%;
     display: flex;
     justify-content: center;
-    margin-bottom: 150px;
+    margin:10px 0 140px;
 }
 .button{
     display: flex;
@@ -53,10 +52,9 @@
     font-size: 8px;
 }
 .containerText{
-    display: flex;
-    flex-direction: column;
+    display: inline-block;
     width: 75%;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
 }
 .containerText .title{
     font-size: 20px;
@@ -75,34 +73,39 @@
 }
 .body{
     background-image: url('../../../assets/1-removebg.png');
-    background-position: 127px 360px;
+    background-position: 125px 420px;
     background-size: 300px;
     background-repeat: no-repeat;
 }
-@media (min-width:425px){
-
-}
 @media (min-width:768px) {
+    .body{
+        background-image: url('../../../assets/bg2.png');
+        background-position: 300px 390px;
+        background-size: 485px;
+    }
     .quote{
         margin-top: 0;
+        max-width: 650px;
     }
     .quote img{
         width: 50px;
         height: 50px;
+        top: -40px;
+        left: -20px;
     }
     .quote p{
-        margin-top: 45px;
+        margin-top: 70px;
         font-size: 25px;
     }
     .title{
         font-size: 40px;
     }
     .buttonContainer{
-        margin-bottom: 40px;
+        margin-bottom: 115px;
     }
     .button{
-        font-size: 16px;
-        padding: 20px 40px;
+        font-size: 12px;
+        padding: 12px 40px;
     }
     .text{
         font-size: 12px;
@@ -120,10 +123,16 @@
         grid-column: 2 / 3;
         margin-bottom: 30px;
     }
-    .containerText .title{
-        font-size: 30px;
-    }
     .containerText{
         margin-bottom: 60px;
+    }
+    .containerText .title{
+        font-size: 25px;
+    }
+    .containerText .text{
+        width: 70%;
+    }
+    .containerText:nth-child(3) .text{
+        width: 50%;
     }
 }

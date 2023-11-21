@@ -3,13 +3,12 @@
     position: relative;
     flex-direction: column;
     justify-content: center;
-    padding-top: 85px;
-    margin: 20px;
-    overflow-x: hidden;
+    padding: 85px 20px 0 20px;
+    /* overflow-x: hidden; */
 }
 
 @media (min-width:768px) {
     .container{
-        margin: 60px;
+        padding-inline: 60px;
     }
 }

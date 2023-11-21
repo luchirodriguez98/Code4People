@@ -1,7 +1,14 @@
+import { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
+import { MyContext } from '../../Context/Context'
 import styles from './QuienesSomos.module.css'
 
 function QuienesSomos () {
+
+    const context = useContext(MyContext);
+
+    const buttonToRender = context.user ? "MI CUENTA" : "REGISTRATE AHORA;"
+
     return (
         <div className={`${styles.body}`}>
         <span className={`${styles.quote}`}>
@@ -24,7 +31,7 @@ function QuienesSomos () {
         </span>
         <span className={`${styles.buttonContainer}`}>
             <NavLink to="/registro">
-                <div className={`${styles.button}`}>REGISTRATE AHORA</div>
+                <div className={`${styles.button}`}>{buttonToRender}</div>
             </NavLink>
         </span>
         {/* <img className={`${styles.imageBackground}`} src="../../../assets/1-removebg.png" alt="" /> */}
