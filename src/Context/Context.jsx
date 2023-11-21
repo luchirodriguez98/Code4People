@@ -9,12 +9,17 @@ const MyContextProvider = ({children}) =>{
 
     const buttonToRender = user ? "MI CUENTA" : "REGISTRATE AHORA"
 
+    const handleNameChange = (event) =>{
+        setUser(event.target.value)
+      }
+
     return(
         <MyContext.Provider
             value={{
                 user,
                 setUser,
-                buttonToRender
+                buttonToRender,
+                handleNameChange
             }}
         >
             {children}
