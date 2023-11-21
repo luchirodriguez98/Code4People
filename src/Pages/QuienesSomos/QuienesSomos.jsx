@@ -1,9 +1,16 @@
+import { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
+import { MyContext } from '../../Context/Context'
 import styles from './QuienesSomos.module.css'
 
 function QuienesSomos () {
+
+    const context = useContext(MyContext);
+
+    const buttonToRender = context.user ? "MI CUENTA" : "REGISTRATE AHORA;"
+
     return (
-        <>
+        <div className={`${styles.body}`}>
         <span className={`${styles.quote}`}>
             <img src="../../../assets/Copia_de_Logotipo_marca_personal_minimalista_moderno_tipográfico_con_iniciales_banco_y_negro-removebg-preview.png" alt="" />
             <p>El 40% de las compañías que no se digitalicen cerrarán en los próximos 5 años.</p>
@@ -22,8 +29,12 @@ function QuienesSomos () {
                 <p className={`${styles.text}`}>De las pequeñas y medianas empresas españolas no tiene previsto invertir en digitalización, al menos en los próximos tres años.</p>
             </article>
         </span>
-        <button className={`${styles.button}`}>REGISTRATE AHORA</button>
-        <img className={`${styles.imageBackground}`} src="../../../assets/1-removebg-preview.png" alt="" />
+        <span className={`${styles.buttonContainer}`}>
+            <NavLink to="/registro">
+                <div className={`${styles.button}`}>{buttonToRender}</div>
+            </NavLink>
+        </span>
+        {/* <img className={`${styles.imageBackground}`} src="../../../assets/1-removebg.png" alt="" /> */}
         <span>
             <span className={`${styles.containerText}`}>
                 <p className={`${styles.title}`}>El Futuro</p>
@@ -41,7 +52,7 @@ function QuienesSomos () {
                 </NavLink>
             </span>
         </span>
-        </>
+        </div>
     )
 }
 
