@@ -5,8 +5,8 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon connect-db.js",
-    "start": "node connect-db.js"
+    "dev1": "nodemon connect-db.js",
+    "start1": "node server.js"
   },
   "keywords": [],
   "author": "",
