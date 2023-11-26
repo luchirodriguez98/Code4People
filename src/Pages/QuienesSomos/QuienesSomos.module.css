@@ -1,5 +1,5 @@
 .body{
-    margin-top: 45%;
+    margin-top: 400px;
 }
 .quote{
     position: relative;
@@ -40,7 +40,7 @@
 .buttonContainer{
     display: flex;
     justify-content: center;
-    margin:10px 0 140px;
+    margin:10px 0 100px;
 }
 .button{
     display: flex;
@@ -55,24 +55,37 @@
     font-size: 8px;
 }
 .containerText{
-    display: inline-block;
-    width: 75%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
     margin-bottom: 50px;
 }
 .containerText .title{
-    font-size: 20px;
+    font-size: 25px;
     font-weight: 600;
 }
-.containerText:nth-child(1) .text{
+/* .containerText:nth-child(1) .text{
     width: 70%;
 }
 .containerText:nth-child(3){
     width: 100%;
+} */
+.text{
+    font-size: 12px;
+    margin-top: 10px;
 }
 .navText{
     color: #CF7CDD;
-    font-size: 10px;
-    margin-top: 5px;
+    font-size: 12px;
+    margin-top: 15px;
+    margin-bottom: 25px;
+}
+@media (min-width:425px) and (max-width:768px) {
+    .body{
+        margin-top: 340px;
+    }
 }
 @media (min-width:768px) {
     .quote{
