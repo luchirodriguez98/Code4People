@@ -4,6 +4,7 @@
     flex-direction: column;
     justify-content: center;
     padding: 100px 20px 0 20px;  
+    height: 100vh;
 }
 /* .backgroundQuienesSomos{
     background: archivo posicion tamaño repeat clip;
