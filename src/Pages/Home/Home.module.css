@@ -50,10 +50,6 @@
 @media (min-width:768px) {
     .body{
         align-items: start;
-        background-image: url('../../../assets/3-removebg-preview.png');
-        background-position: 319px 31px;
-        background-size: 500px;
-        background-repeat: no-repeat;
         height: 80vh;
     }
     .body .title{
