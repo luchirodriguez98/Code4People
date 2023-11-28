@@ -1,6 +1,6 @@
 function Cuenta () {
   return (
-        <h1>Cuenta</h1>
+        <h1>Mi Cuenta</h1>
   )
 }
 
