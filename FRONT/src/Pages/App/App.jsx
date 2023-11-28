@@ -21,6 +21,14 @@ import { Notificaciones } from '../Notificaciones/Notificaciones'
 import { PeticionesRealizadas } from '../PeticionesRealizadas/PeticionesRealizadas'
 import { Peticion } from '../Peticion/Peticion'
 import { NotFound } from '../NotFound/NotFound'
+import { ProyectoTerminado } from '../ProyectoTerminado'
+import { ProyectoNuevo } from '../ProyectoNuevo'
+import { MensajeNuevo } from '../MensajeNuevo'
+import { PeticionesProyecto } from '../PeticionesProyecto'
+import { PeticionNueva } from '../PeticionNueva'
+import { SolcitudesColaboradores } from '../SolcitudesColaboradores'
+import { SolcitudColaborador } from '../SolcitudColaborador'
+import { SolcitudesProyectos } from '../SolcitudesProyectos'
 
 const AppRoutes = () => {
   const routes = useRoutes([
