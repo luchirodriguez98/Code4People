@@ -31,3 +31,4 @@ connection.connect()
     app.listen(PORT, () => console.log(`Escuchando en el puerto ${PORT}...`));
   })
   .catch(err => console.log(err.message));
+// prueba
