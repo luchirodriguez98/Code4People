@@ -4,7 +4,12 @@ const MyContext = createContext()
 
 // eslint-disable-next-line react/prop-types
 const MyContextProvider = ({ children }) => {
-  const [user, setUser] = useState('')
+  const [user, setUser] = useState({
+    nombre: '',
+    email: '',
+    pass: '',
+    tipo_usuario: 0
+  })
   // const [newUser, setNewUser] = useState({
   //   nombre: '',
   //   email: '',
@@ -18,15 +23,22 @@ const MyContextProvider = ({ children }) => {
     setUser(event.target.value)
   }
 
+  const logIn = () => {
+
+  }
+
+  const logOut = () => {
+
+  }
+
   return (
         <MyContext.Provider
             value={{
               user,
-              // newUser,
               buttonToRender,
-              handleNameChange
-              // handleInputChange,
-              // saveNewUser
+              handleNameChange,
+              logIn,
+              logOut
             }}
         >
             {children}

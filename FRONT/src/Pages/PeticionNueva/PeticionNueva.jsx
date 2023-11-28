@@ -1,7 +1,7 @@
-function PetiionNueva () {
+function PeticionNueva () {
   return (
-        <h1>Petiion Nueva</h1>
+        <h1>Peticion Nueva</h1>
   )
 }
 
-export { PetiionNueva }
+export { PeticionNueva }

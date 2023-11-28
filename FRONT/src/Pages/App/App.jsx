@@ -5,7 +5,6 @@ import { Layout } from '../../Components/Layout/Layout'
 import { Home } from '../Home/Home'
 import { QuienesSomos } from '../QuienesSomos/QuienesSomos'
 import { Planes } from '../Planes/Planes'
-import { PeticionesSolicitadas } from '../PeticionesSolicitadas/PeticionesSolicitadas'
 import { Proyectos } from '../Proyectos/Proyectos'
 import { ProyectosRealizados } from '../ProyectosRealizados/ProyectosRealizados'
 import { ProyectosDisponibles } from '../ProyectosDisponibles/ProyectosDisponibles'
@@ -21,14 +20,14 @@ import { Notificaciones } from '../Notificaciones/Notificaciones'
 import { PeticionesRealizadas } from '../PeticionesRealizadas/PeticionesRealizadas'
 import { Peticion } from '../Peticion/Peticion'
 import { NotFound } from '../NotFound/NotFound'
-import { ProyectoTerminado } from '../ProyectoTerminado'
-import { ProyectoNuevo } from '../ProyectoNuevo'
-import { MensajeNuevo } from '../MensajeNuevo'
-import { PeticionesProyecto } from '../PeticionesProyecto'
-import { PeticionNueva } from '../PeticionNueva'
-import { SolcitudesColaboradores } from '../SolcitudesColaboradores'
-import { SolcitudColaborador } from '../SolcitudColaborador'
-import { SolcitudesProyectos } from '../SolcitudesProyectos'
+import { ProyectoTerminado } from '../ProyectoTerminado/ProyectoTerminado'
+import { ProyectoNuevo } from '../ProyectoNuevo/ProyectoNuevo'
+import { MensajeNuevo } from '../MensajeNuevo/MensajeNuevo'
+import { PeticionesProyecto } from '../PeticionesProyecto/PeticionesProyecto'
+import { PeticionNueva } from '../PeticionNueva/PeticionNueva'
+import { SolicitudesColaboradores } from '../SolicitudesColaboradores/SolicitudesColaboradores'
+import { SolicitudColaborador } from '../SolicitudColaborador/SolicitudColaborador'
+import { SolicitudesProyectos } from '../SolicitudesProyectos/SolicitudesProyectos'
 
 const AppRoutes = () => {
   const routes = useRoutes([
@@ -43,10 +42,6 @@ const AppRoutes = () => {
     {
       path: '/planes',
       element: <Planes />
-    },
-    {
-      path: '/peticiones-solicitadas',
-      element: <PeticionesSolicitadas />
     },
     {
       path: '/proyectos',
@@ -126,15 +121,15 @@ const AppRoutes = () => {
     },
     {
       path: '/solicitudes/altaColaborador',
-      element: <SolcitudesColaboradores />
+      element: <SolicitudesColaboradores />
     },
     {
       path: '/solicitudes/altaColaborador/:id',
-      element: <SolcitudColaborador />
+      element: <SolicitudColaborador />
     },
     {
       path: '/solicitudes/proyectosTerminados',
-      element: <SolcitudesProyectos />
+      element: <SolicitudesProyectos />
     },
     {
       path: '/*',
