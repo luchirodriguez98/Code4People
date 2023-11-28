@@ -1,2 +1,0 @@
-DANIEL AMIGO
-Luis Henao
