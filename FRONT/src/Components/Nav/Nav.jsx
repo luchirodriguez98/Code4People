@@ -96,13 +96,8 @@ const Nav = () => {
                                 </NavLink>
                             </li>
                             <li onClick={toggleModal}>
-                                <NavLink to="/proyectos-realizados">
-                                    <p>PROYECTOS REALIZADOS</p>
-                                </NavLink>
-                            </li>
-                            <li onClick={toggleModal}>
-                                <NavLink to="/proyectos-disponibles">
-                                    <p>PROYECTOS DISPONIBLES</p>
+                                <NavLink to="/proyectos">
+                                    <p>PROYECTOS</p>
                                 </NavLink>
                             </li>
                             <li onClick={toggleModal}>
