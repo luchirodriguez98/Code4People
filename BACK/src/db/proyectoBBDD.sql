@@ -12,19 +12,25 @@ use proyectosplai;
 ------------------------
 
 -- Usuarios
+CREATE TABLE IF NOT EXISTS roles(
+rol_id int PRIMARY KEY auto_increment,
+nombre_rol varchar(15) not null
+);
 
-create table if not exists usuario(
+create table if not exists usuarios(
 	id_usuario int auto_increment,
     nombre varchar(255) not null,
     email varchar(255) unique not null,
     pass varchar(255) not null,
     tipo_usuario int not null,
+    foreign key (tipo_usuario) REFERENCES roles(rol_id),
     PRIMARY KEY (id_usuario)
 );
 
 -- Proyecto
 
-create table if not exists proyecto(
+
+create table if not exists proyectos(
 	id_proyecto int auto_increment,
     nombre varchar(255) not null,
     tipo_proyecto int not null,
@@ -33,28 +39,41 @@ create table if not exists proyecto(
     PRIMARY KEY (id_proyecto)
 );
 -- Petición Proyecto
-create table if not exists peticion(
+create table if not exists peticiones(
 	id_peticion int auto_increment,
     descripcion varchar(255) not null,
     autor int,
-    FOREIGN KEY (autor) REFERENCES usuario(id_usuario),
+    FOREIGN KEY (autor) REFERENCES usuarios(id_usuario),
     PRIMARY KEY (id_peticion)
 );
 
 -- Proyecto asignado
 
-create table if not exists proyecto_asignado(
+create table if not exists proyectos_asignados(
     megusta__proyecto INT,
     megusta_usuario INT,
-    FOREIGN KEY (megusta__proyecto) REFERENCES proyecto(id_proyecto),
-    FOREIGN KEY (megusta_usuario) REFERENCES usuario(id_usuario),
+    FOREIGN KEY (megusta__proyecto) REFERENCES proyectos(id_proyecto),
+    FOREIGN KEY (megusta_usuario) REFERENCES usuarios(id_usuario),
     PRIMARY KEY (megusta__proyecto, megusta_usuario)
 );
 
--- Añadimos usuarios
-SELECT * from usuario;
--- INSERT INTO usuario(nombre,email,pass,tipo_usuario) VALUES ('admin','adm@adm.com','1234','0');
--- INSERT INTO usuario(nombre,email,pass,tipo_usuario) VALUES ('user','user@gmail.com','1234','1'); 
+-----------------------------
+-- Añadimos usuarios y roles
+-----------------------------
+ -- Ver todos los usuarios
+SELECT u.id_usuario, u.nombre, u.email, u.pass, r.nombre_rol
+FROM usuarios u
+JOIN roles r ON u.tipo_usuario = r.rol_id;
+
+-- INSERT INTO roles(nombre_rol) VALUES ("Administrador");
+-- INSERT INTO roles(nombre_rol) VALUES ("Empresa");
+-- INSERT INTO roles(nombre_rol) VALUES ("Colaborador");
+-- INSERT INTO usuarios(nombre,email,pass,tipo_usuario) VALUES ('admin','adm@adm.com','1234','1');
+-- INSERT INTO usuarios(nombre,email,pass,tipo_usuario) VALUES ('user','user@gmail.com','1234','3'); 
+
 -- Añadimos peticiones de prueba
--- INSERT INTO peticion(descripcion,autor) VALUES ('Necesito una app que simule una calculadora','1');
-SELECT * from peticion;
+-- INSERT INTO peticiones(descripcion,autor) VALUES ('Necesito una app que simule una calculadora','2');
+ -- Ver todas las peticiones
+SELECT p.id_peticion, p.descripcion, u.nombre AS nombre_autor
+FROM peticiones p
+JOIN usuarios u ON p.autor = u.id_usuario;
