@@ -1,6 +1,26 @@
+import { NavLink } from 'react-router-dom'
+import styles from './Mensajes.module.css'
+import { ChevronRightIcon } from '@heroicons/react/24/solid'
+
 function Mensajes () {
   return (
-        <h1>Mensajes</h1>
+    <div className={styles.body}>
+      <h1 className={styles.title}>Mis mensajes</h1>
+      <ul className={styles.list}>
+        <NavLink to="/mensajes/recibidos" className={styles.item}>
+          <li>Mensajes recibidos</li>
+          <ChevronRightIcon className={styles.arrow}/>
+        </NavLink>
+        <NavLink to="/mensajes/enviados" className={styles.item}>
+          <li>Mensajes enviados</li>
+          <ChevronRightIcon className={styles.arrow}/>
+        </NavLink>
+        <NavLink to="/mensajes/nuevo" className={styles.item}>
+          <li>Enviar nuevo mensaje</li>
+          <ChevronRightIcon className={styles.arrow}/>
+        </NavLink>
+      </ul>
+    </div>
   )
 }
 
