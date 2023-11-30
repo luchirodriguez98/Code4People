@@ -10,7 +10,7 @@
 .quote p{
     margin: 40px 0 0 30px;
     font-size: 16px;
-    font-weight: 400;
+    font-weight: var(--font-weight-sm);
 }
 .grid{
     display: grid;
@@ -28,11 +28,11 @@
 }
 .title{
     font-size: 30px;
-    font-weight: 600;
+    font-weight: var(--font-weight-md);
 }
 .text{
-    font-size: 10px;
-    color: rgb(136, 136, 136);
+    font-size: var(--font-size-sm);
+    color: var(--secondary-color);
 }
 .buttonContainer{
     display: flex;
@@ -42,13 +42,13 @@
 .button{
     display: flex;
     align-items: center;
-    background-color: #CF7CDD;
+    background-color: var(--primary-color);
     color: black;
     border: none;
     border-radius: 10px;
     height: 20px;
     padding: 0 15px;
-    font-weight: 600;
+    font-weight: var(--font-weight-md);
     font-size: 8px;
 }
 .containerText{
@@ -60,8 +60,8 @@
     margin-bottom: 50px;
 }
 .containerText .title{
-    font-size: 25px;
-    font-weight: 600;
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-md);
 }
 /* .containerText:nth-child(1) .text{
     width: 70%;
@@ -70,12 +70,12 @@
     width: 100%;
 } */
 .text{
-    font-size: 12px;
+    font-size: var(--font-size-sm);
     margin-top: 10px;
 }
 .navText{
-    color: #CF7CDD;
-    font-size: 12px;
+    color: var(--primary-color);
+    font-size: var(--font-size-sm);
     margin-top: 15px;
     margin-bottom: 25px;
 }
@@ -97,20 +97,20 @@
     }
     .quote p{
         margin-top: 70px;
-        font-size: 25px;
+        font-size: var(--font-size-md);
     }
     .title{
-        font-size: 40px;
+        font-size: var(--font-size-lg);
     }
     .buttonContainer{
         margin-bottom: 115px;
     }
     .button{
-        font-size: 12px;
+        font-size: var(--font-size-sm);
         padding: 12px 40px;
     }
     .text{
-        font-size: 12px;
+        font-size: var(--font-size-sm);
     }
     .grid{
         grid-template-columns: 1fr 1fr 1fr;
@@ -129,7 +129,7 @@
         margin-bottom: 60px;
     }
     .containerText .title{
-        font-size: 25px;
+        font-size: var(--font-size-md);
     }
     .containerText .text{
         width: 70%;

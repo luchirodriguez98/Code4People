@@ -14,10 +14,10 @@ a{
     height: 2.5rem;
     padding: 0 2rem;
     border-radius: 2rem;
-    background-color: #CF7CDD;
+    background-color: var(--primary-color);
     color: black;
-    font-size: small;
-    font-weight: 600;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-md);
 }
 
 }

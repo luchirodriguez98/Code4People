@@ -4,15 +4,15 @@
   align-items: center;
 }
 .title{
-  font-weight: 400;
+  font-weight: var(--font-weight-sm);
   margin-bottom: 14px;
 }
 .subTitle{
-  color: #8d8d8d;
+  color: var(--secondary-color);
   text-align: center;
   width: 90%;
   max-width: 370px;
-  font-size: 12px;
+  font-size: var(--font-size-sm);
 }
 .grid{
   display: grid;
@@ -28,7 +28,7 @@
   justify-content: center;
   width: 70px;
   height: 70px;
-  border: 1px solid #CF7CDD;
+  border: 1px solid var(--primary-color);
   border-radius: 50%;
 }
 .buttonCenter{
@@ -37,7 +37,7 @@
 }
 .button *{
   width: 50px;
-  color: #CF7CDD;
+  color: var(--primary-color);
 }
 
 @media (min-width:768px) {
@@ -45,12 +45,12 @@
     margin-top: 70px;
   }
   .title{
-    font-weight: 400;
+    font-weight: var(--font-weight-sm);
     margin-bottom: 20px;
   }
   .subTitle{
     width: 60%;
-    font-size: 13px;
+    font-size: var(--font-size-sm);
   }
   .grid{
     margin-top: 70px;

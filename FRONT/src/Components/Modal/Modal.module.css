@@ -17,7 +17,7 @@
     right: 0;
     top: 20%;
     background-color: black;
-    border: 2px solid #CF7CDD;
+    border: 2px solid var(--primary-color);
     padding: 1rem;
     border-radius: 0.5rem;
     width: 80%;

@@ -5,6 +5,8 @@ function Layout ({ children }) {
   const imageToRender = () => {
     if (location.pathname === '/') {
       return `${styles.backgroundHome}`
+    } else if (location.pathname === '/quienes-somos') {
+      return `${styles.backgroundQuienesSomos}`
     }
   }
 
