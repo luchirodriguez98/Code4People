@@ -26,10 +26,7 @@ create table if not exists usuarios(
     foreign key (tipo_usuario) REFERENCES roles(rol_id),
     PRIMARY KEY (id_usuario)
 );
-
 -- Proyecto
-
-
 create table if not exists proyectos(
 	id_proyecto int auto_increment,
     nombre varchar(255) not null,
