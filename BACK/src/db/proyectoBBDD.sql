@@ -56,7 +56,17 @@ create table if not exists proyectos_asignados(
     FOREIGN KEY (megusta_usuario) REFERENCES usuarios(id_usuario),
     PRIMARY KEY (megusta__proyecto, megusta_usuario)
 );
-
+ -- Tabla Mail
+ create table if not exists mails(
+	id_mail int auto_increment,
+    asunto VARCHAR (255),
+    mensaje VARCHAR(500),
+    destinatario INT,
+    origen INT,
+    PRIMARY KEY (id_mail),
+    FOREIGN KEY (destinatario) REFERENCES usuarios(id_usuario),
+    FOREIGN KEY (origen) REFERENCES usuarios(id_usuario)
+    );
 -----------------------------
 -- Añadimos usuarios y roles
 -----------------------------
