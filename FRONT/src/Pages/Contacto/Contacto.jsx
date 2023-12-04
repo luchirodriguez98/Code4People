@@ -14,7 +14,6 @@ function Contacto () {
   const { nombre, email, pass, aditional } = formValues
 
   const registerColaborator = async (event) => {
-    // event.preventDefault()
     if (nombre === '' || email === '' || pass === '' || aditional === '') return
 
     const options = {
