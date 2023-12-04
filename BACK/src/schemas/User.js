@@ -15,5 +15,6 @@ const User = z.object({
         invalid_type_error: 'El campo tiene que ser un string'
     }).min(4).max(32)
 });
+const LoginUser = User.omit({ username: true });
 
-export { User };
+export { User, LoginUser };

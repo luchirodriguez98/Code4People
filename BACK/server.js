@@ -16,19 +16,7 @@ app.use(morgan('dev'));
 app.use(express.json());
 
 
-app.get('/', (req, res) => {
-  res.send('hola');
-});
-app.post('/', (req, res) => {
-  console.log(req.body)
-  res.send('hola');
-});
-
-app.use('/users', userRouter);
-
-
 app.use('*', error404);
-
 app.use(errorHandler);
 
 connection.connect()
