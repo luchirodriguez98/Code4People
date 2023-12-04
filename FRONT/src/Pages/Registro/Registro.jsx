@@ -23,10 +23,10 @@ function Registro () {
       body: JSON.stringify(formValues)
     }
 
-    const baseUrl = 'http://localhost:5000/users/register'
+    const baseUrl = 'http://localhost:5000'
 
     try {
-      const response = await fetch(baseUrl, options)
+      const response = await fetch(`${baseUrl}/registro`, options)
       const data = await response.json()
       console.log(data)
     } catch (error) {

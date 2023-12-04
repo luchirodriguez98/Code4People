@@ -10,8 +10,8 @@ import {
 
 const userRouter = express.Router();
 
-userRouter.get('/registro', addUser)
-userRouter.post('/logIn', logIn)
+userRouter.post('/registro', addUser);
+userRouter.post('/logIn', logIn);
 userRouter.get('/:userId',getUserById);
 
 export { userRouter }
