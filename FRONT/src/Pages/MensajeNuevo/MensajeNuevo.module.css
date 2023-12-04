@@ -1,0 +1,79 @@
+.body{
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+}
+a{
+  color: white;
+  text-decoration: none;
+}
+.backNav{
+  width: 100%;
+  padding-left: 10px;
+  display: flex;
+  align-items: center;
+  color: white;
+}
+.backNav p{
+  font-size: 16px;
+  margin: 10px;
+}
+.backNav .icon{
+  width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.title{
+  margin: 20px 0;
+  font-size: 25px;
+  font-weight: 400;
+  text-align: center;
+}
+.containerBackdrop{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container{
+  width: 90%;
+  max-width: 500px;
+  height: 300px;
+  background-color: white;
+  border-radius: 20px;
+  padding: 10px;
+}
+.container input{
+  width: 100%;
+  border-radius: 20px;
+  height: 15%;
+  border: none;
+  /* font-weight: 400; */
+}
+.container textarea{
+  width: 100%;
+  height: 75% ;
+  border: none;
+  border-top: 1px solid black;
+  padding-top: 10px;
+}
+.container a{
+  display: flex;
+  color: black;
+  justify-content: end;
+  padding: 0 10px 10px 0;
+  height: 10%;
+  font-weight: 600;
+}
+.icon{
+  width: 30px;
+  margin-left: 5px;
+}
+
+@media (min-width:768px) {
+  .container{
+    height: 250px;
+    max-width: 600px;
+  }
+}

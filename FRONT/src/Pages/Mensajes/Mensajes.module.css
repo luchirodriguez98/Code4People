@@ -1,0 +1,37 @@
+.body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.title{
+  font-weight: 400;
+  margin: 30px 0 60px;
+}
+.item{
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  color: white;
+  margin-bottom: 20px;
+}
+.item li{
+  width: 235px;
+  font-size: 20px;
+}
+.arrow{
+  display: flex;
+  align-self: center;
+  width: 20px;
+}
+
+@media (min-width:768px) {
+  .title{
+    margin-top: 60px;
+  }
+  .item{
+    margin-bottom: 25px;
+  }
+  .item li{
+    width: 300px;
+  }
+}
