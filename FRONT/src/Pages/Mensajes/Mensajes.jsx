@@ -15,10 +15,6 @@ function Mensajes () {
           <li>Mensajes enviados</li>
           <ChevronRightIcon className={styles.arrow}/>
         </NavLink>
-        <NavLink to="/mensajes/nuevo" className={styles.item}>
-          <li>Enviar nuevo mensaje</li>
-          <ChevronRightIcon className={styles.arrow}/>
-        </NavLink>
       </ul>
     </div>
   )
