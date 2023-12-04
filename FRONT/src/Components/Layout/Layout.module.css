@@ -3,19 +3,12 @@
     position: relative;
     flex-direction: column;
     padding: 100px 20px 0 20px;  
-    height: 100vh;
+    height: auto;
 }
 @media (min-width:768px) {
     .container{
         padding-inline: 60px;
-    }
-    .backgroundQuienesSomos{
-            /* background: archivo posicion tamaño repeat clip; */
-        background: url('../../../assets/background.png') 700% 104%/485px no-repeat border-box;
-
-    }
-    .backgroundHome{
         /* background: archivo posicion tamaño repeat clip; */
-        background: url('../../../assets/background.png') 100% -150%/600px no-repeat border-box;
+        background: url(/assets/background-complete.png) top center/925px no-repeat border-box;
     }
 }
