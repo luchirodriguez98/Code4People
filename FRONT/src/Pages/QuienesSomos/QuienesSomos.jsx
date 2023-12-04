@@ -44,9 +44,6 @@ function QuienesSomos () {
             <span className={`${styles.containerText}`}>
                 <p className={`${styles.title}`}>Los servicios</p>
                 <p className={`${styles.text}`}>Nuestro servicio es 100% gratuito. Solo abonaras el dominio y el hosting.</p>
-                <NavLink to="/planes">
-                    <p className={`${styles.navText}`}>MAS SOBRE LOS PLANES</p>
-                </NavLink>
             </span>
         </span>
         </div>
