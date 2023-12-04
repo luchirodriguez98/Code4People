@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom'
-import { ChatBubbleLeftRightIcon, BellIcon, ClipboardIcon, Cog8ToothIcon, ArrowRightOnRectangleIcon } from '@heroicons/react/24/solid'
+import { ChatBubbleLeftRightIcon, ClipboardIcon, Cog8ToothIcon, ArrowRightOnRectangleIcon } from '@heroicons/react/24/solid'
 import styles from './Cuenta.module.css'
 import { useContext } from 'react'
 import { MyContext } from '../../Context/Context'
@@ -19,11 +19,6 @@ function Cuenta () {
               <ChatBubbleLeftRightIcon />
             </div>
           </NavLink>
-          <NavLink to="/notificaciones">
-            <div className={styles.button}>
-              <BellIcon />
-            </div>
-          </NavLink>
           <NavLink to={accountIsColab}>
             <div className={styles.button}>
               <ClipboardIcon />
@@ -34,7 +29,7 @@ function Cuenta () {
               <Cog8ToothIcon />
             </div>
           </NavLink>
-          <NavLink to="/" className={styles.buttonCenter}>
+          <NavLink to="/">
             <div className={styles.button} onClick={() => context.logOut()}>
               <ArrowRightOnRectangleIcon />
             </div>
