@@ -16,7 +16,6 @@ import { ConfiguracionCuenta } from '../ConfiguracionCuenta/ConfiguracionCuenta'
 import { Mensajes } from '../Mensajes/Mensajes'
 import { MensajesEnviados } from '../MensajesEnviados/MensajesEnviados'
 import { MensajesRecibidos } from '../MensajesRecibidos/MensajesRecibidos'
-import { Notificaciones } from '../Notificaciones/Notificaciones'
 import { PeticionesRealizadas } from '../PeticionesRealizadas/PeticionesRealizadas'
 import { Peticion } from '../Peticion/Peticion'
 import { NotFound } from '../NotFound/NotFound'
@@ -98,10 +97,6 @@ const AppRoutes = () => {
     {
       path: '/mensajes/nuevo',
       element: <MensajeNuevo />
-    },
-    {
-      path: '/notificaciones',
-      element: <Notificaciones />
     },
     {
       path: '/peticionesRealizadas',
