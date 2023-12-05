@@ -8,6 +8,7 @@ import { connection } from './src/db/connect-db.js';
 import { userRouter } from './src/routes/userRoutes.js';
 import { error404 } from './src/controllers/error404.js';
 import errorHandler from './src/controllers/errorHandler.js';
+import { addUser } from './src/controllers/users/addUser.js';
 
 const app = express();
 
@@ -20,6 +21,9 @@ app.use((req, res, next) => {
   console.log(`Solicitud recibida: ${req.method} ${req.url}`);
   next();
 });
+
+app.use('/users', userRouter)
+
 app.use('*', error404);
 app.use(errorHandler);
 

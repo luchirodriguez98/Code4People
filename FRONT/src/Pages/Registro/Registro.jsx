@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { useForm } from '../../Hooks/useForm'
 import styles from './Registro.module.css'
 
@@ -7,13 +7,15 @@ function Registro () {
     nombre: '',
     email: '',
     pass: '',
-    tipo_usuario: 0
+    role: 'usuario'
   })
-  const { nombre, email, pass } = formValues
+
+  const navigate = useNavigate()
+  const { nombre, email, pass, role } = formValues
 
   const saveNewUser = async (event) => {
-    // event.preventDefault()
-    if (nombre === '' || email === '' || pass === '') return
+    event.preventDefault()
+    if (nombre === '' || email === '' || pass === '' || role === '') return
 
     const options = {
       method: 'POST',
@@ -26,9 +28,10 @@ function Registro () {
     const baseUrl = 'http://localhost:5000'
 
     try {
-      const response = await fetch(`${baseUrl}/registro`, options)
+      const response = await fetch(`${baseUrl}/users/registro`, options)
       const data = await response.json()
       console.log(data)
+      navigate('/')
     } catch (error) {
       console.error('Error:', error.message)
     }
@@ -36,12 +39,12 @@ function Registro () {
       nombre: '',
       email: '',
       pass: '',
-      tipo_usuario: 0
+      role: 'usuario'
     })
   }
   return (
         <div className={`${styles.body}`}>
-            <form action="" className={`${styles.form}`} onSubmit={(e) => e.preventDefault()}>
+            <form action="" className={`${styles.form}`} onSubmit={saveNewUser}>
                 <h1 className={`${styles.title}`}>Registra tu empresa!</h1>
                 <label htmlFor="nombre">NOMBRE / NOMBRE DE EMPRESA</label>
                 <input required
@@ -72,9 +75,9 @@ function Registro () {
                 value={formValues.pass}
                 onChange={handleFormChange}
                 />
-                <NavLink to="/">
-                  <button className={`${styles.button}`} onClick={() => saveNewUser()}>GUARDAR</button>
-                </NavLink>
+                {/* <NavLink to="/"> */}
+                  <button className={`${styles.button}`}>GUARDAR</button>
+                {/* </NavLink> */}
             </form>
         </div>
   )
