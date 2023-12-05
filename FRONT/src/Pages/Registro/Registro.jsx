@@ -8,13 +8,13 @@ function Registro () {
     nombre: '',
     email: '',
     pass: '',
-    tipo_usuario: 0
+    tipo_usuario: ''
   })
   const { nombre, email, pass } = formValues
 
   const saveNewUser = async (event) => {
     event.preventDefault()
-    if (nombre === '' || email === '' || pass === '') return
+    if (nombre === '' || email === '' || pass === '' || tipo_usuario === '') return
 
     const options = {
       method: 'POST',
@@ -37,7 +37,7 @@ function Registro () {
       nombre: '',
       email: '',
       pass: '',
-      tipo_usuario: 0
+      role: ''
     })
   }
   return (
@@ -73,9 +73,13 @@ function Registro () {
                 value={formValues.pass}
                 onChange={handleFormChange}
                 />
-                <NavLink to="/">
-                  <button className={`${stylesForm.button}`}>GUARDAR</button>
-                </NavLink>
+                <span className={stylesForm.containerButton}>
+                  <input type="radio" id='empresa' name='role' value='empresa' className={stylesForm.inputSelect}/>
+                  <label htmlFor='empresa' className={stylesForm.selectButton}>EMPRESA</label>
+                  <input type="radio" id='desarrollador' name='role' value='usuario' className={stylesForm.inputSelect}/>
+                  <label htmlFor='desarrollador' className={stylesForm.selectButton}>DESAROLLADOR</label>
+                </span>
+                <button className={`${stylesForm.button}`}>GUARDAR</button>
             </form>
         </div>
   )
