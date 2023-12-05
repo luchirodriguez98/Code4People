@@ -4,7 +4,7 @@ const MyContext = createContext()
 
 // eslint-disable-next-line react/prop-types
 const MyContextProvider = ({ children }) => {
-  const [user, setUser] = useState(null)
+  const [usuario, setUsuario] = useState(null)
   // {
   //   nombre: '',
   //   email: '',
@@ -12,26 +12,22 @@ const MyContextProvider = ({ children }) => {
   //   tipo_usuario: undefined
   // }
 
-  const buttonToRender = user ? 'MI CUENTA' : 'IDENTIFICATE'
+  const buttonToRender = usuario ? 'MI CUENTA' : 'IDENTIFICATE'
 
-  const handleNameChange = (event) => {
-    setUser(event.target.value)
-  }
-
-  const logIn = () => {
-
+  const logIn = (userLogin) => {
+    setUsuario(userLogin)
   }
 
   const logOut = () => {
-
+    setUsuario(null)
+    localStorage.removeItem('token')
   }
 
   return (
         <MyContext.Provider
             value={{
-              user,
+              usuario,
               buttonToRender,
-              handleNameChange,
               logIn,
               logOut
             }}

@@ -10,7 +10,7 @@ function useForm (initialValue) {
       [name]: value
     })
   }
-  return [formValues, setFormValues, handleFormChange]
+  return [formValues, handleFormChange]
 }
 
 export { useForm }
