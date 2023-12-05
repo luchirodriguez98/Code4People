@@ -1,20 +1,22 @@
 import { useNavigate } from 'react-router-dom'
 import { useForm } from '../../Hooks/useForm'
 import styles from './Registro.module.css'
+import stylesForm from '../../Styles/form.module.css'
 
 function Registro () {
   const [formValues, setFormValues, handleFormChange] = useForm({
     nombre: '',
     email: '',
-    pass: ''
+    pass: '',
+    role: ''
   })
 
   const navigate = useNavigate()
-  const { nombre, email, pass } = formValues
+  const { nombre, email, pass, role } = formValues
 
   const saveNewUser = async (event) => {
     event.preventDefault()
-    if (nombre === '' || email === '' || pass === '') return
+    if (nombre === '' || email === '' || pass === '' || role === '') return
 
     const options = {
       method: 'POST',
@@ -37,13 +39,14 @@ function Registro () {
     setFormValues({
       nombre: '',
       email: '',
-      pass: ''
+      pass: '',
+      role: ''
     })
   }
   return (
         <div className={`${styles.body}`}>
-            <form action="" className={`${styles.form}`} onSubmit={saveNewUser}>
-                <h1 className={`${styles.title}`}>Registra tu empresa!</h1>
+            <h1 className={`${styles.title}`}>Registra tu empresa!</h1>
+            <form action="" className={`${stylesForm.form}`} onSubmit={saveNewUser}>
                 <label htmlFor="nombre">NOMBRE / NOMBRE DE EMPRESA</label>
                 <input required
                 type="text"
@@ -73,9 +76,7 @@ function Registro () {
                 value={formValues.pass}
                 onChange={handleFormChange}
                 />
-                {/* <NavLink to="/"> */}
-                  <button className={`${styles.button}`}>GUARDAR</button>
-                {/* </NavLink> */}
+                  <button className={`${stylesForm.button}`}>GUARDAR</button>
             </form>
         </div>
   )
