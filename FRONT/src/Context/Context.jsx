@@ -5,12 +5,6 @@ const MyContext = createContext()
 // eslint-disable-next-line react/prop-types
 const MyContextProvider = ({ children }) => {
   const [usuario, setUsuario] = useState(null)
-  // {
-  //   nombre: '',
-  //   email: '',
-  //   pass: '',
-  //   tipo_usuario: undefined
-  // }
 
   const buttonToRender = usuario ? 'MI CUENTA' : 'IDENTIFICATE'
 

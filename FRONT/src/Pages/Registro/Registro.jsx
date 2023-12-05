@@ -78,11 +78,27 @@ function Registro () {
           onChange={handleFormChange}
         />
         <span className={stylesForm.containerButton}>
-          <input value='empresa' type="radio" id='empresa' name='role' className={stylesForm.inputSelect}/>
+          <input
+            checked={formValues.role === 'emprsa'}
+            onChange={handleFormChange}
+            value='empresa'
+            type="radio"
+            id='empresa'
+            name='role'
+            className={stylesForm.inputSelect}
+            />
           <label htmlFor="empresa" className={stylesForm.selectButton}>
             EMPRESA
           </label>
-          <input value='desarrollador' type="radio" id='desarrollador' name='role' className={stylesForm.inputSelect}/>
+          <input
+            checked={formValues.role === 'desarrollador'}
+            onChange={handleFormChange}
+            value='desarrollador'
+            type="radio"
+            id='desarrollador'
+            name='role'
+            className={stylesForm.inputSelect}
+          />
           <label htmlFor="desarrollador" className={stylesForm.selectButton}>
             DESARROLLADOR
           </label>

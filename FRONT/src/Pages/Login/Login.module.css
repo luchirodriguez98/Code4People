@@ -13,6 +13,7 @@
 .redirectRegistro{
     display: inline-flex;
     justify-content: center;
+    margin: 20px 0;
 }
 .redirectRegistro a{
     color: var(--primary-color);
