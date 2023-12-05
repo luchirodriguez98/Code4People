@@ -11,5 +11,6 @@
         padding-inline: 60px;
         /* background: archivo posicion tamaño repeat clip; */
         background: url(/assets/background-complete.png) 0% 0%/1000px no-repeat border-box;
+        background-size: cover;
     }
 }
