@@ -1,9 +1,9 @@
 import { useContext } from 'react'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { MyContext } from '../../Context/Context'
 import { useForm } from '../../Hooks/useForm'
 import styles from './Login.module.css'
 import { logInUser } from '../../services/logInUser'
-import { useNavigate } from 'react-router-dom'
 
 function Login () {
   const context = useContext(MyContext)
@@ -57,6 +57,12 @@ function Login () {
                   onChange={handleFormChange}
                 />
                 <button className={`${styles.button}`} >INCIA SESION</button>
+                <span className={styles.redirectRegistro}>
+                  <p>No tienes cuenta?</p>
+                  <NavLink to="/registro">
+                    <p>Registrate</p>
+                  </NavLink>
+                  </span>
             </form>
         </div>
   )

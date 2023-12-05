@@ -32,3 +32,10 @@
     width: 70%;
     font-weight: var(--font-weight-md);
 }
+.redirectRegistro{
+    display: inline-flex;
+}
+.redirectRegistro a{
+    color: var(--primary-color);
+    margin-left: 5px;
+}
