@@ -59,16 +59,16 @@ function Login () {
                   onChange={handleFormChange}
                 />
                 <button className={`${stylesForm.button}`} >INCIA SESION</button>
-                <span className={styles.redirectRegistro}>
-                  <p>No tienes cuenta?</p>
-                  <NavLink to="/registro">
-                    <p>Registrate </p>
-                  </NavLink>
-                  </span>
-                  <span className={styles.icon}>
-                  <FaGithub />
-                  </span>
             </form>
+            <span className={styles.redirectRegistro}>
+              <p>No tienes cuenta?</p>
+              <NavLink to="/registro">
+                <p>Registrate </p>
+              </NavLink>
+            </span>
+            <span className={styles.icon}>
+              <FaGithub />
+            </span>
         </div>
   )
 }
