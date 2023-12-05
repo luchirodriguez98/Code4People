@@ -15,12 +15,12 @@ function Login () {
     pass: ''
   })
 
-  const navigate = useNavigate()
-
   const { email, pass } = formValues
 
-  async function handleSubmit (e) {
-    e.preventDefault()
+  const navigate = useNavigate()
+
+  const handleSubmit = async (event) => {
+    event.preventDefault()
 
     if (email === '' || pass === '') return
 
@@ -38,17 +38,17 @@ function Login () {
   return (
         <div className={`${styles.body}`}>
             <h1 className={`${styles.title}`}>Inicia sesion</h1>
-            <form action="" className={`${stylesForm.form}`} onSubmit={handleSubmit}>
+            <form className={`${stylesForm.form}`} onSubmit={handleSubmit}>
                 <label htmlFor="email">EMAIL</label>
                 <input required
-                type="email"
-                id="email"
-                name="email"
-                placeholder='Escribe tu email'
-                value={formValues.email}
-                onChange={handleFormChange}
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder='Escribe tu email'
+                  value={formValues.email}
+                  onChange={handleFormChange}
                 />
-                <label htmlFor="password">CLAVE</label>
+                <label htmlFor="pass">CLAVE</label>
                 <input
                   required
                   type="password"
@@ -58,17 +58,17 @@ function Login () {
                   value={formValues.pass}
                   onChange={handleFormChange}
                 />
-                <button className={`${stylesForm.button}`} >INCIA SESION</button>
-                <span className={styles.redirectRegistro}>
-                  <p>No tienes cuenta?</p>
-                  <NavLink to="/registro">
-                    <p>Registrate </p>
-                  </NavLink>
-                  </span>
-                  <span className={styles.icon}>
-                  <FaGithub />
-                  </span>
+                <button className={`${stylesForm.button}`}>INCIA SESION</button>
             </form>
+            <span className={styles.redirectRegistro}>
+              <p>No tienes cuenta?</p>
+              <NavLink to="/registro">
+                <p>Registrate </p>
+              </NavLink>
+            </span>
+            <span className={styles.icon}>
+              <FaGithub />
+            </span>
         </div>
   )
 }

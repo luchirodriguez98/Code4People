@@ -46,28 +46,28 @@ function Contacto () {
         <div className={styles.body}>
           <h1 className={styles.title}>Contacto</h1>
           <p className={styles.subTitle}>Si tienes dudas contactanos por aqui y las resolveremos a la brevedad.</p>
-          <form action="" className={`${stylesForm.form}`} onSubmit={registerColaborator}>
-                <label htmlFor="email">EMAIL</label>
-                <input
-                required
-                type="email"
-                id="email"
-                name="email"
-                placeholder='Escribe tu email'
-                value={formValues.email}
-                onChange={handleFormChange}
-                />
-                <label htmlFor="mensaje">MENSAJE</label>
-                <textarea
-                required
-                type="text"
-                id="mensaje"
-                name="mensaje"
-                value={formValues.mensaje}
-                onChange={handleFormChange}
-                />
-                <button className={`${stylesForm.button}`}>ENVIAR</button>
-            </form>
+          <form className={`${stylesForm.form}`} onSubmit={registerColaborator}>
+            <label htmlFor="email">EMAIL</label>
+            <input
+              required
+              type="email"
+              id="email"
+              name="email"
+              placeholder='Escribe tu email'
+              value={formValues.email}
+              onChange={handleFormChange}
+            />
+            <label htmlFor="mensaje">MENSAJE</label>
+            <textarea
+              required
+              type="text"
+              id="mensaje"
+              name="mensaje"
+              value={formValues.mensaje}
+              onChange={handleFormChange}
+            />
+            <button className={`${stylesForm.button}`}>ENVIAR</button>
+          </form>
         </div>
   )
 }
