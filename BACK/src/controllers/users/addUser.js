@@ -1,8 +1,10 @@
 import { sendQuery } from '../../db/connect-db.js';
+import { query } from '../../db/queries.js';
 import { zodErrorMap } from '../../helpers/zodErrorMap.js';
 import { User } from '../../schemas/User.js';
 
 async function addUser (req, res) {
+
     const { success, error, data } = User.safeParse(req.body);  
 
     if (!success) {
@@ -14,7 +16,7 @@ async function addUser (req, res) {
         })
     }
 
-    const {username, email, password } = data;
+    const {username, email, password, role } = data;
 
     try {
     await sendQuery(query.addUser, [username, email, password]);    
