@@ -1,26 +1,19 @@
-.body{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.title{
-  text-align: center;
-  margin: 20px 0;
-}
-.subTitle{
-  text-align: center;
-  color: var(--secondary-color);
-  margin-bottom: 20px;
-/* }
 .form{
   width: 500px;
-  max-width: 98%;
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 15px;
 }
-.form input, .form textarea{
+.form input{
+  height: 25px;
+  width: 100%;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  padding-left: 10px;
+}
+
+.form textarea{
   height: 25px;
   width: 100%;
   border-radius: 5px;
@@ -38,12 +31,7 @@
   border: none;
   border-radius: 10px;
   height: 20px;
-  margin: 16px 0 32px;
+  margin-top: 16px;
   width: 100%;
   font-weight: var(--font-weight-md);
-} */
-@media (min-width:768px) {
-  .subTitle{
-    max-width: 490px;
-  }
-}}
+}

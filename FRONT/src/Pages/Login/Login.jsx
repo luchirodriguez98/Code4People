@@ -2,9 +2,9 @@ import { useContext } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { MyContext } from '../../Context/Context'
 import { useForm } from '../../Hooks/useForm'
-import styles from './Login.module.css'
 import { logInUser } from '../../services/logInUser'
-
+import styles from './Login.module.css'
+import stylesForm from '../../Styles/form.module.css'
 function Login () {
   const context = useContext(MyContext)
 
@@ -35,8 +35,8 @@ function Login () {
 
   return (
         <div className={`${styles.body}`}>
-            <form action="" className={`${styles.form}`} onSubmit={handleSubmit}>
-                <h1 className={`${styles.title}`}>Inicia sesion</h1>
+            <h1 className={`${styles.title}`}>Inicia sesion</h1>
+            <form action="" className={`${stylesForm.form}`} onSubmit={handleSubmit}>
                 <label htmlFor="email">EMAIL</label>
                 <input required
                 type="email"
@@ -56,7 +56,7 @@ function Login () {
                   value={formValues.pass}
                   onChange={handleFormChange}
                 />
-                <button className={`${styles.button}`} >INCIA SESION</button>
+                <button className={`${stylesForm.button}`} >INCIA SESION</button>
                 <span className={styles.redirectRegistro}>
                   <p>No tienes cuenta?</p>
                   <NavLink to="/registro">
