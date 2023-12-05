@@ -5,6 +5,8 @@ import { useForm } from '../../Hooks/useForm'
 import { logInUser } from '../../services/logInUser'
 import styles from './Login.module.css'
 import stylesForm from '../../Styles/form.module.css'
+import { FaGithub } from 'react-icons/fa6'
+
 function Login () {
   const context = useContext(MyContext)
 
@@ -60,8 +62,11 @@ function Login () {
                 <span className={styles.redirectRegistro}>
                   <p>No tienes cuenta?</p>
                   <NavLink to="/registro">
-                    <p>Registrate</p>
+                    <p>Registrate </p>
                   </NavLink>
+                  </span>
+                  <span className={styles.icon}>
+                  <FaGithub />
                   </span>
             </form>
         </div>
