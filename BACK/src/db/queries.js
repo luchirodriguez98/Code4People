@@ -8,7 +8,7 @@ const query = {
 //Añadir usuario Empresa
   addUserEmpresa: 'INSERT INTO usuarios (nombre,email,pass,role) VALUES (?,?,?,"empresa")',
 //Añadir usuario colaborador
-  addUser: 'INSERT INTO usuarios (nombre,email,pass,role) VALUES (?,?,?,"usuario")',
+  addUser: 'INSERT INTO usuarios (nombre,email,pass,role, confirmation_code) VALUES (?,?,?,"usuario",?)',
   //Ver todas las peticiones de todos los usuarios
   getAllPeticiones: 'SELECT p.id_peticion, p.descripcion, u.nombre AS nombre_autor FROM peticiones p JOIN usuarios u ON p.autor = u.id_usuario',
   //Ver todas las empresas
