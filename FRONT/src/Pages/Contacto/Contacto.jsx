@@ -1,6 +1,7 @@
+import { useNavigate } from 'react-router-dom'
 import { useForm } from '../../Hooks/useForm'
 import styles from './Contacto.module.css'
-import { useNavigate } from 'react-router-dom'
+import stylesForm from '../../Styles/form.module.css'
 
 function Contacto () {
   const navigate = useNavigate()
@@ -45,7 +46,7 @@ function Contacto () {
         <div className={styles.body}>
           <h1 className={styles.title}>Contacto</h1>
           <p className={styles.subTitle}>Si tienes dudas contactanos por aqui y las resolveremos a la brevedad.</p>
-          <form action="" className={`${styles.form}`} onSubmit={registerColaborator}>
+          <form action="" className={`${stylesForm.form}`} onSubmit={registerColaborator}>
                 <label htmlFor="email">EMAIL</label>
                 <input
                 required
@@ -65,7 +66,7 @@ function Contacto () {
                 value={formValues.mensaje}
                 onChange={handleFormChange}
                 />
-                <button className={`${styles.button}`}>ENVIAR</button>
+                <button className={`${stylesForm.button}`}>ENVIAR</button>
             </form>
         </div>
   )
