@@ -4,20 +4,15 @@ const MyContext = createContext()
 
 // eslint-disable-next-line react/prop-types
 const MyContextProvider = ({ children }) => {
-  const [user, setUser] = useState({
-    nombre: '',
-    email: '',
-    pass: '',
-    tipo_usuario: 0
-  })
-  // const [newUser, setNewUser] = useState({
+  const [user, setUser] = useState(null)
+  // {
   //   nombre: '',
   //   email: '',
   //   pass: '',
-  //   tipo_usuario: 0
-  // })
+  //   tipo_usuario: undefined
+  // }
 
-  const buttonToRender = user ? 'MI CUENTA' : 'REGISTRATE AHORA'
+  const buttonToRender = user ? 'MI CUENTA' : 'IDENTIFICATE'
 
   const handleNameChange = (event) => {
     setUser(event.target.value)
