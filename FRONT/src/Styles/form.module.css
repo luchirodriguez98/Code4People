@@ -35,3 +35,25 @@
   width: 100%;
   font-weight: var(--font-weight-md);
 }
+.containerButton{
+  display:flex;
+  justify-content: space-between;
+  width: 100%
+  }
+  .selectButton{
+      width: 40%;
+      height: 100px;
+      border: 1px solid var(--primary-color);
+      border-radius: 10px;
+      background-color: black;
+      margin-right: 5px;
+      padding: 10px;
+  }
+  
+  .inputSelect{
+      display: none;
+  }
+  .inputSelect:checked + .selectButton {
+      background-color: var(--primary-color);
+      color: black;
+  }

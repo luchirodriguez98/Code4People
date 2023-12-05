@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useForm } from '../../Hooks/useForm'
 import styles from './Registro.module.css'
 
