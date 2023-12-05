@@ -58,7 +58,7 @@ function Login () {
                   value={formValues.pass}
                   onChange={handleFormChange}
                 />
-                <button className={`${stylesForm.button}`}>INCIA SESION</button>
+                <button className={`${stylesForm.button}`} >INCIA SESION</button>
             </form>
             <span className={styles.redirectRegistro}>
               <p>No tienes cuenta?</p>
