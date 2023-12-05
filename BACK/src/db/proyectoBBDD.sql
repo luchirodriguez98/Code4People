@@ -1,7 +1,7 @@
 -------------------------
 -- CREACIÓN DE LA BBDD --
 -------------------------
-
+drop database if exists proyectosplai;
 create database if not exists proyectosplai;
 
 use proyectosplai;
