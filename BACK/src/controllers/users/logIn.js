@@ -21,7 +21,7 @@ async function logIn (req, res, next) {
     });
     }
 
-    const { email, password: realPassword } = data;
+    const { email, pass: realPassword } = data;
 
     try {
     // Primero nos aseguramos de que el usuario exista en la BBDD

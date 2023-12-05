@@ -18,7 +18,7 @@ async function addUser (req, res, next) {
         })
     }
 
-    const {nombre, email, pass } = data;
+    const {nombre, email, pass, role } = data;
     
     const salt = 10;
     const hashedPassword = bcrypt.hashSync(pass, salt)
@@ -26,7 +26,7 @@ async function addUser (req, res, next) {
 
   // Añadir a la BBDD el usuario nuevo
     try {
-        await sendQuery(query.addUser, [nombre, email, hashedPassword, confirmationCode]);
+        await sendQuery(query.addUser, [nombre, email, hashedPassword, confirmationCode, role]);
     } catch (error) {
         return next(new Error(error.message));
     }
