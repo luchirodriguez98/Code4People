@@ -6,16 +6,15 @@ function Registro () {
   const [formValues, setFormValues, handleFormChange] = useForm({
     nombre: '',
     email: '',
-    pass: '',
-    role: 'usuario'
+    pass: ''
   })
 
   const navigate = useNavigate()
-  const { nombre, email, pass, role } = formValues
+  const { nombre, email, pass } = formValues
 
   const saveNewUser = async (event) => {
     event.preventDefault()
-    if (nombre === '' || email === '' || pass === '' || role === '') return
+    if (nombre === '' || email === '' || pass === '') return
 
     const options = {
       method: 'POST',
@@ -38,8 +37,7 @@ function Registro () {
     setFormValues({
       nombre: '',
       email: '',
-      pass: '',
-      role: 'usuario'
+      pass: ''
     })
   }
   return (
