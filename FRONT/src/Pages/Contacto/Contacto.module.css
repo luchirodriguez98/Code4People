@@ -20,13 +20,18 @@
   /* align-items: center; */
   gap: 15px;
 }
-.form input{
+.form input, .form textarea{
   height: 25px;
   width: 100%;
   border-radius: 5px;
   border: none;
   outline: none;
   padding-left: 10px;
+}
+.form textarea {
+  height: 75px;
+  font-family: 'Montserrat', sans-serif;
+  padding-top: 5px;
 }
 .button{
   background-color: var(--primary-color);

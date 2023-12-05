@@ -1,20 +1,20 @@
-import { NavLink } from 'react-router-dom'
 import { useForm } from '../../Hooks/useForm'
 import styles from './Contacto.module.css'
-// import { AtSymbolIcon } from '@heroicons/react'
-import { AtSymbolIcon, PhoneIcon, UserGroupIcon } from '@heroicons/react/24/solid'
+import { useNavigate } from 'react-router-dom'
 
 function Contacto () {
+  const navigate = useNavigate()
+
   const [formValues, setFormValues, handleFormChange] = useForm({
-    nombre: '',
     email: '',
-    pass: '',
-    aditional: ''
+    mensaje: ''
   })
-  const { nombre, email, pass, aditional } = formValues
+  const { email, mensaje } = formValues
 
   const registerColaborator = async (event) => {
-    if (nombre === '' || email === '' || pass === '' || aditional === '') return
+    event.preventDefault()
+
+    if (email === '' || mensaje === '') return
 
     const options = {
       method: 'POST',
@@ -24,86 +24,49 @@ function Contacto () {
       body: JSON.stringify(formValues)
     }
 
-    const baseUrl = 'http://localhost:5000/users/registerColaborator'
+    const baseUrl = 'http://localhost:5000'
 
     try {
-      const response = await fetch(baseUrl, options)
+      const response = await fetch(`${baseUrl}/help`, options)
       const data = await response.json()
+      navigate('/')
       console.log(data)
     } catch (error) {
       console.error('Error:', error.message)
     }
     setFormValues({
-      nombre: '',
       email: '',
-      pass: '',
-      aditional: ''
+      mensaje: ''
+
     })
   }
 
   return (
         <div className={styles.body}>
-          <h1 className={styles.title}>Date de alta como colaborador!</h1>
-          <p className={styles.subTitle}>Envianos tu solicitud para registrarte como colaborador. Una vez aprobada la solicitud de avisaremos por email.</p>
-          <form action="" className={`${styles.form}`} onSubmit={(e) => e.preventDefault()}>
-                <label htmlFor="nombre">NOMBRE</label>
-                <input required
-                type="text"
-                id="nombre"
-                name="nombre"
-                placeholder='Escribe tu nombre'
-                value={formValues.nombre}
-                onChange={handleFormChange}
-                />
+          <h1 className={styles.title}>Contacto</h1>
+          <p className={styles.subTitle}>Si tienes dudas contactanos por aqui y las resolveremos a la brevedad.</p>
+          <form action="" className={`${styles.form}`} onSubmit={registerColaborator}>
                 <label htmlFor="email">EMAIL</label>
                 <input
                 required
                 type="email"
                 id="email"
                 name="email"
-                placeholder='Escribe tu contraseña'
+                placeholder='Escribe tu email'
                 value={formValues.email}
                 onChange={handleFormChange}
                 />
-                <label htmlFor="password">CLAVE</label>
-                <input
-                required
-                type="password"
-                id="pass"
-                name="pass"
-                placeholder='Escribe tu contraseña'
-                value={formValues.pass}
-                onChange={handleFormChange}
-                />
-                <label htmlFor="password">DATOS ADICIONALES</label>
-                <input
+                <label htmlFor="password">MENSAJE</label>
+                <textarea
                 required
                 type="text"
-                id="aditional"
-                name="aditional"
-                placeholder='Escribe informacion adicional'
-                value={formValues.aditional}
+                id="mensaje"
+                name="mensaje"
+                value={formValues.mensaje}
                 onChange={handleFormChange}
                 />
-                <NavLink to="/">
-                  <button className={`${styles.button}`} onClick={() => registerColaborator()}>ENVIAR</button>
-                </NavLink>
+                <button className={`${styles.button}`}>ENVIAR</button>
             </form>
-            <div>
-              <h1 className={styles.title}>Contacto</h1>
-              <p className={styles.subTitle}>Puedes comunicarte con nosotros por las siguientes vias:</p>
-              <span className={styles.contactSection}>
-                <div>
-                  <AtSymbolIcon className={styles.icon} href="mailto:code4people@example.com"/>
-                </div>
-                <div>
-                  <UserGroupIcon className={styles.icon}/>
-                </div>
-                <div>
-                  <PhoneIcon className={styles.icon}/>
-                </div>
-              </span>
-            </div>
         </div>
   )
 }
