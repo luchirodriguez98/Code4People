@@ -4,18 +4,18 @@ import styles from './Registro.module.css'
 
 function Registro () {
   const [formValues, setFormValues, handleFormChange] = useForm({
-    username: '',
+    nombre: '',
     email: '',
-    password: '',
+    pass: '',
     role: 'usuario'
   })
 
   const navigate = useNavigate()
-  const { username, email, password, role } = formValues
+  const { nombre, email, pass, role } = formValues
 
   const saveNewUser = async (event) => {
     event.preventDefault()
-    if (username === '' || email === '' || password === '' || role === '') return
+    if (nombre === '' || email === '' || pass === '' || role === '') return
 
     const options = {
       method: 'POST',
