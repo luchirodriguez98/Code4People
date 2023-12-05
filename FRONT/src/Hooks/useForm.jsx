@@ -10,7 +10,13 @@ function useForm (initialValue) {
       [name]: value
     })
   }
-  return [formValues, handleFormChange]
+  const handleRoleChange = (event) => {
+    setFormValues((valoresAnteriores) => ({
+      ...valoresAnteriores,
+      role: event.target.value
+    }))
+  }
+  return [formValues, setFormValues, handleFormChange, handleRoleChange]
 }
 
 export { useForm }

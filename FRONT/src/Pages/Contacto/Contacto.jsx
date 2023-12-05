@@ -57,7 +57,7 @@ function Contacto () {
                 value={formValues.email}
                 onChange={handleFormChange}
                 />
-                <label htmlFor="password">MENSAJE</label>
+                <label htmlFor="mensaje">MENSAJE</label>
                 <textarea
                 required
                 type="text"
