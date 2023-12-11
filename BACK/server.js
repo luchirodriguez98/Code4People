@@ -10,6 +10,8 @@ import { error404 } from './src/controllers/error404.js';
 import errorHandler from './src/controllers/errorHandler.js';
 import { addUser } from './src/controllers/users/addUser.js';
 
+
+
 const app = express();
 
 app.use(cors());
@@ -22,7 +24,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/users', userRouter)
+app.use('/', userRouter);
 
 app.use('*', error404);
 app.use(errorHandler);

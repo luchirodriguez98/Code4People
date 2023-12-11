@@ -22,16 +22,16 @@ async function logIn (req, res, next) {
     }
 
     const { email, pass: realPassword } = data;
-
     try {
-    // Primero nos aseguramos de que el usuario exista en la BBDD
-    const [user] = await sendQuery(query.checkEmail, [email]);
-    if (!user) {
+        // Primero nos aseguramos de que el usuario exista en la BBDD
+        const [user] = await sendQuery(query.checkEmail, [email]);
+        console.log(user);
+        if (!user) {
         return next(new HttpError(400, 'Email y/o contraseña incorrectos.'));
     }
 
     // Comparamos las contraseñas
-    const isValidPassword = await bcrypt.compare(realPassword, user.password);
+    const isValidPassword = await bcrypt.compare(realPassword, user.pass);
 
     if (!isValidPassword) {
         return next(new HttpError(400, 'Email y/o contraseña incorrectos.'));

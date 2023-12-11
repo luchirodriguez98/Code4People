@@ -10,19 +10,23 @@ const query = {
 //Añadir usuario colaborador
   addUser: 'INSERT INTO usuarios (nombre,email,pass,role, confirmation_code) VALUES (?,?,?,"usuario",?)',
   //Ver todas las peticiones de todos los usuarios
-  getAllPeticiones: 'SELECT p.id_peticion, p.descripcion, u.nombre AS nombre_autor FROM peticiones p JOIN usuarios u ON p.autor = u.id_usuario',
+  getAllProyectoARealizar: 'SELECT p.titulo, p.descripcion, u.nombre as autor FROM proyectos_a_realizar p JOIN usuarios u ON p.autor = u.id_usuario;',
+  //Proyecto por id 
+  getAllProyectoARealizarbyId:'SELECT p.titulo, p.descripcion, u.nombre as autor FROM proyectos_a_realizar p JOIN usuarios u ON p.autor = u.id_usuario WHERE id_proyecto = ?; ',
+  //Ver todas las peticiones segun el usuario conectado
+  getAllProyectosAcabados:'SELECT titulo, url FROM proyectos_acabados',
   //Ver todas las empresas
   getAllEmpresas: 'SELECT * FROM usuarios WHERE role = "empresa"',
   //Ver todos los colaboradores
   getAllNormalUsers: 'SELECT * FROM usuarios WHERE role = "usuario"',
   //Proyectos realizados TODOS
   getAllProyectos: '',
-   //Obtener bandeja de usuario
-   getMailbyId: 'SELECT * FROM mails WHERE origen = ? ',
-   //Obtener bandeja de enviados de usuario
-   getSendMailById: 'SELECT * FROM mails WHERE destino = ?',
+   //Obtener bandeja de enviados
+   getSendMailbyId: 'SELECT * FROM mails WHERE origen = ? ',
+   //Obtener bandeja de recibidos de usuario
+   getMailById: 'SELECT * FROM mails WHERE destino = ?',
    //Comprobación de email
-   checkEmail: 'SELECT * FROM users WHERE email = ?'
+   checkEmail: 'SELECT * FROM usuarios WHERE email = ?'
 }
 
 
