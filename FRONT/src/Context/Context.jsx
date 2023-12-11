@@ -2,10 +2,13 @@ import { createContext, useState } from 'react'
 
 const MyContext = createContext()
 
-// eslint-disable-next-line react/prop-types
 const MyContextProvider = ({ children }) => {
-  const [usuario, setUsuario] = useState(null)
-
+  const [usuario, setUsuario] = useState({
+    nombre: '',
+    email: '',
+    pass: '',
+    role: 'usuario'
+  })
   const buttonToRender = usuario ? 'MI CUENTA' : 'IDENTIFICATE'
 
   const logIn = (userLogin) => {

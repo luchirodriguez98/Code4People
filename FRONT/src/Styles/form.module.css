@@ -28,13 +28,17 @@
   padding-top: 5px;
 }
 .button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: var(--primary-color);
   border: none;
   border-radius: 10px;
-  height: 20px;
   margin-top: 16px;
+  padding: 5px;
   width: 100%;
   font-weight: var(--font-weight-md);
+  color: black;
 }
 .containerButton{
   display:flex;

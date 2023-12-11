@@ -4,7 +4,7 @@ import styles from './Registro.module.css'
 import stylesForm from '../../Styles/form.module.css'
 
 function Registro () {
-  const [formValues, setFormValues, handleFormChange] = useForm({
+  const { formValues, reset, handleFormChange } = useForm({
     nombre: '',
     email: '',
     pass: '',
@@ -32,16 +32,16 @@ function Registro () {
       const response = await fetch(`${baseUrl}/users/registro`, options)
       const data = await response.json()
       console.log(data)
+      reset({
+        nombre: '',
+        email: '',
+        pass: '',
+        role: ''
+      })
       navigate('/')
     } catch (error) {
       console.error('Error:', error.message)
     }
-    setFormValues({
-      nombre: '',
-      email: '',
-      pass: '',
-      role: ''
-    })
   }
   return (
     <div className={`${styles.body}`}>
