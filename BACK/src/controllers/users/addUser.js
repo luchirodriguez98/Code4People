@@ -1,8 +1,12 @@
+import bcrypt from 'bcrypt';
+
 import { sendQuery } from '../../db/connect-db.js';
+import { query } from '../../db/queries.js';
 import { zodErrorMap } from '../../helpers/zodErrorMap.js';
 import { User } from '../../schemas/User.js';
 
-async function addUser (req, res) {
+async function addUser (req, res, next) {
+
     const { success, error, data } = User.safeParse(req.body);  
 
     if (!success) {
@@ -14,17 +18,19 @@ async function addUser (req, res) {
         })
     }
 
-    const {username, email, password } = data;
+    const {nombre, email, pass, role } = data;
+    
+    const salt = 10;
+    const hashedPassword = bcrypt.hashSync(pass, salt)
+    const confirmationCode = crypto.randomUUID();
 
+  // Añadir a la BBDD el usuario nuevo
     try {
-    await sendQuery(query.addUser, [username, email, password]);    
+        await sendQuery(query.addUser, [nombre, email, hashedPassword, confirmationCode, role]);
     } catch (error) {
-    res.status(500).send({
-        ok: false,
-        data: null,
-        error: error.message
-    })
+        return next(new Error(error.message));
     }
+
 
     res.send({
         ok: true,

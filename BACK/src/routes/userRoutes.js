@@ -3,16 +3,15 @@ import express from 'express';
 import {
     getAllUsers, 
     getUserById, 
-    addUser
+    addUser,
+    logIn
 } from '../controllers/users/index.js';
 
 
 const userRouter = express.Router();
 
-
-userRouter.get('/', getAllUsers);
+userRouter.post('/registro', addUser);
+userRouter.post('/logIn', logIn);
 userRouter.get('/:userId',getUserById);
-userRouter.post('/', addUser);
 
-
-export { userRouter }   
+export { userRouter }

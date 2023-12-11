@@ -1,6 +1,8 @@
 .body{
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 .title{
     font-size: var(--font-size-md);
@@ -8,27 +10,27 @@
     text-align: center;
     margin-bottom: 30px;
 }
-.form{
-    width: 280px;
+.redirectRegistro{
+    display: inline-flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+.redirectRegistro a{
+    color: var(--primary-color);
+    margin-left: 5px;
+}
+.icon{
+    width: 50px;
+    height: 50px;
+    border: 1px solid var(--primary-color);
+    border-radius: 50%;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: 15px;
+    justify-content: center;
+    margin: 0 auto;
 }
-.form input{
-    height: 25px;
-    width: 100%;
-    border-radius: 5px;
-    border: none;
-    outline: none;
-    padding-left: 10px;
-}
-.button{
-    background-color: var(--primary-color);
-    border: none;
-    border-radius: 10px;
-    height: 20px;
-    margin-top: 10px;
-    width: 70%;
-    font-weight: var(--font-weight-md);
+.icon *{
+    width: 30px;
+    height: 30px;
+    color: var(--primary-color);
 }

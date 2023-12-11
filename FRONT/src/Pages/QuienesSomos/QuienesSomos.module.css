@@ -37,7 +37,7 @@
 .buttonContainer{
     display: flex;
     justify-content: center;
-    margin:10px 0 100px;
+    margin:10px 0 70px;
 }
 .button{
     display: flex;
@@ -63,12 +63,6 @@
     font-size: var(--font-size-md);
     font-weight: var(--font-weight-md);
 }
-/* .containerText:nth-child(1) .text{
-    width: 70%;
-}
-.containerText:nth-child(3){
-    width: 100%;
-} */
 .text{
     font-size: var(--font-size-sm);
     margin-top: 10px;
@@ -78,11 +72,6 @@
     font-size: var(--font-size-sm);
     margin-top: 15px;
     margin-bottom: 25px;
-}
-@media (min-width:425px) and (max-width:768px) {
-    .body{
-        margin-top: 340px;
-    }
 }
 @media (min-width:768px) {
     .quote{
@@ -103,7 +92,7 @@
         font-size: var(--font-size-lg);
     }
     .buttonContainer{
-        margin-bottom: 115px;
+        margin-bottom: 90px;
     }
     .button{
         font-size: var(--font-size-sm);
@@ -126,15 +115,17 @@
         margin-bottom: 30px;
     }
     .containerText{
-        margin-bottom: 60px;
+        margin-bottom: 30px;
+        align-items: end;
+        text-align: end;
     }
     .containerText .title{
         font-size: var(--font-size-md);
     }
     .containerText .text{
-        width: 70%;
+        width: 60%;
     }
-    .containerText:nth-child(3) .text{
+    /* .containerText:nth-child(3) .text{
         width: 50%;
-    }
+    } */
 }

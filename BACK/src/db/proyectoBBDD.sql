@@ -1,7 +1,7 @@
 -------------------------
 -- CREACIÓN DE LA BBDD --
 -------------------------
-
+drop database if exists proyectosplai;
 create database if not exists proyectosplai;
 
 use proyectosplai;
@@ -19,7 +19,7 @@ create table if not exists usuarios(
     nombre varchar(255) not null,
     email varchar(255) unique not null,
     pass varchar(255) not null,
-    role ENUM("admin","empresa","usuario"),
+    role ENUM("admin","empresa","usuario") DEFAULT "usuario",
     PRIMARY KEY (id_usuario)
 );
 -- Proyecto
