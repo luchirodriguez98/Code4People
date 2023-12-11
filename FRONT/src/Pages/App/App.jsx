@@ -103,7 +103,11 @@ const AppRoutes = () => {
       element: <MensajeNuevo />
     },
     {
+<<<<<<< HEAD
       path: '/peticion/realizadas',
+=======
+      path: '/peticionesRealizadas',
+>>>>>>> mi-cuenta
       element: <PeticionesRealizadas />
     },
     {
