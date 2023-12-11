@@ -8,14 +8,8 @@ const MyContextProvider = ({ children }) => {
     nombre: '',
     email: '',
     pass: '',
-    tipo_usuario: 0
+    role: 'usuario'
   })
-  // const [newUser, setNewUser] = useState({
-  //   nombre: '',
-  //   email: '',
-  //   pass: '',
-  //   tipo_usuario: 0
-  // })
 
   const buttonToRender = user ? 'MI CUENTA' : 'REGISTRATE AHORA'
 

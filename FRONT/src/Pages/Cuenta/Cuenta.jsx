@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom'
-import { ChatBubbleLeftRightIcon, ClipboardIcon, Cog8ToothIcon, ArrowRightOnRectangleIcon } from '@heroicons/react/24/solid'
+import { ChatBubbleLeftRightIcon, ClipboardIcon, ArrowRightOnRectangleIcon } from '@heroicons/react/24/solid'
 import styles from './Cuenta.module.css'
 import { useContext } from 'react'
 import { MyContext } from '../../Context/Context'
@@ -7,7 +7,7 @@ import { MyContext } from '../../Context/Context'
 function Cuenta () {
   const context = useContext(MyContext)
 
-  const accountIsColab = context.user && context.user.tipo_usuario === 0 ? '/peticionesRealizadas' : '/peticionesProyecto'
+  const accountIsColab = context.user && context.user.role === 'usuario' ? '/peticionesRealizadas' : '/peticionesProyecto'
 
   return (
     <div className={styles.body}>
@@ -22,11 +22,6 @@ function Cuenta () {
           <NavLink to={accountIsColab}>
             <div className={styles.button}>
               <ClipboardIcon />
-            </div>
-          </NavLink>
-          <NavLink to="/configuracion">
-            <div className={styles.button}>
-              <Cog8ToothIcon />
             </div>
           </NavLink>
           <NavLink to="/">
