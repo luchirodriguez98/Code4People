@@ -48,8 +48,8 @@ function ProyectoNuevo () {
               <p>Proyectos</p>
             </div>
           </NavLink>
-          <span>
-            <h1>Publicar nuevo proyecto</h1>
+          <h1 className={styles.title}>Publicar nuevo proyecto</h1>
+          <div className={styles.container}>
             <form className={formStyles.form} onSubmit={postProyect}>
               <label htmlFor="titulo">TITULO</label>
               <input
@@ -61,7 +61,7 @@ function ProyectoNuevo () {
                 onChange={handleFormChange} className={formStyles.input}
               />
               <label htmlFor="url">DESCRIPCION</label>
-              <input
+              <textarea
                 type="text"
                 name="descripcion"
                 id='descripcion'
@@ -71,7 +71,7 @@ function ProyectoNuevo () {
               />
               <div className={formStyles.button}>PUBLICAR NUEVO PROYECTO</div>
             </form>
-          </span>
+          </div>
         </div>
   )
 }

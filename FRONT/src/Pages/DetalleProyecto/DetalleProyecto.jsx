@@ -10,10 +10,10 @@ function DetalleProyecto () {
       <NavLink to="/proyectos/disponibles">
         <div className={styles.backNav}>
           <ChevronLeftIcon className={styles.icon}/>
-          <p>Proyectos</p>
+          <p>Proyectos para realizar</p>
         </div>
       </NavLink>
-      <h1 className={styles.title}>Proyecto</h1>
+      <h1 className={styles.title}>Detalle del proyecto</h1>
       <div className={styles.container}>
         <h2 className={styles.proyectTitle}>{navigation.state.titulo}</h2>
         <div className={styles.textContainer}>

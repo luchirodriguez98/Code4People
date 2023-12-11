@@ -48,8 +48,8 @@ function ProyectoTerminado () {
               <p>Proyectos</p>
             </div>
           </NavLink>
-          <span>
-            <h1 className={styles.title}>Publicar proyecto terminado</h1>
+          <h1 className={styles.title}>Publicar proyecto terminado</h1>
+          <div className={styles.container}>
             <form className={formStyles.form} onSubmit={postProyect}>
               <label htmlFor="titulo">TITULO</label>
               <input
@@ -71,7 +71,7 @@ function ProyectoTerminado () {
               />
               <div className={formStyles.button}>PUBLICAR PROYECTO</div>
             </form>
-          </span>
+          </div>
         </div>
   )
 }
