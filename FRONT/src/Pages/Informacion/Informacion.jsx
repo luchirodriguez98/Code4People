@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom'
-import styles from './Planes.module.css'
+import styles from './Informacion.module.css'
 
-function Planes () {
+function Informacion () {
   return (
     <div className={styles.body}>
       <h1 className={styles.title}>Planes</h1>
@@ -36,4 +36,4 @@ function Planes () {
   )
 }
 
-export { Planes }
+export { Informacion }

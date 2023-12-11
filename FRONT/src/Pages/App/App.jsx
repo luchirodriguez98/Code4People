@@ -4,19 +4,19 @@ import { Nav } from '../../Components/Nav/Nav'
 import { Layout } from '../../Components/Layout/Layout'
 import { Home } from '../Home/Home'
 import { QuienesSomos } from '../QuienesSomos/QuienesSomos'
-import { Planes } from '../Planes/Planes'
+import { Informacion } from '../Informacion/Informacion'
 import { Proyectos } from '../Proyectos/Proyectos'
 import { ProyectosRealizados } from '../ProyectosRealizados/ProyectosRealizados'
 import { ProyectosDisponibles } from '../ProyectosDisponibles/ProyectosDisponibles'
+import { DetalleProyecto } from '../DetalleProyecto/DetalleProyecto'
 import { Contacto } from '../Contacto/Contacto'
 import { Login } from '../Login/Login'
 import { Registro } from '../Registro/Registro'
 import { Cuenta } from '../Cuenta/Cuenta'
-import { ConfiguracionCuenta } from '../ConfiguracionCuenta/ConfiguracionCuenta'
+// import { ConfiguracionCuenta } from '../ConfiguracionCuenta/ConfiguracionCuenta'
 import { Mensajes } from '../Mensajes/Mensajes'
 import { MensajesEnviados } from '../MensajesEnviados/MensajesEnviados'
 import { MensajesRecibidos } from '../MensajesRecibidos/MensajesRecibidos'
-import { Notificaciones } from '../Notificaciones/Notificaciones'
 import { PeticionesRealizadas } from '../PeticionesRealizadas/PeticionesRealizadas'
 import { Peticion } from '../Peticion/Peticion'
 import { NotFound } from '../NotFound/NotFound'
@@ -25,9 +25,8 @@ import { ProyectoNuevo } from '../ProyectoNuevo/ProyectoNuevo'
 import { MensajeNuevo } from '../MensajeNuevo/MensajeNuevo'
 import { PeticionesProyecto } from '../PeticionesProyecto/PeticionesProyecto'
 import { PeticionNueva } from '../PeticionNueva/PeticionNueva'
-import { SolicitudesColaboradores } from '../SolicitudesColaboradores/SolicitudesColaboradores'
-import { SolicitudColaborador } from '../SolicitudColaborador/SolicitudColaborador'
-import { SolicitudesProyectos } from '../SolicitudesProyectos/SolicitudesProyectos'
+import { TodosProyectos } from '../TodosProyectos/TodosProyectos'
+import { TodosUsuarios } from '../TodosUsuarios/SolicitudesProyectos'
 
 const AppRoutes = () => {
   const routes = useRoutes([
@@ -40,8 +39,8 @@ const AppRoutes = () => {
       element: <QuienesSomos />
     },
     {
-      path: '/planes',
-      element: <Planes />
+      path: '/informacion',
+      element: <Informacion />
     },
     {
       path: '/proyectos',
@@ -54,6 +53,10 @@ const AppRoutes = () => {
     {
       path: '/proyectos/disponibles',
       element: <ProyectosDisponibles />
+    },
+    {
+      path: '/proyectos/disponibles/:id',
+      element: <DetalleProyecto />
     },
     {
       path: '/proyectos/publicarTerminado',
@@ -79,10 +82,10 @@ const AppRoutes = () => {
       path: '/cuenta',
       element: <Cuenta />
     },
-    {
-      path: '/configuracion-cuenta',
-      element: <ConfiguracionCuenta />
-    },
+    // {
+    //   path: '/configuracion-cuenta',
+    //   element: <ConfiguracionCuenta />
+    // },
     {
       path: '/mensajes',
       element: <Mensajes />
@@ -100,19 +103,15 @@ const AppRoutes = () => {
       element: <MensajeNuevo />
     },
     {
-      path: '/notificaciones',
-      element: <Notificaciones />
-    },
-    {
-      path: '/peticionesRealizadas',
+      path: '/peticion/realizadas',
       element: <PeticionesRealizadas />
     },
     {
-      path: '/peticionesProyecto',
+      path: '/peticion/proyecto',
       element: <PeticionesProyecto />
     },
     {
-      path: '/peticion/:id',
+      path: '/peticion/proyecto/:id',
       element: <Peticion />
     },
     {
@@ -120,16 +119,12 @@ const AppRoutes = () => {
       element: <PeticionNueva />
     },
     {
-      path: '/solicitudes/altaColaborador',
-      element: <SolicitudesColaboradores />
+      path: '/admin/proyectos',
+      element: <TodosProyectos />
     },
     {
-      path: '/solicitudes/altaColaborador/:id',
-      element: <SolicitudColaborador />
-    },
-    {
-      path: '/solicitudes/proyectosTerminados',
-      element: <SolicitudesProyectos />
+      path: '/admin/usuarios',
+      element: <TodosUsuarios />
     },
     {
       path: '/*',

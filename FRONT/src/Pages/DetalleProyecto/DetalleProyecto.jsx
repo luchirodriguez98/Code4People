@@ -2,7 +2,7 @@ import { ChevronLeftIcon } from '@heroicons/react/24/solid'
 import { NavLink, useLocation } from 'react-router-dom'
 import styles from './DetalleProyecto.module.css'
 
-function DetalleProducto () {
+function DetalleProyecto () {
   const navigation = useLocation()
 
   return (
@@ -13,7 +13,7 @@ function DetalleProducto () {
           <p>Proyectos</p>
         </div>
       </NavLink>
-      <h1 className={styles.title}>Proyectos para realizar</h1>
+      <h1 className={styles.title}>Proyecto</h1>
       <div className={styles.container}>
         <h2 className={styles.proyectTitle}>{navigation.state.titulo}</h2>
         <div className={styles.textContainer}>
@@ -25,4 +25,4 @@ function DetalleProducto () {
   )
 }
 
-export { DetalleProducto }
+export { DetalleProyecto }
