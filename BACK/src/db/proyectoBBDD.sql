@@ -68,7 +68,7 @@ create table if not exists proyectos_asignados(
 
 -- SELECT * from usuarios;
 
-
+SELECT * FROM usuarios WHERE role = "empresa";
 -- INSERT INTO usuarios(nombre,email,pass,role) VALUES ('dani','dani@adm.com','1234','admin');
 -- INSERT INTO usuarios(nombre,email,pass,role) VALUES ('luis','luis@gmail.com','1234','admin'); 
 -- INSERT INTO usuarios(nombre,email,pass,role) VALUES ('lucia','lucia@gmail.com','1234','admin');

@@ -12,9 +12,9 @@ const query = {
   //Ver todas las peticiones de todos los usuarios
   getAllPeticiones: 'SELECT p.id_peticion, p.descripcion, u.nombre AS nombre_autor FROM peticiones p JOIN usuarios u ON p.autor = u.id_usuario',
   //Ver todas las empresas
-  getAllEmpresas: 'SELECT u.id_usuario, u.nombre, u.email, r.nombre_rol as nombre_tipo_usuario FROM usuarios u JOIN roles r ON u.tipo_usuario = r.rol_id WHERE u.tipo_usuario = 2',
+  getAllEmpresas: 'SELECT * FROM usuarios WHERE role = "empresa"',
   //Ver todos los colaboradores
-  getAllNormalUsers: 'SELECT u.id_usuario, u.nombre, u.email, r.nombre_rol as nombre_tipo_usuario FROM usuarios u JOIN roles r ON u.tipo_usuario = r.rol_id WHERE u.tipo_usuario = 3',
+  getAllNormalUsers: 'SELECT * FROM usuarios WHERE role = "usuario"',
   //Proyectos realizados TODOS
   getAllProyectos: '',
    //Obtener bandeja de usuario
