@@ -10,7 +10,7 @@ import { FaGithub } from 'react-icons/fa6'
 function Login () {
   const context = useContext(MyContext)
 
-  const [formValues, handleFormChange] = useForm({
+  const { formValues, handleFormChange } = useForm({
     email: '',
     pass: ''
   })

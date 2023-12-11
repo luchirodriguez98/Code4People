@@ -6,7 +6,7 @@ import stylesForm from '../../Styles/form.module.css'
 function Contacto () {
   const navigate = useNavigate()
 
-  const [formValues, setFormValues, handleFormChange] = useForm({
+  const { formValues, reset, handleFormChange } = useForm({
     email: '',
     mensaje: ''
   })
@@ -30,16 +30,15 @@ function Contacto () {
     try {
       const response = await fetch(`${baseUrl}/help`, options)
       const data = await response.json()
-      navigate('/')
       console.log(data)
+      reset({
+        email: '',
+        mensaje: ''
+      })
+      navigate('/')
     } catch (error) {
       console.error('Error:', error.message)
     }
-    setFormValues({
-      email: '',
-      mensaje: ''
-
-    })
   }
 
   return (

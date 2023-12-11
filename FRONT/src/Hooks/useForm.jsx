@@ -14,21 +14,10 @@ function useForm (initialValue) {
       }
     })
   }
-
-  // function handleFormChange (event) {
-  //   const { name, value } = event.target
-  //   setFormValues({
-  //     ...formValues,
-  //     [name]: value
-  //   })
-  // }
-  // const handleRoleChange = (event) => {
-  //   setFormValues((valoresAnteriores) => ({
-  //     ...valoresAnteriores,
-  //     role: event.target.value
-  //   }))
-  // }
-  return [formValues, setFormValues, handleFormChange]
+  function reset (initialValue) {
+    setFormValues(initialValue)
+  }
+  return { formValues, reset, handleFormChange }
 }
 
 export { useForm }
