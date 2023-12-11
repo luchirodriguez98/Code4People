@@ -1,10 +1,11 @@
-import { useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { useForm } from '../../Hooks/useForm'
 import { ChevronLeftIcon } from '@heroicons/react/24/solid'
+import styles from './ProyectoTerminado.module.css'
 import formStyles from '../../Styles/form.module.css'
 
 function ProyectoTerminado () {
-  const [formValues, setFormValues, handleFormChange] = useForm({
+  const { formValues, reset, handleFormChange } = useForm({
     titulo: '',
     url: ''
   })
@@ -27,26 +28,28 @@ function ProyectoTerminado () {
     const baseUrl = 'http://localhost:5000'
 
     try {
-      const response = await fetch(`${baseUrl}/proyectoNuevo`, options)
+      const response = await fetch(`${baseUrl}/proyectoTerminado`, options)
       const data = await response.json()
       console.log(data)
-      navigate('/realizados')
+      navigate('realizados')
     } catch (error) {
       console.error('Error:', error.message)
     }
-    setFormValues({
+    reset({
       titulo: '',
       url: ''
     })
   }
   return (
-        <div>
+        <div className={styles.body}>
+          <NavLink to="/proyectos">
+            <div className={styles.backNav}>
+              <ChevronLeftIcon className={styles.icon}/>
+              <p>Proyectos</p>
+            </div>
+          </NavLink>
           <span>
-            <ChevronLeftIcon />
-            <p>Proyectos</p>
-          </span>
-          <span>
-            <h1>Publicar proyecto terminado</h1>
+            <h1 className={styles.title}>Publicar proyecto terminado</h1>
             <form className={formStyles.form} onSubmit={postProyect}>
               <label htmlFor="titulo">TITULO</label>
               <input
