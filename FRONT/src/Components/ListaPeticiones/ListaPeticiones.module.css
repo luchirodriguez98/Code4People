@@ -1,11 +1,11 @@
-.proyectoList{
+.list{
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 
 }
-.proyectoItem{
+.item{
   display: flex;
   width: 90%;
   max-width: 400px;
@@ -19,20 +19,21 @@
 .text{
   width: 85%;
   text-transform: uppercase;
-}
-.text p:nth-child(1){
   font-weight: 600;
 }
-.text p:nth-child(2){
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.proyectoItem a{
+.item a{
   display: flex;
   align-items: center;
 }
-.proyectoItem a *{
+.item a *{
   width: 20px;
+}
+.item .blackIcon{
   color: black;
+}
+.item .greenIcon{
+  color: green;
+}
+.redIcon{
+  color: red;
 }
