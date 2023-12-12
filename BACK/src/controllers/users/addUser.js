@@ -3,6 +3,8 @@ import { sendQuery } from '../../db/connect-db.js';
 import { query } from '../../db/queries.js';
 import { zodErrorMap } from '../../helpers/zodErrorMap.js';
 import { User } from '../../schemas/User.js';
+import CryptoJS from 'crypto-js';
+import crypto from 'node:crypto';
 
 async function addUser (req, res, next) {
 

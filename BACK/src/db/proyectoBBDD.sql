@@ -20,6 +20,7 @@ create table if not exists usuarios(
     email varchar(255) unique not null,
     pass varchar(255) not null,
     role ENUM("admin","empresa","usuario") DEFAULT "usuario",
+    confirmation_code varchar(50) DEFAULT NULL,
     PRIMARY KEY (id_usuario)
 );
 -- Proyecto
@@ -47,7 +48,7 @@ create table if not exists proyectos_a_realizar(
 create table if not exists proyectos_asignados(
     megusta__proyecto INT,
     megusta_usuario INT,
-    FOREIGN KEY (megusta__proyecto) REFERENCES proyectos(id_proyecto),
+    FOREIGN KEY (megusta__proyecto) REFERENCES proyectos_a_realizar(id_proyecto),
     FOREIGN KEY (megusta_usuario) REFERENCES usuarios(id_usuario),
     PRIMARY KEY (megusta__proyecto, megusta_usuario)
 );

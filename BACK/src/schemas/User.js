@@ -16,6 +16,6 @@ const User = z.object({
     }).min(4).max(32)
 
 });
-const LoginUser = User.omit({ username: true });
+const LoginUser = User.omit({ nombre: true });
 
 export { User, LoginUser };

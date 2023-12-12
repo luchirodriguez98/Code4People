@@ -24,7 +24,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/', userRouter);
+app.use('/users', userRouter);
 
 app.use('*', error404);
 app.use(errorHandler);

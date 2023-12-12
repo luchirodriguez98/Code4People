@@ -25,7 +25,7 @@ const query = {
    getSendMailbyId: 'SELECT * FROM mails WHERE origen = ? ',
    //Obtener bandeja de recibidos de usuario
    getMailById: 'SELECT * FROM mails WHERE destino = ?',
-   //Comprobación de email
+   //Comprobación de email para login
    checkEmail: 'SELECT * FROM usuarios WHERE email = ?'
 }
 

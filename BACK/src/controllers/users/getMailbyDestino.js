@@ -11,14 +11,14 @@ async function getMailbyId (req, res) {
         return res.status(404).send({
             ok: false,
             data: null,
-            error: `No se ha encontrado el usuario con el id ${destino}`
+            error: `No se han encontrado mails, o el usuario de destino ${destino}`
         })
 }
 
 
     res.send({
         ok: true,
-        data: user,
+        data: mail,
     error: null
 })
 }
