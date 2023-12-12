@@ -7,7 +7,7 @@ import { MyContext } from '../../Context/Context'
 function Cuenta () {
   const context = useContext(MyContext)
 
-  const accountIsColab = context.usuario && context.usuario.role === 'usuario' ? '/peticionesRealizadas' : '/peticionesProyecto'
+  const accountIsColab = context.usuario && context.usuario.role === 'usuario' ? '/peticion/realizadas' : '/peticion/proyecto'
 
   return (
     <div className={styles.body}>

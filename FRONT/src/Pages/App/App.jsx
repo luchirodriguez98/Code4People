@@ -26,7 +26,7 @@ import { MensajeNuevo } from '../MensajeNuevo/MensajeNuevo'
 import { PeticionesProyecto } from '../PeticionesProyecto/PeticionesProyecto'
 import { PeticionNueva } from '../PeticionNueva/PeticionNueva'
 import { TodosProyectos } from '../TodosProyectos/TodosProyectos'
-import { TodosUsuarios } from '../TodosUsuarios/SolicitudesProyectos'
+import { TodosUsuarios } from '../TodosUsuarios/TodosUsuarios'
 
 const AppRoutes = () => {
   const routes = useRoutes([
