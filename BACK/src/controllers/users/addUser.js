@@ -1,5 +1,4 @@
 import bcrypt from 'bcrypt';
-
 import { sendQuery } from '../../db/connect-db.js';
 import { query } from '../../db/queries.js';
 import { zodErrorMap } from '../../helpers/zodErrorMap.js';

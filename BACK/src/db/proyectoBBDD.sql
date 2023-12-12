@@ -1,4 +1,4 @@
--------------------------
+	-------------------------
 -- CREACIÓN DE LA BBDD --
 -------------------------
 drop database if exists proyectosplai;
@@ -23,21 +23,23 @@ create table if not exists usuarios(
     PRIMARY KEY (id_usuario)
 );
 -- Proyecto
-create table if not exists proyectos(
+create table if not exists proyectos_acabados(
 	id_proyecto int auto_increment,
-    nombre varchar(255) not null,
-    tipo_proyecto int not null,
-    descripcion varchar(255) not null,
-    estado_proyecto int,
+    titulo varchar(255) not null,
+    url VARCHAR(600)not null,
     PRIMARY KEY (id_proyecto)
 );	
+SELECT titulo,url FROM proyectos_acabados;
+-- INSERT INTO proyectos_acabados(titulo,url) VALUES ('Proyecto Final','https://github.com/luchirodriguez98/Proyecto-Final');
+-- INSERT INTO proyectos_acabados(titulo,url) VALUES ('Bootcamp Info','https://github.com/Fundacio-Esplai-Enfocat/BOOTCAMP-S22-JAVASCRIPT');
 -- Petición Proyecto
-create table if not exists peticiones(
-	id_peticion int auto_increment,
-    descripcion varchar(255) not null,
+create table if not exists proyectos_a_realizar(
+	id_proyecto int auto_increment,
+    titulo varchar(255) not null,
+    descripcion varchar(600) not null,
     autor int,
     FOREIGN KEY (autor) REFERENCES usuarios(id_usuario),
-    PRIMARY KEY (id_peticion)
+    PRIMARY KEY (id_proyecto)
 );
 
 -- Proyecto asignado
@@ -68,7 +70,7 @@ create table if not exists proyectos_asignados(
 
 -- SELECT * from usuarios;
 
-
+SELECT * FROM usuarios WHERE role = "empresa";
 -- INSERT INTO usuarios(nombre,email,pass,role) VALUES ('dani','dani@adm.com','1234','admin');
 -- INSERT INTO usuarios(nombre,email,pass,role) VALUES ('luis','luis@gmail.com','1234','admin'); 
 -- INSERT INTO usuarios(nombre,email,pass,role) VALUES ('lucia','lucia@gmail.com','1234','admin');
@@ -77,9 +79,7 @@ create table if not exists proyectos_asignados(
 
 SELECT * from usuarios;
 -- Añadimos peticiones de prueba
--- INSERT INTO peticiones(descripcion,autor) VALUES ('Necesito una app que simule una calculadora','2');
+-- INSERT INTO proyectos_a_realizar(titulo, descripcion,autor) VALUES ('Calculadora','Necesito una web que sea una calculadora, que se vea simple, solo necesito que tenga sumar, restar, multiplicar y dividir','5');
  -- Ver todas las peticiones
-SELECT p.id_peticion, p.descripcion, u.nombre AS nombre_autor
-FROM peticiones p
-JOIN usuarios u ON p.autor = u.id_usuario;
+
 
