@@ -8,7 +8,7 @@ const query = {
 //Añadir usuario Empresa
   addUserEmpresa: 'INSERT INTO usuarios (nombre,email,pass,role) VALUES (?,?,?,"empresa")',
 //Añadir usuario colaborador
-  addUser: 'INSERT INTO usuarios (nombre,email,pass,role, confirmation_code) VALUES (?,?,?,"usuario",?)',
+  addUser: 'INSERT INTO usuarios (nombre,email,pass,role, confirmation_code) VALUES (?,?,?,\'usuario\',?)',
   //Ver todas las peticiones de todos los usuarios
   getAllProyectoARealizar: 'SELECT p.titulo, p.descripcion, u.nombre as autor FROM proyectos_a_realizar p JOIN usuarios u ON p.autor = u.id_usuario;',
   //Proyecto por id 
