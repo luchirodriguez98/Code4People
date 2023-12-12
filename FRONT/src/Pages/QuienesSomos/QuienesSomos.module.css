@@ -55,8 +55,8 @@
 .containerText{
     display: flex;
     flex-direction: column;
-    align-items: start;
-    text-align: start;
+    align-items: center;
+    text-align: center;
     width: 100%;
     margin-bottom: 50px;
 }
@@ -144,7 +144,8 @@
     }
     .containerText{
         margin-bottom: 60px;
-        
+        align-items: end;
+        text-align: end;
     }
     .containerText .title{
         font-size: var(--font-size-md);

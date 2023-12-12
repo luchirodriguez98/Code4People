@@ -43,14 +43,14 @@ const Nav = () => {
                         <p>QUIENES SOMOS</p>
                     </NavLink>
                 </li>
-                <li className={`${styles.listItem}`}>
+                {/* <li className={`${styles.listItem}`}>
                     <NavLink
                         to="/planes"
                         className={location === '/planes' ? `${styles.navLinkActive}` : `${styles.navLink}`}
                     >
                         <p>PLANES</p>
                     </NavLink>
-                </li>
+                </li> */}
                 <li className={`${styles.listItem}`}>
                     <NavLink
                         to="/proyectos"
