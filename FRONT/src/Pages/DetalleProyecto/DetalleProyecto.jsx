@@ -19,7 +19,9 @@ function DetalleProyecto () {
         <div className={styles.textContainer}>
           <p>{navigation.state.descripcion}</p>
         </div>
-        <div className={styles.button}>APLICAR</div>
+        <NavLink to="/peticion/nueva" state={navigation}>
+          <div className={styles.button}>APLICAR</div>
+        </NavLink>
       </div>
     </div>
   )

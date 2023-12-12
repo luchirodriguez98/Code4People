@@ -9,10 +9,10 @@ function ListaProyectos ({ toMap }) {
         return (
           <span key ={item.id_proyecto} className={styles.proyectoItem}>
             <div className={styles.text}>
-              <p>{item.titulo.toUpperCase()}</p>
-              <p>{item.url.toUpperCase()}</p>
+              <p>{item.titulo}</p>
+              <p>{item.url}</p>
             </div>
-            <NavLink to={item.url ? item.url : `/proyectos/disponibles/${item.id_proyecto}`} state={item} target="_blank">
+            <NavLink to={item.url ? item.url : `/proyectos/disponibles/${item.id_proyecto}`} state={item}>
               <ChevronRightIcon className={styles.icon}/>
             </NavLink>
           </span>
