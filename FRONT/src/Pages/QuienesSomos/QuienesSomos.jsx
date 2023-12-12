@@ -31,7 +31,6 @@ function QuienesSomos () {
                 <div className={`${styles.button}`}>{context.buttonToRender}</div>
             </NavLink>
         </span>
-        {/* <img className={`${styles.imageBackground}`} src="../../../assets/1-removebg.png" alt="" /> */}
         <span>
             <span className={`${styles.containerText}`}>
                 <p className={`${styles.title}`}>El Futuro</p>
@@ -44,10 +43,28 @@ function QuienesSomos () {
             <span className={`${styles.containerText}`}>
                 <p className={`${styles.title}`}>Los servicios</p>
                 <p className={`${styles.text}`}>Nuestro servicio es 100% gratuito. Solo abonaras el dominio y el hosting.</p>
-                <NavLink to="/planes">
-                    <p className={`${styles.navText}`}>MAS SOBRE LOS PLANES</p>
-                </NavLink>
             </span>
+        </span>
+        <h2 className={styles.perfilesTitle}>NOSOTROS SOMOS:</h2>
+        <span className={styles.perfilesContainer}>
+            <NavLink to="https://github.com/damigo98" target='blank'>
+                <div className={styles.perfil}>
+                    <img src="../../../assets/daniel.jpg" alt="Daniel Amigo" />
+                    <p>Daniel Amigo</p>
+                </div>
+            </NavLink>
+            <NavLink to="https://github.com/LuisHenaoS" target='blank'>
+                <div className={styles.perfil}>
+                    <img src="../../../assets/luis.jpg" alt="Luis Henao" />
+                    <p>Luis Henao</p>
+                </div>
+            </NavLink>
+            <NavLink to="https://github.com/luchirodriguez98" target='blank'>
+                <div className={styles.perfil}>
+                    <img src="../../../assets/lucia.jpg" alt="Lucia Rodriguez" />
+                    <p>Lucia Rodriguez</p>
+                </div>
+            </NavLink>
         </span>
         </div>
   )
