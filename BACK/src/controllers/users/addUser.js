@@ -26,7 +26,7 @@ async function addUser (req, res, next) {
 
   // Añadir a la BBDD el usuario nuevo
     try {
-        await sendQuery(query.addUser, [nombre, email, hashedPassword, confirmationCode, role]);
+        await sendQuery(query.addUser, [nombre, email, hashedPassword,role, confirmationCode]);
     } catch (error) {
         return next(new Error(error.message));
     }
