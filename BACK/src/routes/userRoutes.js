@@ -1,26 +1,34 @@
 import express from 'express';
+import jwt from 'jsonwebtoken';
 
 import {
     getAllUsers,
-    getAllProyectoARealizar, 
     getUserById, 
     addUser,
-    getAllProyectoARealizarbyId,
-    getAllProyectosAcabados,
     logIn
 } from '../controllers/users/index.js';
+import userAuth from '../middlewares/userAuth.js';
 
 
 const userRouter = express.Router();
+
 //POST
 userRouter.post('/registro', addUser);
 userRouter.post('/logIn', logIn);
 //GET
 userRouter.get('/usuarios', getAllUsers);
 userRouter.get('/usuarios/:userId',getUserById);
-userRouter.get('/proyectospendientes', getAllProyectoARealizar);
-userRouter.get('/proyectospendientes/:proyectoId',getAllProyectoARealizarbyId);
-userRouter.get('/proyectos',getAllProyectosAcabados);
+
+// userRouter.get('/test', userAuth, isAdmin, (req, res) => {
+    
+    
+//     const user = req.user
+    
+    
+//     res.send({  message: 'Hola ' + user.nombre })
+// })
+
+
 
 
 export { userRouter }
