@@ -12,11 +12,11 @@ function Registro () {
   })
 
   const navigate = useNavigate()
-  const { nombre, email, pass } = formValues
+  const { nombre, email, pass, role } = formValues
 
   const saveNewUser = async (event) => {
     event.preventDefault()
-    if (nombre === '' || email === '' || pass === '') return
+    if (nombre === '' || email === '' || pass === '' || role === '') return
 
     const options = {
       method: 'POST',
@@ -79,7 +79,7 @@ function Registro () {
         />
         <span className={stylesForm.containerButton}>
           <input
-            checked={formValues.role === 'emprsa'}
+            checked={formValues.role === 'empresa'}
             onChange={handleFormChange}
             value='empresa'
             type="radio"
@@ -91,15 +91,15 @@ function Registro () {
             EMPRESA
           </label>
           <input
-            checked={formValues.role === 'desarrollador'}
+            checked={formValues.role === 'usuario'}
             onChange={handleFormChange}
-            value='desarrollador'
+            value='usuario'
             type="radio"
-            id='desarrollador'
+            id='usuario'
             name='role'
             className={stylesForm.inputSelect}
           />
-          <label htmlFor="desarrollador" className={stylesForm.selectButton}>
+          <label htmlFor="usuario" className={stylesForm.selectButton}>
             DESARROLLADOR
           </label>
         </span>
