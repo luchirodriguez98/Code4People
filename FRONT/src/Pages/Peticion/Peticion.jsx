@@ -21,7 +21,7 @@ function Peticion () {
           <NavLink to="/peticion/proyecto">
             <div className={styles.buttonDecline}>RECHAZAR</div>
           </NavLink>
-          <NavLink>
+          <NavLink to="/peticion/proyecto">
             <div className={styles.buttonAccept}>ACEPTAR</div>
           </NavLink>
         </div>
