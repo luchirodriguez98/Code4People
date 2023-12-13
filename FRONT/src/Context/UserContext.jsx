@@ -1,15 +1,15 @@
 import { createContext, useState } from 'react'
 
-const MyContext = createContext()
+const UserContext = createContext()
 
-const MyContextProvider = ({ children }) => {
+const UserContextProvider = ({ children }) => {
   const [usuario, setUsuario] = useState(
     null
-  //   {
-  //   nombre: '',
-  //   role: '',
-  //   id_usuario: ''
-  // }
+    // {
+    //   nombre: '',
+    //   role: 'admin',
+    //   id_usuario: ''
+    // }
   )
   const buttonToRender = usuario ? 'MI CUENTA' : 'IDENTIFICATE'
 
@@ -23,7 +23,7 @@ const MyContextProvider = ({ children }) => {
   }
 
   return (
-        <MyContext.Provider
+        <UserContext.Provider
             value={{
               usuario,
               buttonToRender,
@@ -32,8 +32,8 @@ const MyContextProvider = ({ children }) => {
             }}
         >
             {children}
-        </MyContext.Provider>
+        </UserContext.Provider>
   )
 }
 
-export { MyContext, MyContextProvider }
+export { UserContext, UserContextProvider }

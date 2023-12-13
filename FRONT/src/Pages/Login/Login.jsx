@@ -1,14 +1,13 @@
-import { useContext } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
-import { MyContext } from '../../Context/Context'
 import { useForm } from '../../Hooks/useForm'
 import { logInUser } from '../../services/logInUser'
 import styles from './Login.module.css'
 import stylesForm from '../../Styles/form.module.css'
 import { FaGithub } from 'react-icons/fa6'
+import { useUserContext } from '../../Hooks/useUserContext'
 
 function Login () {
-  const context = useContext(MyContext)
+  const context = useUserContext()
 
   const { formValues, handleFormChange } = useForm({
     email: '',

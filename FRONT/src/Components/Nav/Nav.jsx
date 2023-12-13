@@ -5,15 +5,14 @@ import { BotonNav } from '../BotonNav/BotonNav'
 import { Modal } from '../Modal/Modal'
 import { Bars3Icon } from '@heroicons/react/24/solid'
 import styles from './Nav.module.css'
-import { useContext } from 'react'
-import { MyContext } from '../../Context/Context'
+import { useUserContext } from '../../Hooks/useUserContext'
 
 const Nav = () => {
   const [isModalOpen, toggleModal] = useToggle(false)
 
   const location = useLocation().pathname
 
-  const context = useContext(MyContext)
+  const context = useUserContext()
 
   return (
         <nav className={`${styles.nav}`}>

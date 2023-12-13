@@ -1,11 +1,10 @@
 import { NavLink } from 'react-router-dom'
 import { ChatBubbleLeftRightIcon, ClipboardIcon, ArrowRightOnRectangleIcon } from '@heroicons/react/24/solid'
 import styles from './Cuenta.module.css'
-import { useContext } from 'react'
-import { MyContext } from '../../Context/Context'
+import { useUserContext } from '../../Hooks/useUserContext'
 
 function Cuenta () {
-  const context = useContext(MyContext)
+  const context = useUserContext()
 
   const accountIsColab = context.usuario && context.usuario.role === 'usuario' ? '/peticion/realizadas' : '/peticion/proyecto'
 

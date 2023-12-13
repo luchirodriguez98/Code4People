@@ -1,10 +1,9 @@
-import { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
-import { MyContext } from '../../Context/Context'
 import styles from './QuienesSomos.module.css'
+import { useUserContext } from '../../Hooks/useUserContext'
 
 function QuienesSomos () {
-  const context = useContext(MyContext)
+  const context = useUserContext()
 
   return (
         <div className={`${styles.body}`}>
