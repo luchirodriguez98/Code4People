@@ -4,9 +4,9 @@ const query = {
   getUserById: 'SELECT * FROM usuarios WHERE id_usuario = ?',
  // addUser: 'INSERT INTO usuarios (nombre, email, pass) VALUES (?, ?, ?)',
  // Añadir usuario admin
-  addUserAdmin: 'INSERT INTO usuarios (nombre,email,pass,role) VALUES (?,?,?,"admin")',
+  addUserAdmin: 'INSERT INTO usuarios (nombre,email,pass,role) VALUES (?,?,?,\'usuario\')',
 //Añadir usuario Empresa
-  addUserEmpresa: 'INSERT INTO usuarios (nombre,email,pass,role) VALUES (?,?,?,"empresa")',
+  addUserEmpresa: 'INSERT INTO usuarios (nombre,email,pass,role) VALUES (?,?,?,\'usuario\')',
 //Añadir usuario colaborador
   addUser: 'INSERT INTO usuarios (nombre,email,pass,role, confirmation_code) VALUES (?,?,?,?,?)',
   //Ver todas las peticiones de todos los usuarios

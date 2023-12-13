@@ -1,11 +1,11 @@
 import { sendQuery } from '../../db/connect-db.js';
 import { query } from '../../db/queries.js';
 
-async function getMailbyId (req, res) {
+async function getMailsbyDestino(req, res) {
 
     const {destino} = req.params;
 
-    const [mail] = await sendQuery(query.getMailbyId, [destino])
+    const [mail] = await sendQuery(query.getMailsbyDestino, [destino])
 
     if (!mail) {
         return res.status(404).send({
@@ -13,7 +13,7 @@ async function getMailbyId (req, res) {
             data: null,
             error: `No se han encontrado mails, o el usuario de destino ${destino}`
         })
-}
+} 
 
 
     res.send({
@@ -23,4 +23,4 @@ async function getMailbyId (req, res) {
 })
 }
 
-export { getMailbyId };
+export { getMailsbyDestino };

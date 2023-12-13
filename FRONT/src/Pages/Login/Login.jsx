@@ -25,11 +25,11 @@ function Login () {
 
     logInUser(email, pass).then(response => {
       if (response.error) {
-        console.error(response.error)
+        console.log(response)
+        return console.error(response.error)
       }
-      console.log(response)
       localStorage.setItem('token', response.data.token)
-      context.logIn(response.data.usuario)
+      context.logIn(response.data.user)
       navigate('/cuenta')
     })
   }

@@ -7,6 +7,9 @@ function userAuth (req, res, next) {
     const infoUser = jwt.verify(token, process.env.JWT_SECRET);
 
     req.user = infoUser;
+
+
+    
         next();
     } catch (error) {
         return res.status(401).send({

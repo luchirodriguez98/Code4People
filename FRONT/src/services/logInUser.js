@@ -11,7 +11,7 @@ async function logInUser (email, pass) {
     })
     return await resp.json()
   } catch (error) {
-    console.error(error.message)
+    console.error(error)
   }
 }
 

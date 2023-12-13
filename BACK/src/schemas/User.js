@@ -13,9 +13,9 @@ const User = z.object({
     pass: z.string({
         required_error: 'Campo obligatorio',
         invalid_type_error: 'El campo tiene que ser un string'
-    }).min(4).max(32)
-
+    }).min(4).max(32),
+    role: z.enum(['admin', 'usuario', 'empresa'])
 });
-const LoginUser = User.omit({ nombre: true });
+const LoginUser = User.omit({ nombre: true, role: true });
 
 export { User, LoginUser };
