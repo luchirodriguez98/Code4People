@@ -101,7 +101,7 @@ const Nav = () => {
                                 </NavLink>
                             </li>
                             <li onClick={toggleModal}>
-                                <NavLink to={context.user ? '/cuenta' : '/registro'} >
+                                <NavLink to={context.user ? '/cuenta' : '/login'} >
                                     <p className={`${styles.violetLink}`}>{context.buttonToRender}</p>
                                 </NavLink>
                             </li>

@@ -17,7 +17,6 @@ function Registro () {
   const saveNewUser = async (event) => {
     event.preventDefault()
     if (nombre === '' || email === '' || pass === '' || role === '') return
-
     const options = {
       method: 'POST',
       headers: {
