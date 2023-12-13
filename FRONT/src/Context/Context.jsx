@@ -3,12 +3,14 @@ import { createContext, useState } from 'react'
 const MyContext = createContext()
 
 const MyContextProvider = ({ children }) => {
-  const [usuario, setUsuario] = useState({
-    nombre: '',
-    email: '',
-    pass: '',
-    role: 'usuario'
-  })
+  const [usuario, setUsuario] = useState(
+    null
+  //   {
+  //   nombre: '',
+  //   role: '',
+  //   id_usuario: ''
+  // }
+  )
   const buttonToRender = usuario ? 'MI CUENTA' : 'IDENTIFICATE'
 
   const logIn = (userLogin) => {
