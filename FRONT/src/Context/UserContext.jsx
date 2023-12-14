@@ -3,16 +3,14 @@ import { createContext, useState } from 'react'
 const UserContext = createContext()
 
 const UserContextProvider = ({ children }) => {
-  const [usuario, setUsuario] = useState(
-    // null
-    { role: 'empresa' }
-    // { data.token / user,
-    //   user.nombre: '',
-    //   user.role: 'admin',
-    //   user.exp: '',
-    //   token
-    // }
-  )
+  const [usuario, setUsuario] = useState(() => {
+    const userInfo = JSON.parse(localStorage.getItem('userInfo'))
+    if (userInfo?.exp < Date.now()) {
+      return null
+    }
+    return userInfo
+  })
+
   const buttonToRender = usuario ? 'MI CUENTA' : 'IDENTIFICATE'
 
   const logIn = (userLogin) => {
