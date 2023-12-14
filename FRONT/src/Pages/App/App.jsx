@@ -48,7 +48,7 @@ const AppRoutes = () => {
     },
     {
       path: '/proyectos/disponibles',
-      element: <PrivateRoute hasRole='usuario' path='/proyectos'/>,
+      element: <PrivateRoute hasRole= {['usuario', 'admin']} path='/proyectos'/>,
       children: [
         {
           path: '',
@@ -58,7 +58,7 @@ const AppRoutes = () => {
     },
     {
       path: '/proyectos/disponibles/:id',
-      element: <PrivateRoute hasRole='usuario' path='/proyectos'/>,
+      element: <PrivateRoute hasRole={['usuario', 'admin']} path='/proyectos'/>,
       children: [
         {
           path: '',
@@ -68,7 +68,7 @@ const AppRoutes = () => {
     },
     {
       path: '/proyectos/publicarTerminado',
-      element: <PrivateRoute hasRole={'empresa' || 'usuario'} path='/proyectos'/>,
+      element: <PrivateRoute hasRole={['empresa', 'usuario', 'admin']} path='/proyectos'/>,
       children: [
         {
           path: '',
@@ -78,7 +78,7 @@ const AppRoutes = () => {
     },
     {
       path: '/proyectos/publicarNuevo',
-      element: <PrivateRoute hasRole='empresa' path='/proyectos'/>,
+      element: <PrivateRoute hasRole={['empresa', 'admin']} path='/proyectos'/>,
       children: [
         {
           path: '',
@@ -112,7 +112,7 @@ const AppRoutes = () => {
     },
     {
       path: '/cuenta',
-      element: <PrivateRoute hasRole={'empresa' || 'usuario'}/>,
+      element: <PrivateRoute hasRole={['empresa', 'usuario', 'admin']}/>,
       children: [
         {
           path: '',
@@ -122,7 +122,7 @@ const AppRoutes = () => {
     },
     {
       path: '/mensajes',
-      element: <PrivateRoute hasRole={'empresa' || 'usuario'}/>,
+      element: <PrivateRoute hasRole={['empresa', 'usuario', 'admin']}/>,
       children: [
         {
           path: '',
@@ -132,7 +132,7 @@ const AppRoutes = () => {
     },
     {
       path: '/mensajes/enviados',
-      element: <PrivateRoute hasRole={'empresa' || 'usuario'}/>,
+      element: <PrivateRoute hasRole={['empresa', 'usuario', 'admin']}/>,
       children: [
         {
           path: '',
@@ -142,7 +142,7 @@ const AppRoutes = () => {
     },
     {
       path: '/mensajes/recibidos',
-      element: <PrivateRoute hasRole={'empresa' || 'usuario'}/>,
+      element: <PrivateRoute hasRole={['empresa', 'usuario', 'admin']}/>,
       children: [
         {
           path: '',
@@ -152,7 +152,7 @@ const AppRoutes = () => {
     },
     {
       path: '/mensajes/nuevo',
-      element: <PrivateRoute hasRole={'empresa' || 'usuario'}/>,
+      element: <PrivateRoute hasRole={['empresa', 'usuario', 'admin']}/>,
       children: [
         {
           path: '',
@@ -162,7 +162,7 @@ const AppRoutes = () => {
     },
     {
       path: '/peticion/realizadas',
-      element: <PrivateRoute hasRole='usuario' path='/cuenta' />,
+      element: <PrivateRoute hasRole={['usuario', 'admin']} path='/cuenta' />,
       children: [
         {
           path: '',
@@ -172,7 +172,7 @@ const AppRoutes = () => {
     },
     {
       path: '/peticion/proyecto',
-      element: <PrivateRoute hasRole='empresa' path='/cuenta'/>,
+      element: <PrivateRoute hasRole={['empresa', 'admin']} path='/cuenta'/>,
       children: [
         {
           path: '',
@@ -182,7 +182,7 @@ const AppRoutes = () => {
     },
     {
       path: '/peticion/proyecto/:id',
-      element: <PrivateRoute hasRole='empresa' path='/'/>,
+      element: <PrivateRoute hasRole={['empresa', 'admin']} path='/'/>,
       children: [
         {
           path: '',
@@ -192,7 +192,7 @@ const AppRoutes = () => {
     },
     {
       path: '/peticion/nueva',
-      element: <PrivateRoute hasRole='usuario' path='/'/>,
+      element: <PrivateRoute hasRole={['usuario', 'admin']} path='/'/>,
       children: [
         {
           path: '',

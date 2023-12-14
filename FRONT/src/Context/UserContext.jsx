@@ -4,11 +4,13 @@ const UserContext = createContext()
 
 const UserContextProvider = ({ children }) => {
   const [usuario, setUsuario] = useState(
-    null
-    // {
-    //   nombre: '',
-    //   role: 'admin',
-    //   id_usuario: ''
+    // null
+    { role: 'empresa' }
+    // { data.token / user,
+    //   user.nombre: '',
+    //   user.role: 'admin',
+    //   user.exp: '',
+    //   token
     // }
   )
   const buttonToRender = usuario ? 'MI CUENTA' : 'IDENTIFICATE'
