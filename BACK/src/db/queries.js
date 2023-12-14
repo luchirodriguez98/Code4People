@@ -18,8 +18,8 @@ const query = {
   getAllNormalUsers: 'SELECT * FROM usuarios WHERE role = "usuario"',
 
   //=================PROYECTOS=============================
-
-
+  //Añadir proyecto nuevo
+  addProyectoNuevo:'INSERT INTO proyectos_a_realizar(titulo,descripcion,autor) VALUES (?,?,?);',
   //Ver todas las peticiones de todos los usuarios
   getAllProyectoARealizar: 'SELECT p.titulo, p.descripcion, u.nombre as autor FROM proyectos_a_realizar p JOIN usuarios u ON p.autor = u.id_usuario;',
   //Proyecto por id 

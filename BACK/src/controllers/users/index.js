@@ -7,6 +7,7 @@ import { getAllProyectoARealizarbyId } from './getAllProyectobyId.js';
 import { getAllProyectosAcabados } from './getAllProyectosAcabados.js'
 import { getPeticiones } from './getPeticiones.js';
 import { getPeticionesUser } from './getPeticionesUser.js';
+import { addProyectoNuevo } from './addProyectoNuevo.js';
 
 
-export { addUser, getAllUsers, getUserById, logIn , getAllProyectoARealizar, getAllProyectoARealizarbyId, getAllProyectosAcabados, getPeticiones,getPeticionesUser};
+export { addUser, getAllUsers, getUserById, logIn , getAllProyectoARealizar, getAllProyectoARealizarbyId, getAllProyectosAcabados, getPeticiones,getPeticionesUser,addProyectoNuevo};

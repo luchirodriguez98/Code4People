@@ -30,7 +30,7 @@ create table if not exists proyectos_acabados(
     url VARCHAR(600)not null,
     PRIMARY KEY (id_proyecto)
 );	
-SELECT titulo,url FROM proyectos_acabados;
+
 -- INSERT INTO proyectos_acabados(titulo,url) VALUES ('Proyecto Final','https://github.com/luchirodriguez98/Proyecto-Final');
 -- INSERT INTO proyectos_acabados(titulo,url) VALUES ('Bootcamp Info','https://github.com/Fundacio-Esplai-Enfocat/BOOTCAMP-S22-JAVASCRIPT');
 
@@ -55,8 +55,7 @@ proyecto INT,
 autor INT,
 titulo VARCHAR (20),
 descripcion VARCHAR (500),
-estado ENUM('aceptado','denegado','nada') DEFAULT 'nada',
- 
+estado ENUM('aceptado','denegado','nada') DEFAULT 'nada', 
 PRIMARY KEY (id_peticion),
 FOREIGN KEY (autor) REFERENCES usuarios(id_usuario),
 FOREIGN KEY (proyecto) REFERENCES proyectos_a_realizar(id_proyecto)
