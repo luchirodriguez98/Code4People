@@ -19,7 +19,7 @@ create table if not exists usuarios(
     nombre varchar(255) not null,
     email varchar(255) unique not null,
     pass varchar(255) not null,
-    role ENUM("admin","empresa","usuario") DEFAULT "usuario",
+    role ENUM('admin','empresa','usuario') DEFAULT 'usuario',
     confirmation_code varchar(50) DEFAULT NULL,
     PRIMARY KEY (id_usuario)
 );
@@ -33,7 +33,9 @@ create table if not exists proyectos_acabados(
 SELECT titulo,url FROM proyectos_acabados;
 -- INSERT INTO proyectos_acabados(titulo,url) VALUES ('Proyecto Final','https://github.com/luchirodriguez98/Proyecto-Final');
 -- INSERT INTO proyectos_acabados(titulo,url) VALUES ('Bootcamp Info','https://github.com/Fundacio-Esplai-Enfocat/BOOTCAMP-S22-JAVASCRIPT');
--- Petición Proyecto
+
+
+-- Proyectos a realizar
 create table if not exists proyectos_a_realizar(
 	id_proyecto int auto_increment,
     titulo varchar(255) not null,
@@ -42,16 +44,26 @@ create table if not exists proyectos_a_realizar(
     FOREIGN KEY (autor) REFERENCES usuarios(id_usuario),
     PRIMARY KEY (id_proyecto)
 );
+-- Valor de prueba
+-- INSERT INTO proyectos_a_realizar(titulo,descripcion,autor) VALUES ('calculadora','Necesito una calculadora simple, que no sea cientifica',3);
 
--- Proyecto asignado
+-- Peticiones proyectos
 
-create table if not exists proyectos_asignados(
-    megusta__proyecto INT,
-    megusta_usuario INT,
-    FOREIGN KEY (megusta__proyecto) REFERENCES proyectos_a_realizar(id_proyecto),
-    FOREIGN KEY (megusta_usuario) REFERENCES usuarios(id_usuario),
-    PRIMARY KEY (megusta__proyecto, megusta_usuario)
+CREATE TABLE IF NOT EXISTS peticiones(
+id_peticion int auto_increment,
+proyecto INT,
+autor INT,
+titulo VARCHAR (20),
+descripcion VARCHAR (500),
+estado ENUM('aceptado','denegado','nada') DEFAULT 'nada',
+ 
+PRIMARY KEY (id_peticion),
+FOREIGN KEY (autor) REFERENCES usuarios(id_usuario),
+FOREIGN KEY (proyecto) REFERENCES proyectos_a_realizar(id_proyecto)
 );
+-- Valor de prueba 
+ INSERT INTO peticiones(proyecto,autor,titulo,descripcion) VALUES (1,2,'Sobre tu calculadora','Hola, Soy un programador FullStack interesado en hacer tu proyecto'); 
+
  -- Tabla Mail
  create table if not exists mails(
 	id_mail int auto_increment,

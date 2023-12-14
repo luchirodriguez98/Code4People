@@ -5,6 +5,8 @@ import { logIn } from './logIn.js';
 import { getAllProyectoARealizar } from './getAllProyectoARealizar.js';
 import { getAllProyectoARealizarbyId } from './getAllProyectobyId.js';
 import { getAllProyectosAcabados } from './getAllProyectosAcabados.js'
+import { getPeticiones } from './getPeticiones.js';
+import { getPeticionesUser } from './getPeticionesUser.js';
 
 
-export { addUser, getAllUsers, getUserById, logIn , getAllProyectoARealizar, getAllProyectoARealizarbyId, getAllProyectosAcabados};
+export { addUser, getAllUsers, getUserById, logIn , getAllProyectoARealizar, getAllProyectoARealizarbyId, getAllProyectosAcabados, getPeticiones,getPeticionesUser};

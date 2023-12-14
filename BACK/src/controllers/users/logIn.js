@@ -38,7 +38,7 @@ async function logIn (req, res, next) {
     }
 
     //* Tenemos luz verde, el usuario se ha logeado correctamente, así que creamos un nuevo token con la info que queremos que el usuario se guarde
-    const infoToUser = { id: user.user_id, role: user.role, nombre: user.nombre };
+    const infoToUser = { id: user.id_usuario, role: user.role, nombre: user.nombre };
 
     const token = jwt.sign(infoToUser, process.env.JWT_SECRET, { expiresIn: '1 day' });
 
