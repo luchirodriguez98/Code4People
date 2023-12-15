@@ -9,6 +9,11 @@ import { getPeticiones } from './getPeticiones.js';
 import { getPeticionesUser } from './getPeticionesUser.js';
 import { addProyectoNuevo } from './addProyectoNuevo.js';
 import { addProyectoAcabado } from './addProyectoAcabado.js';
+import { addPeticion } from './addPeticion.js';
+import { getMailsbyDestino } from './getMailbyDestino.js';
+import { getMailsbyOrigen } from './getMailsbyOrigen.js';
+import { addMail } from './addMail.js';
+import { deleteUserById } from './deleteUserById.js';
 
 
-export { addUser, getAllUsers, getUserById, logIn , getAllProyectoARealizar, getAllProyectoARealizarbyId, getAllProyectosAcabados, getPeticiones,getPeticionesUser,addProyectoNuevo, addProyectoAcabado};
+export { addUser, getAllUsers, getUserById, logIn , getAllProyectoARealizar, getAllProyectoARealizarbyId, getAllProyectosAcabados, getPeticiones,getPeticionesUser,addProyectoNuevo, addProyectoAcabado,addPeticion, getMailsbyDestino, getMailsbyOrigen, addMail, deleteUserById  };

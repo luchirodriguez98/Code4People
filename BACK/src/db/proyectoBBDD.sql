@@ -55,22 +55,21 @@ create table if not exists proyectos_a_realizar(
 
 CREATE TABLE IF NOT EXISTS peticiones(
 id_peticion int auto_increment,
-proyecto INT,
+id_proyecto INT,
 autor INT,
 titulo VARCHAR (20),
 descripcion VARCHAR (500),
 estado ENUM('aceptado','denegado','nada') DEFAULT 'nada', 
 PRIMARY KEY (id_peticion),
 FOREIGN KEY (autor) REFERENCES usuarios(id_usuario),
-FOREIGN KEY (proyecto) REFERENCES proyectos_a_realizar(id_proyecto)
+FOREIGN KEY (id_proyecto) REFERENCES proyectos_a_realizar(id_proyecto)
 );
 -- Valor de prueba 
- INSERT INTO peticiones(proyecto,autor,titulo,descripcion) VALUES (1,2,'Sobre tu calculadora','Hola, Soy un programador FullStack interesado en hacer tu proyecto'); 
+ -- INSERT INTO peticiones(proyecto,autor,titulo,descripcion) VALUES (1,2,'Sobre tu calculadora','Hola, Soy un programador FullStack interesado en hacer tu proyecto'); 
 
  -- Tabla Mail
  create table if not exists mails(
 	id_mail int auto_increment,
-    asunto VARCHAR (255),
     mensaje VARCHAR(500),
     destinatario INT,
     origen INT,
@@ -78,6 +77,7 @@ FOREIGN KEY (proyecto) REFERENCES proyectos_a_realizar(id_proyecto)
     FOREIGN KEY (destinatario) REFERENCES usuarios(id_usuario),
     FOREIGN KEY (origen) REFERENCES usuarios(id_usuario)
     );
+
 -----------------------------
 -- Añadimos usuarios y roles
 -----------------------------

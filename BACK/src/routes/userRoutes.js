@@ -5,9 +5,11 @@ import {
     getAllUsers,
     getUserById, 
     addUser,
+    deleteUserById,
     logIn
 } from '../controllers/users/index.js';
 import userAuth from '../middlewares/userAuth.js';
+
 
 
 const userRouter = express.Router();
@@ -16,8 +18,11 @@ const userRouter = express.Router();
 userRouter.post('/registro', addUser);
 userRouter.post('/logIn', logIn);
 //GET
-userRouter.get('/usuarios', getAllUsers);
-userRouter.get('/usuarios/:userId',getUserById);
+userRouter.get('/usuarios', userAuth, getAllUsers);
+userRouter.get('/usuarios/:userId',userAuth,getUserById);
+//DELETE
+userRouter.delete('/delete/:userId',userAuth, deleteUserById);
+
 
 // userRouter.get('/test', userAuth, isAdmin, (req, res) => {
     
