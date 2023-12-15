@@ -16,7 +16,7 @@ import {
     addProyectoAcabado,
     addPeticion,
     getPeticiones
-} from '../controllers/users/index.js';
+} from '../controllers/index.js';
 
 const projectRouter = express.Router();
 //POST

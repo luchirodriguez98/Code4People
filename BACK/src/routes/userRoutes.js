@@ -7,7 +7,7 @@ import {
     addUser,
     deleteUserById,
     logIn
-} from '../controllers/users/index.js';
+} from '../controllers/index.js'
 import {userAuth} from '../middlewares/userAuth.js';
 import {isAdmin} from '../middlewares/isAdmin.js'
 
