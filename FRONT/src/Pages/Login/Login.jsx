@@ -1,55 +1,66 @@
 import { NavLink, useNavigate } from 'react-router-dom'
-import { useUserContext } from '../../Hooks/useUserContext'
-import { useErrorContext } from '../../Hooks/useErrorContext'
 import { useForm } from '../../Hooks/useForm'
-import { logInUser } from '../../services/logInUser'
+// import { logInUser } from '../../services/logInUser'
 import { ErrorModal } from '../../Components/ErrorModal/ErrorModal'
 import { FaGithub } from 'react-icons/fa6'
 import styles from './Login.module.css'
 import stylesForm from '../../Styles/form.module.css'
+import { useContext, useState } from 'react'
+import { ErrorContext } from '../../Context/ErrorContext'
+import { useUserContext } from '../../Hooks/useUserContext'
 
 function Login () {
   const userContext = useUserContext()
-  const errorContext = useErrorContext()
-  console.log(errorContext.showErrorModal)
+  const errorContext = useContext(ErrorContext)
 
-  const navigate = useNavigate()
+  const [errors, setErrors] = useState(null)
 
-  const { formValues, handleFormChange } = useForm({
+  const { formValues, reset, handleFormChange } = useForm({
     email: '',
     pass: ''
   })
+
+  const navigate = useNavigate()
 
   const { email, pass } = formValues
 
   const handleSubmit = async (event) => {
     event.preventDefault()
 
-    if (email === '' || pass === '') {
-      errorContext?.setShowErrorModal(true)
-      errorContext?.setErrorMessage('Hay campos requeridos vacíos')
-      return
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ email, pass })
     }
 
-    logInUser(email, pass).then(response => {
-      if (response.error) {
-        console.log(response)
-        errorContext?.setShowErrorModal(true)
-        errorContext?.setErrorMessage(response.error)
+    const baseUrl = 'http://localhost:5000'
+
+    try {
+      const response = await fetch(`${baseUrl}/users/login`, options)
+      const data = await response.json()
+      console.log(data)
+      if (response.status === 400) {
+        setErrors(data.error)
         return
       }
-      console.log(response)
       localStorage.setItem('token', response.data.token)
       localStorage.setItem('userInfo', JSON.stringify(response.data.user))
       userContext.logIn(response.data.user)
       navigate('/cuenta')
-    })
-    errorContext.setShowErrorModal(false)
-    errorContext.setErrorMessage('')
+      reset({
+        email: '',
+        pass: ''
+      })
+    } catch (error) {
+      console.error(error)
+    }
   }
+  errorContext.closeModal()
   return (
     <div className={`${styles.body}`}>
-      <ErrorModal show={errorContext?.showErrorModal} message={ errorContext?.errorMessage }/>
+      <ErrorModal mensaje={errors}/>
       <h1 className={styles.title}>Inicia sesion</h1>
       <form className={stylesForm.form} onSubmit={handleSubmit}>
           <label htmlFor="email">EMAIL</label>
@@ -60,6 +71,7 @@ function Login () {
             placeholder='Escribe tu email'
             value={formValues.email}
             onChange={handleFormChange}
+            className={errors?.email ? stylesForm.invalidInput : undefined}
           />
           <label htmlFor="pass">CLAVE</label>
           <input
@@ -69,8 +81,16 @@ function Login () {
             placeholder='Escribe tu contraseña'
             value={formValues.pass}
             onChange={handleFormChange}
+            className={errors?.pass ? stylesForm.invalidInput : undefined}
           />
-          <button className={`${stylesForm.button}`} >INICIA SESION</button>
+          <button onClick={() => {
+            errorContext.openModal()
+            setErrors(null)
+          }}
+            className={`${stylesForm.button}`}
+          >
+            INICIA SESION
+          </button>
       </form>
       <span className={styles.redirectRegistro}>
         <p>No tienes cuenta?</p>

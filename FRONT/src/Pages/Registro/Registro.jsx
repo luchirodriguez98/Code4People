@@ -1,46 +1,28 @@
 import { useNavigate } from 'react-router-dom'
+import { useContext, useState } from 'react'
+import { ErrorContext } from '../../Context/ErrorContext'
 import { useForm } from '../../Hooks/useForm'
+import { ErrorModal } from '../../Components/ErrorModal/ErrorModal'
 import styles from './Registro.module.css'
 import stylesForm from '../../Styles/form.module.css'
-import { useErrorContext } from '../../Hooks/useErrorContext'
-import { ErrorModal } from '../../Components/ErrorModal/ErrorModal'
-import { useState } from 'react'
 
 function Registro () {
-  const errorContext = useErrorContext()
-  console.log(errorContext)
+  const errorContext = useContext(ErrorContext)
+
+  const [errors, setErrors] = useState(null)
+
   const { formValues, reset, handleFormChange } = useForm({
     nombre: '',
     email: '',
     pass: '',
     role: ''
   })
-  const [errors, setErrors] = useState(null)
+
   const navigate = useNavigate()
-  // const { nombre, email, pass, role } = formValues
 
   const saveNewUser = async (event) => {
     event.preventDefault()
-    // if (nombre === '' || email === '' || pass === '' || role === '') {
-    //   errorContext?.setShowErrorModal(true)
-    //   errorContext?.setErrorMessage('Hay campos requeridos vacíos')
-    // }
-    // if (pass.length < 4) {
-    //   errorContext?.setShowErrorModal(true)
-    //   errorContext?.setErrorMessage('La clave debe tener al menos 4 caracteres')
-    // }
-    // if (pass.length > 32) {
-    //   errorContext?.setShowErrorModal(true)
-    //   errorContext?.setErrorMessage('La clave debe tener menos de 32 caracteres')
-    // }
-    // if (nombre.length < 3) {
-    //   errorContext?.setShowErrorModal(true)
-    //   errorContext?.setErrorMessage('El nombre debe tener al menos de 3 caracteres')
-    // }
-    // if (!role) {
-    //   errorContext?.setShowErrorModal(true)
-    //   errorContext?.setErrorMessage('Debe seleccionar un tipo de usuario')
-    // }
+
     const options = {
       method: 'POST',
       headers: {
@@ -56,7 +38,8 @@ function Registro () {
       const data = await response.json()
       console.log(data)
       if (!response.ok && response.status === 400) {
-        return setErrors(data.errors)
+        setErrors(data.errors)
+        return
       }
       navigate('/')
       reset({
@@ -65,24 +48,17 @@ function Registro () {
         pass: '',
         role: ''
       })
-      if (response.error && response) {
-        response.error.forEach(error => {
-          errorContext?.setShowErrorModal(true)
-          errorContext?.setErrorMessage(error)
-        })
-      }
     } catch (error) {
       console.error('Error:', error.message)
     }
-    errorContext.setShowErrorModal(false)
-    errorContext.setErrorMessage('')
   }
+  errorContext.closeModal()
   return (
     <div className={`${styles.body}`}>
-      <ErrorModal message={ errorContext?.errorMessage }/>
+      <ErrorModal />
       <h1 className={`${styles.title}`}>Registra tu empresa!</h1>
       <form action="" className={`${stylesForm.form}`} onSubmit={saveNewUser}>
-      <label htmlFor="nombre">NOMBRE</label>
+        <label htmlFor="nombre">NOMBRE</label>
         <input
           type="text"
           id="nombre"
@@ -90,9 +66,10 @@ function Registro () {
           placeholder='Escribe tu nombre'
           value={formValues.nombre}
           onChange={handleFormChange}
+          className={errors?.nombre ? stylesForm.invalidInput : undefined}
         />
         {errors?.nombre && <span>{errors.nombre}</span>}
-      <label htmlFor="email">EMAIL</label>
+        <label htmlFor="email">EMAIL</label>
         <input
           type="email"
           id="email"
@@ -100,8 +77,10 @@ function Registro () {
           placeholder='Escribe tu email'
           value={formValues.email}
           onChange={handleFormChange}
+          className={errors?.email ? stylesForm.invalidInput : undefined}
         />
-      <label htmlFor="pass">CLAVE</label>
+        {errors?.email && <span>{errors.email}</span>}
+        <label htmlFor="pass">CLAVE</label>
         <input
           type="password"
           id="pass"
@@ -109,8 +88,9 @@ function Registro () {
           placeholder='Escribe tu pass'
           value={formValues.pass}
           onChange={handleFormChange}
-          />
-          {errors?.pass && <span>{errors.pass}</span>}
+          className={errors?.pass ? stylesForm.invalidInput : undefined}
+        />
+        {errors?.pass && <span>{errors.pass}</span>}
         <span className={stylesForm.containerButton}>
           <input
             checked={formValues.role === 'empresa'}
@@ -137,7 +117,16 @@ function Registro () {
             DESARROLLADOR
           </label>
         </span>
-        <button className={`${stylesForm.button}`}>GUARDAR</button>
+        {errors?.role && <span>Debes seleccionar un tipo de usuario</span>}
+        <button
+          onClick={() => {
+            errorContext.openModal()
+            setErrors(null)
+          }}
+          className={`${stylesForm.button}`}
+        >
+          GUARDAR
+        </button>
       </form>
   </div>
   )

@@ -5,23 +5,28 @@ const ErrorContext = createContext()
 
 const ErrorContextProvider = ({ children }) => {
   const [showErrorModal, setShowErrorModal] = useState(false)
-  const [errorMessage, setErrorMessage] = useState()
+
   const location = useLocation()
 
   useEffect(() => {
     return () => {
       setShowErrorModal(false)
-      setErrorMessage('')
     }
   }, [location.pathname])
+
+  const openModal = () => {
+    setShowErrorModal(true)
+  }
+  const closeModal = () => {
+    setShowErrorModal(false)
+  }
 
   return (
         <ErrorContext.Provider
             value={{
               showErrorModal,
-              errorMessage,
-              setShowErrorModal,
-              setErrorMessage
+              openModal,
+              closeModal
             }}
         >
             {children}
