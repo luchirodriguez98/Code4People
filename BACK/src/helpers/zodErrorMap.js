@@ -1,7 +1,9 @@
 function zodErrorMap (zodError) {
-    return zodError.issues.map((issue) => {
-        return { [issue.path[0]]: issue.message }
+    const objetoErrores = {};
+    zodError.issues.forEach((issue) => {
+        objetoErrores[issue.path[0]] = issue.message
     });
+    return objetoErrores;
 }
 
 export { zodErrorMap };

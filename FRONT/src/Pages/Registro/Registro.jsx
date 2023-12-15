@@ -4,6 +4,7 @@ import styles from './Registro.module.css'
 import stylesForm from '../../Styles/form.module.css'
 import { useErrorContext } from '../../Hooks/useErrorContext'
 import { ErrorModal } from '../../Components/ErrorModal/ErrorModal'
+import { useState } from 'react'
 
 function Registro () {
   const errorContext = useErrorContext()
@@ -14,32 +15,32 @@ function Registro () {
     pass: '',
     role: ''
   })
-
+  const [errors, setErrors] = useState(null)
   const navigate = useNavigate()
-  const { nombre, email, pass, role } = formValues
+  // const { nombre, email, pass, role } = formValues
 
   const saveNewUser = async (event) => {
     event.preventDefault()
-    if (nombre === '' || email === '' || pass === '' || role === '') {
-      errorContext?.setShowErrorModal(true)
-      errorContext?.setErrorMessage('Hay campos requeridos vacíos')
-    }
-    if (pass.length < 4) {
-      errorContext?.setShowErrorModal(true)
-      errorContext?.setErrorMessage('La clave debe tener al menos 4 caracteres')
-    }
-    if (pass.length > 32) {
-      errorContext?.setShowErrorModal(true)
-      errorContext?.setErrorMessage('La clave debe tener menos de 32 caracteres')
-    }
-    if (nombre.length < 3) {
-      errorContext?.setShowErrorModal(true)
-      errorContext?.setErrorMessage('El nombre debe tener al menos de 3 caracteres')
-    }
-    if (!role) {
-      errorContext?.setShowErrorModal(true)
-      errorContext?.setErrorMessage('Debe seleccionar un tipo de usuario')
-    }
+    // if (nombre === '' || email === '' || pass === '' || role === '') {
+    //   errorContext?.setShowErrorModal(true)
+    //   errorContext?.setErrorMessage('Hay campos requeridos vacíos')
+    // }
+    // if (pass.length < 4) {
+    //   errorContext?.setShowErrorModal(true)
+    //   errorContext?.setErrorMessage('La clave debe tener al menos 4 caracteres')
+    // }
+    // if (pass.length > 32) {
+    //   errorContext?.setShowErrorModal(true)
+    //   errorContext?.setErrorMessage('La clave debe tener menos de 32 caracteres')
+    // }
+    // if (nombre.length < 3) {
+    //   errorContext?.setShowErrorModal(true)
+    //   errorContext?.setErrorMessage('El nombre debe tener al menos de 3 caracteres')
+    // }
+    // if (!role) {
+    //   errorContext?.setShowErrorModal(true)
+    //   errorContext?.setErrorMessage('Debe seleccionar un tipo de usuario')
+    // }
     const options = {
       method: 'POST',
       headers: {
@@ -54,16 +55,17 @@ function Registro () {
       const response = await fetch(`${baseUrl}/users/registro`, options)
       const data = await response.json()
       console.log(data)
-
-      if (!response.data === null) {
-        navigate('/')
-        reset({
-          nombre: '',
-          email: '',
-          pass: '',
-          role: ''
-        })
-      } if (response.error) {
+      if (!response.ok && response.status === 400) {
+        return setErrors(data.errors)
+      }
+      navigate('/')
+      reset({
+        nombre: '',
+        email: '',
+        pass: '',
+        role: ''
+      })
+      if (response.error && response) {
         response.error.forEach(error => {
           errorContext?.setShowErrorModal(true)
           errorContext?.setErrorMessage(error)
@@ -89,6 +91,7 @@ function Registro () {
           value={formValues.nombre}
           onChange={handleFormChange}
         />
+        {errors?.nombre && <span>{errors.nombre}</span>}
       <label htmlFor="email">EMAIL</label>
         <input
           type="email"
@@ -106,7 +109,8 @@ function Registro () {
           placeholder='Escribe tu pass'
           value={formValues.pass}
           onChange={handleFormChange}
-        />
+          />
+          {errors?.pass && <span>{errors.pass}</span>}
         <span className={stylesForm.containerButton}>
           <input
             checked={formValues.role === 'empresa'}
