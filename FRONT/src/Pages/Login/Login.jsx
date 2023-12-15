@@ -28,7 +28,9 @@ function Login () {
         console.log(response)
         return console.error(response.error)
       }
+      console.log(response)
       localStorage.setItem('token', response.data.token)
+      localStorage.setItem('userInfo', JSON.stringify(response.data.user))
       context.logIn(response.data.user)
       navigate('/cuenta')
     })

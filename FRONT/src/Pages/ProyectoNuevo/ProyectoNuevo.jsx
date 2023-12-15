@@ -15,8 +15,8 @@ function ProyectoNuevo () {
 
   const postProyect = async (event) => {
     event.preventDefault()
+    console.log('hola')
     if (titulo === '' || descripcion === '') return
-
     const options = {
       method: 'POST',
       headers: {
@@ -28,10 +28,10 @@ function ProyectoNuevo () {
     const baseUrl = 'http://localhost:5000'
 
     try {
-      const response = await fetch(`${baseUrl}/proyectoNuevo`, options)
+      const response = await fetch(`${baseUrl}/nuevoProyecto`, options)
       const data = await response.json()
       console.log(data)
-      navigate('disponibles')
+      navigate('/proyectos/disponibles')
     } catch (error) {
       console.error('Error:', error.message)
     }
@@ -66,7 +66,7 @@ function ProyectoNuevo () {
                 name="descripcion"
                 id='descripcion'
                 placeholder='Escribe la descripcion de lo que necesita tu pagina'
-                value={formValues.titulo}
+                value={formValues.url}
                 onChange={handleFormChange} className={formStyles.input}
               />
               <div className={formStyles.button}>PUBLICAR NUEVO PROYECTO</div>
