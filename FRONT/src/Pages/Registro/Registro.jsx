@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import { useForm } from '../../Hooks/useForm'
 import styles from './Registro.module.css'
 import stylesForm from '../../Styles/form.module.css'
+import { useState } from 'react'
 
 function Registro () {
   const { formValues, reset, handleFormChange } = useForm({
@@ -10,13 +11,14 @@ function Registro () {
     pass: '',
     role: ''
   })
+  const [errors, setErrors] = useState(null);
 
   const navigate = useNavigate()
   const { nombre, email, pass, role } = formValues
 
   const saveNewUser = async (event) => {
     event.preventDefault()
-    if (nombre === '' || email === '' || pass === '' || role === '') return
+    // if (nombre === '' || email === '' || pass === '' || role === '') return
     const options = {
       method: 'POST',
       headers: {
@@ -30,7 +32,10 @@ function Registro () {
     try {
       const response = await fetch(`${baseUrl}/users/registro`, options)
       const data = await response.json()
-      console.log(data)
+      if (!response.ok && response.status === 400) {
+        return setErrors(data.errors)
+      }
+
       reset({
         nombre: '',
         email: '',
@@ -48,7 +53,6 @@ function Registro () {
       <form action="" className={`${stylesForm.form}`} onSubmit={saveNewUser}>
       <label htmlFor="nombre">NOMBRE</label>
         <input
-          required
           type="text"
           id="nombre"
           name="nombre"
@@ -56,26 +60,27 @@ function Registro () {
           value={formValues.nombre}
           onChange={handleFormChange}
         />
+        {errors?.nombre && <span>{errors.nombre}</span>}
       <label htmlFor="email">EMAIL</label>
         <input
-          required
           type="email"
           id="email"
           name="email"
           placeholder='Escribe tu email'
           value={formValues.email}
           onChange={handleFormChange}
-        />
+          />
+          {errors?.email && <span>{errors.email}</span>}
       <label htmlFor="pass">CLAVE</label>
         <input
-          required
           type="password"
           id="pass"
           name="pass"
           placeholder='Escribe tu pass'
           value={formValues.pass}
           onChange={handleFormChange}
-        />
+          />
+          {errors?.pass && <span>{errors.pass}</span>}
         <span className={stylesForm.containerButton}>
           <input
             checked={formValues.role === 'empresa'}

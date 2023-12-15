@@ -21,4 +21,4 @@ function userAuth (req, res, next) {
     }
 }
 
-export default userAuth;
+export {userAuth};

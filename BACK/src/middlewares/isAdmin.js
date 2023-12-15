@@ -1,4 +1,4 @@
-import { HttpError } from "../models/HttpError";
+import { HttpError } from "../models/HttpError.js";
 
 function isAdmin (req, res, next) {
     if (req.user.role !== 'admin') {
@@ -7,4 +7,4 @@ function isAdmin (req, res, next) {
     next();
 }
 
-export default isAdmin;
+export  {isAdmin};

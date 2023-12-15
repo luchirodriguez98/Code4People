@@ -6,7 +6,7 @@ import {
     addMail
     
 } from '../controllers/users/index.js';
-import userAuth from '../middlewares/userAuth.js';
+import {userAuth} from '../middlewares/userAuth.js';
 
 const mailsRouter = express.Router();
 
