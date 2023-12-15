@@ -1,17 +1,17 @@
 import { sendQuery } from '../../db/connect-db.js';
 import { query } from '../../db/queries.js';
 
-async function getMailsbyDestino(req, res) {
+async function getMailsbyOrigen(req, res) {
 
     const { id: idUsuarioConectado } = req.user;
     
-    const [mail] = await sendQuery(query.getMailsbyDestino, [idUsuarioConectado])
+    const [mail] = await sendQuery(query.getMailsbyOrigen, [idUsuarioConectado])
 
     if (!mail) {
         return res.status(404).send({
             ok: false,
             data: null,
-            error: `No se han encontrado mails del usuario con id ${idUsuarioConectado}`
+            error: `No hay enviados de  id ${idUsuarioConectado}`
         })
 } 
 
@@ -23,4 +23,4 @@ async function getMailsbyDestino(req, res) {
 })
 }
 
-export { getMailsbyDestino };
+export { getMailsbyOrigen };

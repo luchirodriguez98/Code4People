@@ -9,6 +9,7 @@ import { userRouter } from './src/routes/userRoutes.js';
 import { error404 } from './src/controllers/error404.js';
 import errorHandler from './src/controllers/errorHandler.js';
 import { projectRouter } from './src/routes/projectRoutes.js';
+import { mailsRouter } from './src/routes/mailsRoutes.js';
 
 
 
@@ -26,6 +27,8 @@ app.use((req, res, next) => {
 
 app.use('/users', userRouter);
 app.use('/', projectRouter);
+app.use('/mails',mailsRouter);
+
 
 app.use('*', error404);
 app.use(errorHandler);
