@@ -8,7 +8,9 @@ const connection = await mysql.createConnection({
   port: MYSQL_PORT,
   user: MYSQL_USER,
   password: MYSQL_PASSWORD,
-  database: MYSQL_DATABASE
+  database: MYSQL_DATABASE,
+  enableKeepAlive: true,
+  keepAliveInitialDelay: 10000
 });
 
 
