@@ -64,6 +64,12 @@
   background-color: var(--primary-color);
   color: black;
 }
+/* input{
+  outline: none;
+}
+form:invalid:required input:invalid {
+  outline: 3px solid rgb(179, 0, 134);
+} */
 @media (min-width: 768px) {
   .selectButton{
     width: 45%;

@@ -27,6 +27,7 @@ import { TodosProyectos } from '../TodosProyectos/TodosProyectos'
 import { TodosUsuarios } from '../TodosUsuarios/TodosUsuarios'
 import { PrivateRoute } from '../../Routes/PrivateRoute'
 import { PublicRoute } from '../../Routes/PublicRoute'
+import { ErrorContextProvider } from '../../Context/ErrorContext'
 
 const AppRoutes = () => {
   const routes = useRoutes([
@@ -232,10 +233,12 @@ function App () {
   return (
       <UserContextProvider>
         <BrowserRouter>
-          <Nav />
-          <Layout>
-          <AppRoutes />
-          </Layout>
+          <ErrorContextProvider>
+            <Nav />
+            <Layout>
+            <AppRoutes />
+            </Layout>
+          </ErrorContextProvider>
         </BrowserRouter>
       </UserContextProvider>
   )
