@@ -20,6 +20,7 @@ const UserContextProvider = ({ children }) => {
   const logOut = () => {
     setUsuario(null)
     localStorage.removeItem('token')
+    localStorage.removeItem('userInfo')
   }
 
   return (
