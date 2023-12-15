@@ -9,7 +9,7 @@ import {
     addProyectoAcabado,
     addPeticion,
     getPeticiones
-} from '../controllers/users/index.js';
+} from '../controllers/index.js';
 import userAuth from '../middlewares/userAuth.js';
 
 const projectRouter = express.Router();
