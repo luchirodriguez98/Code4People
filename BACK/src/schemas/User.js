@@ -13,7 +13,7 @@ const User = z.object({
     pass: z.string({
         required_error: 'Campo obligatorio',
         invalid_type_error: 'El campo tiene que ser un string'
-    }).min(4).max(32),
+    }).min(4, {message: 'La contraseña debe tener minimo 4 caracteres',}).max(32,{message: 'La contraseña debe tener maximo 32 caracteres',}),
     role: z.enum(['admin', 'usuario', 'empresa'])
 });
 const LoginUser = User.omit({ nombre: true, role: true });
