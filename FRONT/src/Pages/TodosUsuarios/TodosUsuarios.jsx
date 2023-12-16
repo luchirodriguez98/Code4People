@@ -1,29 +1,80 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ListaAdmin } from '../../Components/ListaAdmin/ListaAdmin'
 import styles from './TodosUsuarios.module.css'
 
-const usuariosBBDD = [
-  { nombre: 'Lucia', email: 'luchi@gmail.com', id_usuario: 1 },
-  { nombre: 'Luis', email: 'luis@gmail.com', id_usuario: 2 },
-  { nombre: 'Daniel', email: 'dani@gmail.com', id_usuario: 5 }
-]
-
 function TodosUsuarios () {
-  const [usuarios, setUsuarios] = useState(usuariosBBDD)
+  const [usuarios, setUsuarios] = useState([])
+  const [errors, setErrors] = useState(null)
 
-  const eliminarUsuario = (id) => {
-    const indexUsuario = usuarios.findIndex(usuario => usuario.id_usuario === id)
-    if (indexUsuario !== -1) {
-      const nuevosUsuarios = [...usuarios]
-      nuevosUsuarios.splice(indexUsuario, 1)
-      setUsuarios(nuevosUsuarios)
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+
+    const fetchData = async () => {
+      const options = {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`
+        }
+      }
+
+      const baseUrl = 'http://localhost:5000'
+
+      try {
+        const response = await fetch(`${baseUrl}/users/usuarios`, options)
+        const data = await response.json()
+        console.log(data.data)
+        if (!response.ok) {
+          if (data.error) {
+            setErrors(data.error)
+          } else {
+            setErrors(data.message)
+          }
+          return
+        }
+        setUsuarios(data.data)
+      } catch (error) {
+        console.error('Error:', error.message)
+      }
+    }
+    fetchData()
+  }, [])
+
+  const eliminarUsuario = async (id) => {
+    const token = localStorage.getItem('token')
+
+    const options = {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+      }
+    }
+
+    const baseUrl = 'http://localhost:5000'
+
+    try {
+      const response = await fetch(`${baseUrl}/users/delete/${id}`, options)
+      const data = await response.json()
+      console.log(data.data)
+      if (!response.ok) {
+        if (data.error) {
+          setErrors(data.error)
+        } else {
+          setErrors(data.message)
+        }
+        return
+      }
+      setUsuarios(data.data)
+    } catch (error) {
+      console.error('Error:', error.message)
     }
   }
 
   return (
     <div>
       <h1 className={styles.title}>Usuarios</h1>
-      <ListaAdmin toMap={usuarios} toDelete={eliminarUsuario}/>
+      {errors ? <span className='errorSpan'>Hubo un error, recarga la pagina</span> : <ListaAdmin toMap={usuarios} toDelete={eliminarUsuario}/>}
     </div>
   )
 }

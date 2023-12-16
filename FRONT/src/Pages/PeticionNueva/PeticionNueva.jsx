@@ -2,27 +2,34 @@ import { useNavigate } from 'react-router'
 import { useForm } from '../../Hooks/useForm'
 import styles from './PeticionNueva.module.css'
 import stylesForm from '../../Styles/form.module.css'
+import { useContext, useState } from 'react'
+import { ErrorContext } from '../../Context/ErrorContext'
+import { ErrorModal } from '../../Components/ErrorModal/ErrorModal'
+import { useLocation } from 'react-router-dom'
 
 function PeticionNueva () {
-  const navigate = useNavigate()
+  const errorContext = useContext(ErrorContext)
 
+  const [errors, setErrors] = useState(null)
+
+  const navigate = useNavigate()
+  const navigation = useLocation()
+
+  console.log(navigation.state)
   const { formValues, reset, handleFormChange } = useForm({
     titulo: '',
-    mensaje: ''
+    descripcion: ''
   })
-  // eslint-disable-next-line camelcase
-  const { detalle_importantes, mensaje } = formValues
 
   const aplicarProyecto = async (event) => {
     event.preventDefault()
-
-    // eslint-disable-next-line camelcase
-    if (detalle_importantes === '' || mensaje === '') return
+    const token = localStorage.getItem('token')
 
     const options = {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
       },
       body: JSON.stringify(formValues)
     }
@@ -30,22 +37,32 @@ function PeticionNueva () {
     const baseUrl = 'http://localhost:5000'
 
     try {
-      const response = await fetch(`${baseUrl}/peticion/nueva`, options)
+      const response = await fetch(`${baseUrl}/nuevaPeticion/${navigation.state.id_proyecto}`, options)
       const data = await response.json()
       console.log(data)
-      navigate('/peticion/realizadas')
-      reset({
-        detalle_importantes: '',
-        mensaje: ''
-      })
+      if (!response.ok) {
+        setErrors(data.errors)
+        console.log('hola')
+        return
+      }
+      if (response.ok && response.status === 200) {
+        navigate('/peticiones/realizadas')
+        reset({
+          titulo: '',
+          descripcion: ''
+        })
+      }
     } catch (error) {
       console.error('Error:', error.message)
+      setErrors('Hubo un problema al procesar la solicitud. Por favor, inténtalo de nuevo más tarde.')
     }
   }
+  errorContext.closeModal()
 
   return (
     <div className={styles.body}>
         <h1 className={styles.title}>Solicitar Proyecto</h1>
+        <ErrorModal />
         <form className={`${stylesForm.form}`} onSubmit={aplicarProyecto}>
             <label htmlFor="titulo">TITULO</label>
             <input
@@ -56,17 +73,29 @@ function PeticionNueva () {
               placeholder='Escribe un titulo'
               value={formValues.titulo}
               onChange={handleFormChange}
+              className={errors?.titulo ? stylesForm.invalidInput : undefined}
             />
-            <label htmlFor="mensaje">MENSAJE</label>
+            {errors?.titulo && <span>{errors.titulo}</span>}
+            <label htmlFor="descripcion">MENSAJE</label>
             <textarea
               required
               type="text"
-              id="mensaje"
-              name="mensaje"
-              value={formValues.mensaje}
+              id="descripcion"
+              name="descripcion"
+              value={formValues.descripcion}
               onChange={handleFormChange}
+              className={errors?.mensaje ? stylesForm.invalidInput : undefined}
             />
-            <button className={`${stylesForm.button}`}>ENVIAR SOLICITUD A LA EMPRESA</button>
+            {errors?.descripcion && <span>{errors.descripcion}</span>}
+            <button
+              className={`${stylesForm.button}`}
+              onClick={() => {
+                errorContext.openModal()
+                setErrors(null)
+              }}
+            >
+              ENVIAR SOLICITUD A LA EMPRESA
+            </button>
           </form>
     </div>
   )

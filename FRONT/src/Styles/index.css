@@ -21,41 +21,6 @@ body{
     font-size: small;
     font-family: 'Montserrat', sans-serif;
 }
-
-.form{
-  width: 500px;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-.form input{
-  height: 25px;
-  width: 100%;
-  border-radius: 5px;
-  border: none;
-  outline: none;
-  padding-left: 10px;
-}
-
-.form textarea{
-  height: 25px;
-  width: 100%;
-  border-radius: 5px;
-  border: none;
-  outline: none;
-  padding-left: 10px;
-}
-.form textarea {
-  height: 75px;
-  font-family: 'Montserrat', sans-serif;
-  padding-top: 5px;
-}
-.button{
-  background-color: var(--primary-color);
-  border: none;
-  border-radius: 10px;
-  height: 20px;
-  margin-top: 16px;
-  width: 100%;
-  font-weight: var(--font-weight-md);
+.errorSpan{
+  text-align: center;
 }

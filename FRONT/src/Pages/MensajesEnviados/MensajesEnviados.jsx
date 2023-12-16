@@ -2,14 +2,44 @@ import { NavLink } from 'react-router-dom'
 import { ChevronLeftIcon } from '@heroicons/react/24/solid'
 import styles from './MensajesEnviados.module.css'
 import { ListaMensajes } from '../../Components/ListaMensajes/ListaMensajes'
-
-const mensajesEnviados = [
-  { usuario: 123, mensaje: 'Hola para cuando estaria el login?' },
-  { usuario: 12, mensaje: 'Hola cuantas secciones queres?' },
-  { usuario: 3, mensaje: 'Hola gracias por seleccionarme. Tenias alguna idea?' }
-]
+import { useEffect, useState } from 'react'
 
 function MensajesEnviados () {
+  const [mensajes, setMensajes] = useState([])
+  const [errors, setErrors] = useState(null)
+
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    const fetchData = async () => {
+      const options = {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`
+        }
+      }
+      const baseUrl = 'http://localhost:5000'
+
+      try {
+        const response = await fetch(`${baseUrl}/mails/enviados`, options)
+        const data = await response.json()
+        console.log(data)
+        if (!response.ok) {
+          if (data.error) {
+            setErrors(data.error)
+          } else {
+            setErrors(data.message)
+          }
+          return
+        }
+        setMensajes(data.data)
+      } catch (error) {
+        console.error('Error:', error.message)
+      }
+    }
+    fetchData()
+  }, [])
+  console.log(mensajes)
   return (
         <div className={styles.body}>
           <NavLink to="/mensajes">
@@ -19,7 +49,7 @@ function MensajesEnviados () {
             </div>
           </NavLink>
           <h1 className={styles.title}>Mensajes enviados</h1>
-          <ListaMensajes toMap={mensajesEnviados}/>
+          {errors ? <span className='errorSpan'>{errors}</span> : <ListaMensajes toMap={mensajes}/>}
         </div>
   )
 }

@@ -4,10 +4,12 @@ import { XMarkIcon, CheckIcon, ChevronRightIcon } from '@heroicons/react/24/soli
 
 function ListaPeticiones ({ toMap, route }) {
   const iconToRender = (item) => {
-    if (item.accepted === true) {
+    if (item.estado === 'aceptado') {
       return <CheckIcon className={styles.greenIcon}/>
-    } else if (item.accepted === false) {
+    } else if (item.estado === 'denegado') {
       return <XMarkIcon className={styles.redIcon}/>
+    } else if (item.estado === 'nada') {
+      return <></>
     } else {
       return <ChevronRightIcon className={styles.blackIcon}/>
     }

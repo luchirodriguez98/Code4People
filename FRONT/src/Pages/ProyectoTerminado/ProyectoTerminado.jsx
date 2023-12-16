@@ -3,24 +3,31 @@ import { useForm } from '../../Hooks/useForm'
 import { ChevronLeftIcon } from '@heroicons/react/24/solid'
 import styles from './ProyectoTerminado.module.css'
 import formStyles from '../../Styles/form.module.css'
+import { useContext, useState } from 'react'
+import { ErrorContext } from '../../Context/ErrorContext'
+import { ErrorModal } from '../../Components/ErrorModal/ErrorModal'
 
 function ProyectoTerminado () {
+  const errorContext = useContext(ErrorContext)
+
+  const [errors, setErrors] = useState(null)
+
   const { formValues, reset, handleFormChange } = useForm({
     titulo: '',
     url: ''
   })
 
   const navigate = useNavigate()
-  const { titulo, url } = formValues
 
   const postProyect = async (event) => {
     event.preventDefault()
-    if (titulo === '' || url === '') return
+    const token = localStorage.getItem('token')
 
     const options = {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
       },
       body: JSON.stringify(formValues)
     }
@@ -28,20 +35,29 @@ function ProyectoTerminado () {
     const baseUrl = 'http://localhost:5000'
 
     try {
-      const response = await fetch(`${baseUrl}/proyectoTerminado`, options)
+      const response = await fetch(`${baseUrl}/nuevoAcabado`, options)
       const data = await response.json()
       console.log(data)
-      navigate('realizados')
+      if (!response.ok) {
+        setErrors(data.errors)
+        return
+      }
+      if (response.ok && response.status === 200) {
+        navigate('/proyectos/realizados')
+        reset({
+          titulo: '',
+          descripcion: ''
+        })
+      }
     } catch (error) {
       console.error('Error:', error.message)
+      setErrors('Hubo un problema al procesar la solicitud. Por favor, inténtalo de nuevo más tarde.')
     }
-    reset({
-      titulo: '',
-      url: ''
-    })
   }
+  errorContext.closeModal()
   return (
         <div className={styles.body}>
+          <ErrorModal />
           <NavLink to="/proyectos">
             <div className={styles.backNav}>
               <ChevronLeftIcon className={styles.icon}/>
@@ -58,18 +74,30 @@ function ProyectoTerminado () {
                 id='titulo'
                 placeholder='Escribe el titulo de tu proyecto'
                 value={formValues.titulo}
-                onChange={handleFormChange} className={formStyles.input}
+                onChange={handleFormChange}
+                className={errors?.titulo ? formStyles.invalidInput : undefined}
               />
+              {errors?.titulo && <span>{errors.titulo}</span>}
               <label htmlFor="url">URL</label>
               <input
                 type="text"
                 name="url"
                 id='url'
                 placeholder='Escribe la url de tu pagina'
-                value={formValues.titulo}
-                onChange={handleFormChange} className={formStyles.input}
+                value={formValues.url}
+                onChange={handleFormChange}
+                className={errors?.url ? formStyles.invalidInput : undefined}
               />
-              <div className={formStyles.button}>PUBLICAR PROYECTO</div>
+              {errors?.url && <span>{errors.url}</span>}
+              <button
+                className={formStyles.button}
+                onClick={() => {
+                  errorContext.openModal()
+                  setErrors(null)
+                }}
+              >
+                PUBLICAR PROYECTO
+              </button>
             </form>
           </div>
         </div>

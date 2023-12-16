@@ -2,14 +2,44 @@ import { ChevronLeftIcon } from '@heroicons/react/24/solid'
 import { NavLink } from 'react-router-dom'
 import { ListaProyectos } from '../../Components/ListaProyectos/ListaProyectos'
 import styles from './ProyectosDisponibles.module.css'
-
-const proyectosPorHacer = [
-  { titulo: 'Pagina para abogados', descripcion: 'ndjkfnsdjkfsdjkfndks', autor: 'empresa123', id_proyecto: 1 },
-  { titulo: 'Pagina e-commerce', descripcion: 'ndjkfnsdjkfsdjkfndks', autor: 'empresa13', id_proyecto: 2 },
-  { titulo: 'Pagina de contabilidad', descripcion: 'ndjkfnsdjkfsdjkfndks', autor: 'empresa23', id_proyecto: 5 }
-]
+import { useEffect, useState } from 'react'
 
 function ProyectosDisponibles () {
+  const [proyectos, setProyectos] = useState([])
+  const [errors, setErrors] = useState(null)
+
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    const fetchData = async () => {
+      const options = {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`
+        }
+      }
+      const baseUrl = 'http://localhost:5000'
+
+      try {
+        const response = await fetch(`${baseUrl}/proyectospendientes`, options)
+        const data = await response.json()
+        console.log(data)
+        if (!response.ok) {
+          if (data.error) {
+            setErrors(data.error)
+          } else {
+            setErrors(data.message)
+          }
+          return
+        }
+        setProyectos(data.data)
+      } catch (error) {
+        console.error('Error:', error.message)
+      }
+    }
+    fetchData()
+  }, [])
+  console.log(errors)
   return (
     <div className={styles.body}>
       <NavLink to="/proyectos">
@@ -19,7 +49,7 @@ function ProyectosDisponibles () {
         </div>
       </NavLink>
       <h1 className={styles.title}>Proyectos para realizar</h1>
-      <ListaProyectos toMap={proyectosPorHacer}/>
+      {errors ? <span className='errorSpan'>Hubo un error, recarga la pagina</span> : <ListaProyectos toMap={proyectos}/>}
     </div>
   )
 }

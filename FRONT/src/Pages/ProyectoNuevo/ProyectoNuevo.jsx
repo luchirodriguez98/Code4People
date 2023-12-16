@@ -3,24 +3,31 @@ import { useForm } from '../../Hooks/useForm'
 import styles from './ProyectoNuevo.module.css'
 import formStyles from '../../Styles/form.module.css'
 import { ChevronLeftIcon } from '@heroicons/react/24/solid'
+import { ErrorModal } from '../../Components/ErrorModal/ErrorModal'
+import { useContext, useState } from 'react'
+import { ErrorContext } from '../../Context/ErrorContext'
 
 function ProyectoNuevo () {
+  const errorContext = useContext(ErrorContext)
+
+  const [errors, setErrors] = useState(null)
+
   const { formValues, reset, handleFormChange } = useForm({
     titulo: '',
     descripcion: ''
   })
 
   const navigate = useNavigate()
-  const { titulo, descripcion } = formValues
 
   const postProyect = async (event) => {
     event.preventDefault()
-    console.log('hola')
-    if (titulo === '' || descripcion === '') return
+    const token = localStorage.getItem('token')
+
     const options = {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
       },
       body: JSON.stringify(formValues)
     }
@@ -31,17 +38,27 @@ function ProyectoNuevo () {
       const response = await fetch(`${baseUrl}/nuevoProyecto`, options)
       const data = await response.json()
       console.log(data)
-      navigate('/proyectos/disponibles')
+      if (!response.ok) {
+        setErrors(data.errors)
+        console.log('hola')
+        return
+      }
+      if (response.ok && response.status === 200) {
+        navigate('/proyectos/disponibles')
+        reset({
+          titulo: '',
+          descripcion: ''
+        })
+      }
     } catch (error) {
       console.error('Error:', error.message)
+      setErrors('Hubo un problema al procesar la solicitud. Por favor, inténtalo de nuevo más tarde.')
     }
-    reset({
-      titulo: '',
-      descripcion: ''
-    })
   }
+  errorContext.closeModal()
   return (
-        <div className={StyleSheet.body}>
+        <div className={styles.body}>
+          <ErrorModal />
           <NavLink to="/proyectos">
             <div className={styles.backNav}>
               <ChevronLeftIcon className={styles.icon}/>
@@ -58,8 +75,10 @@ function ProyectoNuevo () {
                 id='titulo'
                 placeholder='Escribe un titulo para tu proyecto'
                 value={formValues.titulo}
-                onChange={handleFormChange} className={formStyles.input}
+                onChange={handleFormChange}
+                className={errors?.titulo ? formStyles.invalidInput : undefined}
               />
+              {errors?.titulo && <span>{errors.titulo}</span>}
               <label htmlFor="url">DESCRIPCION</label>
               <textarea
                 type="text"
@@ -67,9 +86,19 @@ function ProyectoNuevo () {
                 id='descripcion'
                 placeholder='Escribe la descripcion de lo que necesita tu pagina'
                 value={formValues.url}
-                onChange={handleFormChange} className={formStyles.input}
+                onChange={handleFormChange}
+                className={errors?.descripcion ? formStyles.invalidInput : undefined}
               />
-              <div className={formStyles.button}>PUBLICAR NUEVO PROYECTO</div>
+              {errors?.descripcion && <span>{errors.descripcion}</span>}
+              <button
+                className={formStyles.button}
+                onClick={() => {
+                  errorContext.openModal()
+                  setErrors(null)
+                }}
+              >
+                PUBLICAR NUEVO PROYECTO
+              </button>
             </form>
           </div>
         </div>

@@ -2,16 +2,46 @@ import { NavLink } from 'react-router-dom'
 import { ChevronLeftIcon, ArrowUturnRightIcon } from '@heroicons/react/24/solid'
 import styles from './MensajesRecibidos.module.css'
 import { ListaMensajes } from '../../Components/ListaMensajes/ListaMensajes'
-
-const mensajesRecibidos = [
-  { usuario: 123, mensaje: 'Hola recibi tu solicitud' },
-  { usuario: 12, mensaje: 'Hola me gustaria que el CCS tenga estos colores' },
-  { usuario: 3, mensaje: 'Hola gracias por seleccionarme. Tenias alguna idea?' }
-]
+import { useEffect, useState } from 'react'
 
 const icon = <ArrowUturnRightIcon className={styles.icon}/>
 
 function MensajesRecibidos () {
+  const [mensajes, setMensajes] = useState([])
+  const [errors, setErrors] = useState(null)
+
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    const fetchData = async () => {
+      const options = {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`
+        }
+      }
+      const baseUrl = 'http://localhost:5000'
+
+      try {
+        const response = await fetch(`${baseUrl}/mails/recibidos`, options)
+        const data = await response.json()
+        console.log(data)
+        if (!response.ok) {
+          if (data.error) {
+            setErrors(data.error)
+          } else {
+            setErrors(data.message)
+          }
+          return
+        }
+        setMensajes(data.data)
+      } catch (error) {
+        console.error('Error:', error.message)
+      }
+    }
+    fetchData()
+  }, [])
+  console.log(mensajes)
   return (
         <div className={styles.body}>
           <NavLink to="/mensajes">
@@ -21,7 +51,7 @@ function MensajesRecibidos () {
             </div>
           </NavLink>
           <h1 className={styles.title}>Mensajes recibidos</h1>
-          <ListaMensajes toMap={mensajesRecibidos} icon={icon}/>
+          {errors ? <span className='errorSpan'>{errors}</span> : <ListaMensajes toMap={mensajes} icon={icon}/>}
         </div>
   )
 }

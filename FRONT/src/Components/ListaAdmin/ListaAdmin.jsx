@@ -5,6 +5,7 @@ function ListaAdmin ({ toMap, toDelete }) {
   return (
     <div className={styles.adminList}>
       {toMap.map(item => {
+        console.log(item.id_usuario)
         return (
           <span key={item.id_usuario ? item.id_usuario : item.id_proyecto} className={styles.item}>
             <div className={styles.text}>

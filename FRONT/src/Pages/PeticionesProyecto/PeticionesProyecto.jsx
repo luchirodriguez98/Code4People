@@ -1,18 +1,49 @@
+import { useEffect, useState } from 'react'
 import { ListaPeticiones } from '../../Components/ListaPeticiones/ListaPeticiones'
 import styles from './PeticionesProyecto.module.css'
 
-const peticionesUsuariosArray = [
-  { usuario: 'Lucia', id_usuario: 1, id_peticion: 234, titulo: 'ndfjknfsdjk', descripcion: 'njdsknfsdjkfdjnfdjknfsdjkfndjfnsdj' },
-  { usuario: 'Luis', id_usuario: 3, id_peticion: 456, titulo: 'ndfjknfsdjk', descripcion: 'njdsknfsdjkfdjnfdjknfsdjkfndjfnsdj' },
-  { usuario: 'Juan', id_usuario: 5, id_peticion: 332, titulo: 'ndfjknfsdjk', descripcion: 'njdsknfsdjkfdjnfdjknfsdjkfndjfnsdj' },
-  { usuario: 'Daniel', id_usuario: 7, id_peticion: 768, titulo: 'ndfjknfsdjk', descripcion: 'njdsknfsdjkfdjnfdjknfsdjkfndjfnsdj' }
-]
-
 function PeticionesProyecto () {
+  const [peticiones, setPeticiones] = useState([])
+  const [errors, setErrors] = useState(null)
+
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    const fetchData = async () => {
+      const options = {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`
+        }
+      }
+      const baseUrl = 'http://localhost:5000'
+
+      try {
+        const response = await fetch(`${baseUrl}/peticiones`, options)
+        const data = await response.json()
+        console.log(data)
+        if (!response.ok) {
+          if (data.error) {
+            setErrors(data.error)
+          } else {
+            setErrors(data.message)
+          }
+          return
+        }
+        setPeticiones(data.data)
+      } catch (error) {
+        console.error('Error:', error.message)
+      }
+    }
+    fetchData()
+  }, [])
+  console.log(peticiones)
+
   return (
     <div className={styles.body}>
       <h1 className={styles.title}>Peticiones realizadas a tu proyecto</h1>
-      <ListaPeticiones toMap={peticionesUsuariosArray} route={'/peticion/proyecto/'}/>
+      <h2 className={styles.titleProject}>Proyecto: E-Commerce</h2>
+      {errors ? <span className='errorSpan'>Hubo un error, recarga la pagina</span> : <ListaPeticiones toMap={peticiones} route={'/peticion/proyecto/'}/>}
     </div>
   )
 }
