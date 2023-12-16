@@ -3,6 +3,7 @@ import { useUserContext } from '../Hooks/useUserContext.js'
 
 function PrivateRoute ({ hasRole: role, path = '/' }) {
   const { usuario, logOut } = useUserContext()
+
   const isExpired = usuario?.exp < Date.now()
 
   if (!usuario || isExpired) {

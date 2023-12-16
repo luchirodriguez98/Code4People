@@ -49,16 +49,19 @@ function Login () {
         setErrors(data.error)
         return
       }
-      localStorage.setItem('token', data.token)
-      localStorage.setItem('userInfo', JSON.stringify(data.user))
-      userContext.logIn(data.user)
-      navigate('/cuenta')
-      reset({
-        email: '',
-        pass: ''
-      })
+      if (response.ok && response.status === 200) {
+        localStorage.setItem('token', data.data.token)
+        localStorage.setItem('userInfo', JSON.stringify(data.data.user))
+        userContext.logIn(data.data.user)
+        navigate('/cuenta')
+        reset({
+          email: '',
+          pass: ''
+        })
+      }
     } catch (error) {
       console.error(error)
+      setErrors('Hubo un problema al procesar la solicitud. Por favor, inténtalo de nuevo más tarde.')
     }
   }
   return (
