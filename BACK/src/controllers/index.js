@@ -11,9 +11,11 @@ import { addProyectoNuevo } from './proyectos/addProyectoNuevo.js';
 import { addProyectoAcabado } from './proyectos/addProyectoAcabado.js';
 import { addPeticion } from './peticiones/addPeticion.js';
 import { getMailsbyDestino } from './correos/getMailbyDestino.js';
-import { getMailsbyOrigen } from './users/getMailsbyOrigen.js';
+import { getMailsbyOrigen } from './correos/getMailsbyOrigen.js';
 import { addMail } from './correos/addMail.js';
 import { deleteUserById } from './users/deleteUserById.js';
+import { obtenerEstadoById } from './users/obtenerEstadoById.js';
 
 
-export { addUser, getAllUsers, getUserById, logIn , getAllProyectoARealizar, getAllProyectoARealizarbyId, getAllProyectosAcabados, getPeticiones,getPeticionesUser,addProyectoNuevo, addProyectoAcabado,addPeticion, getMailsbyDestino, getMailsbyOrigen, addMail, deleteUserById  };
+
+export { addUser, getAllUsers, getUserById, logIn , getAllProyectoARealizar, getAllProyectoARealizarbyId, getAllProyectosAcabados, getPeticiones,getPeticionesUser,addProyectoNuevo, addProyectoAcabado,addPeticion, getMailsbyDestino, getMailsbyOrigen, addMail, deleteUserById,  obtenerEstadoById  };

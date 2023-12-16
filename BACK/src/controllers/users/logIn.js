@@ -25,10 +25,14 @@ async function logIn (req, res, next) {
     try {
         // Primero nos aseguramos de que el usuario exista en la BBDD
         const [user] = await sendQuery(query.checkEmail, [email]);
+        
         console.log(user);
-        if (!user) {
+        if (!user) { 
         return next(new HttpError(400, 'Email y/o contraseña incorrectos.'));
-    }
+    }   
+        if (user.estado === 0) { 
+        return next(new HttpError(400, 'Este usuario esta eliminado'));
+    } 
 
     // Comparamos las contraseñas
     const isValidPassword = await bcrypt.compare(realPassword, user.pass);
@@ -36,6 +40,7 @@ async function logIn (req, res, next) {
     if (!isValidPassword) {
         return next(new HttpError(400, 'Email y/o contraseña incorrectos.'));
     }
+    
 
     //* Tenemos luz verde, el usuario se ha logeado correctamente, así que creamos un nuevo token con la info que queremos que el usuario se guarde
     const infoToUser = { id: user.id_usuario, role: user.role, nombre: user.nombre };

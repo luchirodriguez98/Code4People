@@ -18,7 +18,9 @@ const query = {
   //Ver todos los colaboradores
   getAllNormalUsers: 'SELECT * FROM usuarios WHERE role = "usuario"',
   //Eliminar usuario
-  deleteUserById: 'DELETE FROM usuarios WHERE id_usuario= ?',
+  deleteUserById: 'UPDATE usuarios SET estado = false WHERE id_usuario = ?',
+  //Recoje el estado del usuario 
+  obtenerEstadoById:'SELECT estado FROM usuarios WHERE email = ?',
 
   //=================PROYECTOS=============================
 
@@ -33,7 +35,8 @@ const query = {
   getAllProyectoARealizarbyId:'SELECT p.titulo, p.descripcion, u.nombre as autor FROM proyectos_a_realizar p JOIN usuarios u ON p.autor = u.id_usuario WHERE id_proyecto = ?; ',
   //Ver todas las peticiones segun el usuario conectado
   getAllProyectosAcabados:'SELECT titulo, url FROM proyectos_acabados',
-
+  //Eliminar proyecto acabado de usuario
+  deleteProyecto: 'DELETE FROM proyectos_acabados WHERE autor =  ?',
   //==================PETICIONES===========================
 
 
