@@ -3,8 +3,8 @@ import { query } from '../../db/queries.js';
 
 async function getPeticiones (req, res) {
     //const { id: idUsuarioConectado } = req.user;
-
-    const results = await sendQuery(query.getPeticiones);
+    const { id: idUsuarioConectado } = req.user;
+    const results = await sendQuery(query.getPeticiones,idUsuarioConectado);
     
     res.send({
     ok: true,

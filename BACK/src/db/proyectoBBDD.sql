@@ -61,16 +61,23 @@ CREATE TABLE IF NOT EXISTS peticiones(
 id_peticion int auto_increment,
 id_proyecto INT,
 autor INT,
-titulo VARCHAR (20),
-descripcion VARCHAR (500),
+titulo VARCHAR (500),
+descripcion TEXT,
 estado ENUM('aceptado','denegado','nada') DEFAULT 'nada', 
 PRIMARY KEY (id_peticion),
 FOREIGN KEY (autor) REFERENCES usuarios(id_usuario),
 FOREIGN KEY (id_proyecto) REFERENCES proyectos_a_realizar(id_proyecto)
 );
--- Valor de prueba 
- -- INSERT INTO peticiones(proyecto,autor,titulo,descripcion) VALUES (1,2,'Sobre tu calculadora','Hola, Soy un programador FullStack interesado en hacer tu proyecto'); 
 
+SELECT p.*
+FROM proyectos_a_realizar pr
+LEFT JOIN peticiones p ON pr.id_proyecto = p.id_proyecto
+WHERE pr.autor = 15;
+
+
+-- Valor de prueba 
+--  INSERT INTO peticiones(id_proyecto,autor,titulo,descripcion) VALUES (1,3,'Sobre tu calculadora','Hola, Soy un programador FullStack interesado en hacer tu proyecto'); 
+-- INSERT INTO peticiones(id_proyecto,autor,titulo,descripcion) VALUES(2,3,'que','hsjkhjks');
  -- Tabla Mail
  create table if not exists mails(
 	id_mail int auto_increment,
@@ -81,12 +88,31 @@ FOREIGN KEY (id_proyecto) REFERENCES proyectos_a_realizar(id_proyecto)
     FOREIGN KEY (destinatario) REFERENCES usuarios(id_usuario),
     FOREIGN KEY (origen) REFERENCES usuarios(id_usuario)
     );
+    
+    -- Tabla mensajes chat en linea
+    
+     create table if not exists mensajes(
+	id_mensaje int auto_increment,
+    mensaje VARCHAR(2000),
+    id_usuario_envia INT,
+    id_usuario_recibe INT,
+    PRIMARY KEY (id_mensaje),
+    FOREIGN KEY (id_usuario_envia) REFERENCES usuarios(id_usuario),
+    FOREIGN KEY (id_usuario_recibe) REFERENCES usuarios(id_usuario)
+    );
+    
+
 
 -----------------------------
 -- Añadimos usuarios y roles
 -----------------------------
  -- Ver todos los usuarios
 
+SELECT p.*
+FROM peticiones p
+JOIN proyectos_a_realizar pr ON p.id_proyecto = pr.id_proyecto
+JOIN usuarios u ON pr.autor = u.id_usuario
+WHERE p.id_proyecto = 1;
 
 
     

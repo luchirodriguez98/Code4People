@@ -41,8 +41,9 @@ const query = {
 
 
   //Obtener peticiones
-   addPeticion: 'INSERT INTO peticiones(proyecto,autor,titulo,descripcion) VALUES (?,?,?,?) ',
-   getPeticiones: 'SELECT usuarios.nombre AS nombre_usuario,peticiones.autor, peticiones.id_peticion, peticiones.titulo, peticiones.descripcion FROM peticiones JOIN usuarios ON peticiones.autor = usuarios.id_usuario',
+   addPeticion: 'INSERT INTO peticiones(id_proyecto,autor,titulo,descripcion) VALUES (?,?,?,?) ',
+   //Obtener peticiones hechas a tu proyecto del usuario conectado 
+   getPeticiones: 'SELECT p.* FROM proyectos_a_realizar pr LEFT JOIN peticiones p ON pr.id_proyecto = p.id_proyecto WHERE pr.autor = ?',
   //Obtener peticiones hechas por el usuario
    getPeticionesUser: 'SELECT id_peticion,titulo,estado FROM peticiones where autor = ?',
 

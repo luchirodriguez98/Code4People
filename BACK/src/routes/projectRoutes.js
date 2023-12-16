@@ -24,11 +24,11 @@ projectRouter.post('/nuevoProyecto', userAuth, addProyectoNuevo);
 projectRouter.post('/nuevoAcabado',userAuth,addProyectoAcabado);
 projectRouter.post('/nuevaPeticion/:proyectoId',userAuth, addPeticion);
 //GET
-projectRouter.get('/proyectospendientes', userAuth, isUsuario, getAllProyectoARealizar);
-projectRouter.get('/proyectospendientes/:proyectoId', userAuth, isUsuario, getAllProyectoARealizarbyId);
+projectRouter.get('/proyectospendientes', userAuth,  getAllProyectoARealizar);
+projectRouter.get('/proyectospendientes/:proyectoId', userAuth, getAllProyectoARealizarbyId);
 projectRouter.get('/proyectos', getAllProyectosAcabados);
-projectRouter.get('/peticiones', userAuth, isEmpresa, getPeticiones);
-projectRouter.get('/peticiones/:authorId', userAuth, isEmpresa, getPeticionesUser);
+projectRouter.get('/peticiones', userAuth,  getPeticiones);
+projectRouter.get('/peticiones/:authorId', userAuth,  getPeticionesUser);
 
 
 export { projectRouter }
