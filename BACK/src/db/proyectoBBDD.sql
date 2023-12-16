@@ -20,9 +20,13 @@ create table if not exists usuarios(
     email varchar(255) unique not null,
     pass varchar(255) not null,
     role ENUM('admin','empresa','usuario') DEFAULT 'usuario',
+	estado BOOLEAN DEFAULT true,
     confirmation_code varchar(50) DEFAULT NULL,
     PRIMARY KEY (id_usuario)
 );
+
+
+
 -- Proyecto
 create table if not exists proyectos_acabados(
 	id_proyecto int auto_increment,
@@ -84,18 +88,7 @@ FOREIGN KEY (id_proyecto) REFERENCES proyectos_a_realizar(id_proyecto)
  -- Ver todos los usuarios
 
 
--- SELECT * from usuarios;
 
-SELECT * FROM usuarios WHERE role = "empresa";
--- INSERT INTO usuarios(nombre,email,pass,role) VALUES ('dani','dani@adm.com','1234','admin');
--- INSERT INTO usuarios(nombre,email,pass,role) VALUES ('luis','luis@gmail.com','1234','admin'); 
--- INSERT INTO usuarios(nombre,email,pass,role) VALUES ('lucia','lucia@gmail.com','1234','admin');
--- INSERT INTO usuarios(nombre,email,pass,role) VALUES ('esplai','esplai@gmail.com','1234','empresa');
--- INSERT INTO usuarios(nombre,email,pass,role) VALUES ('usuario','user@gmail.com','1234','usuario'); 
-
-SELECT * from usuarios;
--- Añadimos peticiones de prueba
--- INSERT INTO proyectos_a_realizar(titulo, descripcion,autor) VALUES ('Calculadora','Necesito una web que sea una calculadora, que se vea simple, solo necesito que tenga sumar, restar, multiplicar y dividir','5');
- -- Ver todas las peticiones
+    
 
 
