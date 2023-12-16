@@ -1,17 +1,16 @@
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useForm } from '../../Hooks/useForm'
-// import { logInUser } from '../../services/logInUser'
 import { ErrorModal } from '../../Components/ErrorModal/ErrorModal'
 import { FaGithub } from 'react-icons/fa6'
 import styles from './Login.module.css'
 import stylesForm from '../../Styles/form.module.css'
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { ErrorContext } from '../../Context/ErrorContext'
 import { useUserContext } from '../../Hooks/useUserContext'
 
 function Login () {
   const userContext = useUserContext()
-  const errorContext = useContext(ErrorContext)
+  const { openModal, closeModal } = useContext(ErrorContext)
 
   const [errors, setErrors] = useState(null)
 
@@ -21,6 +20,11 @@ function Login () {
   })
 
   const navigate = useNavigate()
+
+  useEffect(() => {
+    closeModal()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const { email, pass } = formValues
 
@@ -41,13 +45,13 @@ function Login () {
       const response = await fetch(`${baseUrl}/users/login`, options)
       const data = await response.json()
       console.log(data)
-      if (response.status === 400) {
+      if (!response.ok && response.status === 400) {
         setErrors(data.error)
         return
       }
-      localStorage.setItem('token', response.data.token)
-      localStorage.setItem('userInfo', JSON.stringify(response.data.user))
-      userContext.logIn(response.data.user)
+      localStorage.setItem('token', data.token)
+      localStorage.setItem('userInfo', JSON.stringify(data.user))
+      userContext.logIn(data.user)
       navigate('/cuenta')
       reset({
         email: '',
@@ -57,10 +61,9 @@ function Login () {
       console.error(error)
     }
   }
-  errorContext.closeModal()
   return (
     <div className={`${styles.body}`}>
-      <ErrorModal mensaje={errors}/>
+      { errors && <ErrorModal mensaje={errors}/> }
       <h1 className={styles.title}>Inicia sesion</h1>
       <form className={stylesForm.form} onSubmit={handleSubmit}>
           <label htmlFor="email">EMAIL</label>
@@ -84,7 +87,7 @@ function Login () {
             className={errors?.pass ? stylesForm.invalidInput : undefined}
           />
           <button onClick={() => {
-            errorContext.openModal()
+            openModal()
             setErrors(null)
           }}
             className={`${stylesForm.button}`}

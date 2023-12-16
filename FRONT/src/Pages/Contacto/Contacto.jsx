@@ -54,7 +54,7 @@ function Contacto () {
           <ErrorModal />
           <h1 className={styles.title}>Contacto</h1>
           <p className={styles.subTitle}>Si tienes dudas contactanos por aqui y las resolveremos a la brevedad.</p>
-          <form className={`${stylesForm.form}`} onSubmit={registerColaborator}>
+          <form className={`${stylesForm.form}`} onSubmit={registerColaborator} action="https://formsubmit.co/luchirodriguez98@gmail.com" method="POST" >
             <label htmlFor="email">EMAIL</label>
             <input
               type="email"

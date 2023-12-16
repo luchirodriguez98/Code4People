@@ -10,7 +10,7 @@ function Cuenta () {
 
   return (
     <div className={styles.body}>
-        <h1 className={styles.title}>Mi Cuenta</h1>
+        <h1 className={styles.title}>{`Hola ${context.usuario?.nombre}!`}</h1>
         <p className={styles.subTitle}>Aquí tienes acceso a todo lo que necesitas para administrar tu cuenta y aprovechar al máximo nuestra plataforma.</p>
         <span className={styles.grid}>
           <NavLink to="/mensajes">
