@@ -28,7 +28,7 @@ async function addProyectoNuevo (req, res, next) {
     }
 
 
-    res.send({
+    res.status(200).send({
         ok: true,
         error: null,
         data: null,
