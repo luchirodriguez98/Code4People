@@ -8,7 +8,7 @@ function ListaMensajes ({ toMap, icon }) {
         return (
           <span key ={item.usuario} className={styles.messageItem}>
             <div className={styles.text}>
-              <p>USUARIO {item.usuario}</p>
+              <p>USUARIO {item.usuario ? item.usuario : item.destinatario}</p>
               <p>{item.mensaje}</p>
             </div>
             <NavLink to="/mensajes/nuevo" state={item.usuario}>

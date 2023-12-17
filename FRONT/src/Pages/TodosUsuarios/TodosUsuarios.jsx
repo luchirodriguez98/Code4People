@@ -56,16 +56,15 @@ function TodosUsuarios () {
     try {
       const response = await fetch(`${baseUrl}/users/delete/${id}`, options)
       const data = await response.json()
-      console.log(data.data)
+      console.log(data)
       if (!response.ok) {
         if (data.error) {
           setErrors(data.error)
         } else {
           setErrors(data.message)
         }
-        return
       }
-      setUsuarios(data.data)
+      window.location.reload()
     } catch (error) {
       console.error('Error:', error.message)
     }

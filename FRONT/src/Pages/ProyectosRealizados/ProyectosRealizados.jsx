@@ -1,10 +1,12 @@
-import { ChevronLeftIcon } from '@heroicons/react/24/solid'
 import { NavLink } from 'react-router-dom'
 import { ListaProyectos } from '../../Components/ListaProyectos/ListaProyectos'
 import styles from './ProyectosRealizados.module.css'
 import { useEffect, useState } from 'react'
+import { useUserContext } from '../../Hooks/useUserContext'
 
 function ProyectosRealizados () {
+  const userContext = useUserContext()
+
   const [proyectos, setProyectos] = useState([])
   const [errors, setErrors] = useState(null)
 
@@ -33,14 +35,18 @@ function ProyectosRealizados () {
   }, [])
   return (
     <div className={styles.body}>
-      <NavLink to="/proyectos">
-        <div className={styles.backNav}>
-          <ChevronLeftIcon className={styles.icon}/>
-          <p>Proyectos</p>
-        </div>
-      </NavLink>
       <h1 className={styles.title}>Proyectos realizados</h1>
+      {userContext.usuario &&
+        <NavLink to="/proyectos/publicarNuevo" className={styles.nuevoProy}>
+          <p>AÑADE UN NUEVO PROYECTO</p>
+        </NavLink>
+      }
       {errors ? <span className='errorSpan'>Hubo un error, recarga la pagina</span> : <ListaProyectos toMap={proyectos}/>}
+      {/* <NavLink to="/proyectos" className={styles.hrefIcon}>
+        <div className={styles.containerIcon}>
+          <PlusIcon className={styles.icon}/>
+        </div>
+      </NavLink> */}
     </div>
   )
 }

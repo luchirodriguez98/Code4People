@@ -47,10 +47,6 @@ function Proyectos () {
             <li>Proyectos ya realizados</li>
             <ChevronRightIcon className={styles.arrow}/>
           </NavLink>
-          <NavLink to="/proyectos/publicarNuevo" className={styles.item}>
-            <li>Publicar nuevo proyecto</li>
-            <ChevronRightIcon className={styles.arrow}/>
-          </NavLink>
           <NavLink to="/proyectos/publicarTerminado" className={styles.item}>
             <li>Publicar proyecto terminado</li>
             <ChevronRightIcon className={styles.arrow}/>
@@ -71,14 +67,14 @@ function Proyectos () {
             <li>Proyectos para realizar</li>
             <ChevronRightIcon className={styles.arrow}/>
           </NavLink>
-          <NavLink to="/proyectos/publicarNuevo" className={styles.item}>
+          {/* <NavLink to="/proyectos/publicarNuevo" className={styles.item}>
             <li>Publicar nuevo proyecto</li>
             <ChevronRightIcon className={styles.arrow}/>
           </NavLink>
           <NavLink to="/proyectos/publicarTerminado" className={styles.item}>
             <li>Publicar proyecto terminado</li>
             <ChevronRightIcon className={styles.arrow}/>
-          </NavLink>
+          </NavLink> */}
         </ul>
       </div>
     )

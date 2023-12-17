@@ -28,6 +28,7 @@ import { TodosUsuarios } from '../TodosUsuarios/TodosUsuarios'
 import { PrivateRoute } from '../../Routes/PrivateRoute'
 import { PublicRoute } from '../../Routes/PublicRoute'
 import { ErrorContextProvider } from '../../Context/ErrorContext'
+import { PeticionesProyectoAprobadas } from '../PeticionProyectoAprobadas/PeticionProyectoAprobadas'
 
 const AppRoutes = () => {
   const routes = useRoutes([
@@ -41,7 +42,13 @@ const AppRoutes = () => {
     },
     {
       path: '/proyectos',
-      element: <Proyectos />
+      element: <PrivateRoute hasRole='admin' />,
+      children: [
+        {
+          path: '',
+          element: <Proyectos />
+        }
+      ]
     },
     {
       path: '/proyectos/realizados',
@@ -178,6 +185,16 @@ const AppRoutes = () => {
         {
           path: '',
           element: <PeticionesProyecto />
+        }
+      ]
+    },
+    {
+      path: '/peticion/proyecto/aprobadas',
+      element: <PrivateRoute hasRole={['empresa', 'admin']} path='/cuenta'/>,
+      children: [
+        {
+          path: '',
+          element: <PeticionesProyectoAprobadas />
         }
       ]
     },

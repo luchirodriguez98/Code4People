@@ -40,8 +40,36 @@ function TodosProyectos () {
     fetchData()
   }, [])
 
-  const eliminarProyecto = () => {
-    console.log('hola')
+  const eliminarProyecto = async (id) => {
+    console.log(id)
+    const token = localStorage.getItem('token')
+
+    const options = {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+      }
+    }
+
+    const baseUrl = 'http://localhost:5000'
+
+    try {
+      const response = await fetch(`${baseUrl}/delete/${id}`, options)
+      const data = await response.json()
+      console.log(data.data)
+      if (!response.ok) {
+        if (data.error) {
+          setErrors(data.error)
+        } else {
+          setErrors(data.message)
+        }
+        return
+      }
+      window.location.reload()
+    } catch (error) {
+      console.error('Error:', error.message)
+    }
   }
 
   return (

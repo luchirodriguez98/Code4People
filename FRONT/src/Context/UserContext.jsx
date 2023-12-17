@@ -10,7 +10,7 @@ const UserContextProvider = ({ children }) => {
     }
     return userInfo
   })
-
+  console.log(usuario)
   const buttonToRender = usuario ? 'MI CUENTA' : 'IDENTIFICATE'
 
   const logIn = (userLogin) => {

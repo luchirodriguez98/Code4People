@@ -14,15 +14,26 @@
   max-width: 370px;
   font-size: var(--font-size-sm);
 }
-.grid{
+.grid, .gridAdmin{
   display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
   gap: 40px;
   margin-top: 25px;
 }
+
+.grid a, .gridAdmin a{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.grid a:last-child{
+  grid-column: span 2;
+}
 .button{
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 70px;
@@ -30,7 +41,11 @@
   border: 1px solid var(--primary-color);
   border-radius: 50%;
 }
-.button *{
+.textButton{
+  margin-top: 10px;
+  color: var(--primary-color);
+}
+.button *, .lastButton *{
   width: 50px;
   color: var(--primary-color);
 }
@@ -51,6 +66,14 @@
     margin-top: 70px;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr;
+  }
+  .gridAdmin{
+    margin-top: 70px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+  }
+  .grid a:last-child, .gridAdmin a:last-child{
+    grid-column: span 1;
   }
   .button{
     width: 80px;

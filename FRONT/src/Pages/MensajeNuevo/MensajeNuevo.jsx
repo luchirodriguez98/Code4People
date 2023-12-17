@@ -15,7 +15,7 @@ function MensajeNuevo () {
 
   const { formValues, reset, handleFormChange } = useForm({
     destinatario: `USUARIO ${navigation.state}`,
-    cuerpo: ''
+    mensaje: ''
   })
 
   const navigate = useNavigate()
@@ -46,7 +46,7 @@ function MensajeNuevo () {
       if (response.ok && response.status === 200) {
         navigate('/mensajes/enviados')
         reset({
-          cuerpo: ''
+          mensaje: ''
         })
       }
     } catch (error) {
@@ -76,10 +76,10 @@ function MensajeNuevo () {
             value={formValues.destinatario}
             onChange={handleFormChange}
           />
-          <label htmlFor="cuerpo"></label>
+          <label htmlFor="mensaje"></label>
           <textarea
-            name="cuerpo"
-            id="cuerpo"
+            name="mensaje"
+            id="mensaje"
             cols="30"
             rows="10"
             value={formValues.cuerpo}

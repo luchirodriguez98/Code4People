@@ -1,13 +1,17 @@
 import { useEffect, useState } from 'react'
-import { ListaPeticiones } from '../../Components/ListaPeticiones/ListaPeticiones'
+import { ListaPeticionesEmpresa } from '../../Components/ListaPeticiones/ListaPeticionesEmpresa'
 import styles from './PeticionesProyecto.module.css'
+import { NavLink } from 'react-router-dom'
 
 function PeticionesProyecto () {
   const [peticiones, setPeticiones] = useState([])
   const [errors, setErrors] = useState(null)
 
+  const peticionesAprobadas = peticiones.includes(peticiones.estado === true)
+
   useEffect(() => {
     const token = localStorage.getItem('token')
+
     const fetchData = async () => {
       const options = {
         method: 'GET',
@@ -42,8 +46,11 @@ function PeticionesProyecto () {
   return (
     <div className={styles.body}>
       <h1 className={styles.title}>Peticiones realizadas a tu proyecto</h1>
-      <h2 className={styles.titleProject}>Proyecto: E-Commerce</h2>
-      {errors ? <span className='errorSpan'>Hubo un error, recarga la pagina</span> : <ListaPeticiones toMap={peticiones} route={'/peticion/proyecto/'}/>}
+      <NavLink to='/peticion/proyecto/aprobadas' state={peticionesAprobadas}>
+        <p className={styles.peticionesAprobadas}>PETICIONES QUE HAS APROBADO</p>
+      </NavLink>
+      <h2 className={styles.titleProject}>{peticiones[0]?.titulo_proyecto}</h2>
+      {errors ? <span className='errorSpan'>Hubo un error, recarga la pagina</span> : <ListaPeticionesEmpresa toMap={peticiones} route={'/peticion/proyecto/'}/>}
     </div>
   )
 }

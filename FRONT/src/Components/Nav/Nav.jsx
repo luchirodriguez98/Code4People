@@ -14,6 +14,16 @@ const Nav = () => {
 
   const context = useUserContext()
 
+  const route = () => {
+    if (context.usuario === null || (context.usuario && context.usuario.role === 'empresa')) {
+      return '/proyectos/realizados'
+    } else if (context.usuario && context.usuario.role === 'usuario') {
+      return '/proyectos/disponibles'
+    } else if (context.usuario && context.usuario.role === 'admin') {
+      return '/proyectos'
+    }
+  }
+
   return (
         <nav className={`${styles.nav}`}>
             {/* parte derecha */}
@@ -42,17 +52,9 @@ const Nav = () => {
                         <p>QUIENES SOMOS</p>
                     </NavLink>
                 </li>
-                {/* <li className={`${styles.listItem}`}>
-                    <NavLink
-                        to="/planes"
-                        className={location === '/planes' ? `${styles.navLinkActive}` : `${styles.navLink}`}
-                    >
-                        <p>PLANES</p>
-                    </NavLink>
-                </li> */}
                 <li className={`${styles.listItem}`}>
                     <NavLink
-                        to="/proyectos"
+                        to={route()}
                         className={location === '/proyectos' ? `${styles.navLinkActive}` : `${styles.navLink}`}
                     >
                         <p>PROYECTOS</p>
@@ -90,12 +92,7 @@ const Nav = () => {
                                 </NavLink>
                             </li>
                             <li onClick={toggleModal}>
-                                <NavLink to="/planes">
-                                    <p>PLANES</p>
-                                </NavLink>
-                            </li>
-                            <li onClick={toggleModal}>
-                                <NavLink to="/proyectos">
+                                <NavLink to={route()}>
                                     <p>PROYECTOS</p>
                                 </NavLink>
                             </li>

@@ -1,6 +1,5 @@
-import { NavLink, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useForm } from '../../Hooks/useForm'
-import { ChevronLeftIcon } from '@heroicons/react/24/solid'
 import styles from './ProyectoTerminado.module.css'
 import formStyles from '../../Styles/form.module.css'
 import { useContext, useState } from 'react'
@@ -58,12 +57,6 @@ function ProyectoTerminado () {
   return (
         <div className={styles.body}>
           <ErrorModal />
-          <NavLink to="/proyectos">
-            <div className={styles.backNav}>
-              <ChevronLeftIcon className={styles.icon}/>
-              <p>Proyectos</p>
-            </div>
-          </NavLink>
           <h1 className={styles.title}>Publicar proyecto terminado</h1>
           <div className={styles.container}>
             <form className={formStyles.form} onSubmit={postProyect}>

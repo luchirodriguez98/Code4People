@@ -1,32 +1,53 @@
 import { NavLink } from 'react-router-dom'
-import { ChatBubbleLeftRightIcon, ClipboardIcon, ArrowRightOnRectangleIcon } from '@heroicons/react/24/solid'
+import { ChatBubbleLeftRightIcon, ClipboardIcon, ArrowRightOnRectangleIcon, UserIcon, BriefcaseIcon } from '@heroicons/react/24/solid'
 import styles from './Cuenta.module.css'
 import { useUserContext } from '../../Hooks/useUserContext'
 
 function Cuenta () {
-  const context = useUserContext()
+  const userContext = useUserContext()
 
-  const accountIsColab = context.usuario && context.usuario.role === 'usuario' ? '/peticion/realizadas' : '/peticion/proyecto'
+  const accountIsColab = userContext.usuario && userContext.usuario.role === 'usuario' ? '/peticion/realizadas' : '/peticion/proyecto'
 
   return (
     <div className={styles.body}>
-        <h1 className={styles.title}>{`Hola ${context.usuario?.nombre}!`}</h1>
+        <h1 className={styles.title}>{`Hola ${userContext.usuario?.nombre}!`}</h1>
         <p className={styles.subTitle}>Aquí tienes acceso a todo lo que necesitas para administrar tu cuenta y aprovechar al máximo nuestra plataforma.</p>
-        <span className={styles.grid}>
+        <span className={userContext.usuario?.role === 'admin' ? styles.gridAdmin : styles.grid}>
           <NavLink to="/mensajes">
             <div className={styles.button}>
               <ChatBubbleLeftRightIcon />
             </div>
+            <p className={styles.textButton}>MENSAJES</p>
           </NavLink>
+          {(userContext.usuario.role === 'empresa' || 'usuario') &&
           <NavLink to={accountIsColab}>
             <div className={styles.button}>
               <ClipboardIcon />
             </div>
+            <p className={styles.textButton}>PETICIONES</p>
           </NavLink>
+          }
+          {userContext.usuario?.role === 'admin' &&
+            <>
+              <NavLink to='/admin/proyectos'>
+                <div className={styles.button}>
+                  <BriefcaseIcon />
+                </div>
+                <p className={styles.textButton}>PROYECTOS</p>
+              </NavLink>
+              <NavLink to="/admin/usuarios">
+                <div className={styles.button}>
+                  <UserIcon />
+                </div>
+                <p className={styles.textButton}>USUARIOS</p>
+              </NavLink>
+            </>
+          }
           <NavLink to="/">
-            <div className={styles.button} onClick={() => context.logOut()}>
+            <div className={styles.button} onClick={() => userContext.logOut()}>
               <ArrowRightOnRectangleIcon />
             </div>
+            <p className={styles.textButton}>CERRAR SESION</p>
           </NavLink>
         </span>
     </div>
