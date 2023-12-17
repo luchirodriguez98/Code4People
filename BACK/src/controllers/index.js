@@ -15,7 +15,11 @@ import { getMailsbyOrigen } from './correos/getMailsbyOrigen.js';
 import { addMail } from './correos/addMail.js';
 import { deleteUserById } from './users/deleteUserById.js';
 import { obtenerEstadoById } from './users/obtenerEstadoById.js';
+import { deleteProyectobyId } from './proyectos/deleteProyectoById.js';
+import { aceptarPeticion } from './proyectos/aceptarPeticion.js';
+import { denegarPeticion } from './proyectos/denegarPeticion.js';
+import { neutrarPeticion } from './proyectos/neutrarPeticion.js';
 
 
 
-export { addUser, getAllUsers, getUserById, logIn , getAllProyectoARealizar, getAllProyectoARealizarbyId, getAllProyectosAcabados, getPeticiones,getPeticionesUser,addProyectoNuevo, addProyectoAcabado,addPeticion, getMailsbyDestino, getMailsbyOrigen, addMail, deleteUserById,  obtenerEstadoById  };
+export { addUser, getAllUsers, getUserById, logIn , getAllProyectoARealizar, getAllProyectoARealizarbyId, getAllProyectosAcabados, getPeticiones,getPeticionesUser,addProyectoNuevo, addProyectoAcabado,addPeticion, getMailsbyDestino, getMailsbyOrigen, addMail, deleteUserById,  obtenerEstadoById, deleteProyectobyId, aceptarPeticion, denegarPeticion, neutrarPeticion };

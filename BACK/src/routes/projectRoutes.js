@@ -15,7 +15,11 @@ import {
     addProyectoNuevo,
     addProyectoAcabado,
     addPeticion,
-    getPeticiones
+    getPeticiones,
+    deleteProyectobyId,
+    aceptarPeticion,
+    denegarPeticion, 
+    neutrarPeticion
 } from '../controllers/index.js';
 
 const projectRouter = express.Router();
@@ -29,6 +33,12 @@ projectRouter.get('/proyectospendientes/:proyectoId', userAuth, getAllProyectoAR
 projectRouter.get('/proyectos', getAllProyectosAcabados);
 projectRouter.get('/peticiones', userAuth,  getPeticiones);
 projectRouter.get('/peticiones/:authorId', userAuth,  getPeticionesUser);
+//DELETE 
+projectRouter.delete('/delete/:proyectoId',userAuth, deleteProyectobyId);
+//UPDATE, se le llama update pero se utiliza patch
+projectRouter.patch('/peticiones/aceptar/:peticionId',userAuth, aceptarPeticion); //Aceptar petición
+projectRouter.patch('/peticiones/denegar/:peticionId', userAuth, denegarPeticion); //Denegar petición
+projectRouter.patch('/peticiones/neutrar/:peticionId',userAuth, neutrarPeticion); //Neutrar petición
 
 
 export { projectRouter }

@@ -4,7 +4,7 @@ const query = {
 
 
   //Obtener todos los usuarios
-  getAllUsers: 'SELECT * FROM usuarios',
+  getAllUsers: 'SELECT * FROM usuarios WHERE estado = 1',
   //Obtener usuario por id
   getUserById: 'SELECT * FROM usuarios WHERE id_usuario = ?',
   // Añadir usuario admin
@@ -36,14 +36,17 @@ const query = {
   //Ver todas las peticiones segun el usuario conectado
   getAllProyectosAcabados:'SELECT titulo, url FROM proyectos_acabados',
   //Eliminar proyecto acabado de usuario
-  deleteProyecto: 'DELETE FROM proyectos_acabados WHERE autor =  ?',
+  deleteProyectobyId: 'DELETE FROM proyectos_acabados WHERE id_proyecto =  ?',
+  aceptarPeticion: 'UPDATE peticiones SET estado = "aceptado" WHERE id_peticion = ?',
+  denegarPeticion: 'UPDATE peticiones SET estado = "denegado" WHERE id_peticion = ?',
+  neutrarPeticion: 'UPDATE peticiones SET estado = "nada" WHERE id_peticion = ?',
   //==================PETICIONES===========================
 
 
   //Obtener peticiones
    addPeticion: 'INSERT INTO peticiones(id_proyecto,autor,titulo,descripcion) VALUES (?,?,?,?) ',
    //Obtener peticiones hechas a tu proyecto del usuario conectado 
-   getPeticiones: 'SELECT p.* FROM proyectos_a_realizar pr LEFT JOIN peticiones p ON pr.id_proyecto = p.id_proyecto WHERE pr.autor = ?',
+   getPeticiones: 'SELECT p.*, pr.titulo as titulo_proyecto FROM proyectos_a_realizar pr LEFT JOIN peticiones p ON pr.id_proyecto = p.id_proyecto WHERE pr.autor = ?',
   //Obtener peticiones hechas por el usuario
    getPeticionesUser: 'SELECT id_peticion,titulo,estado FROM peticiones where autor = ?',
 

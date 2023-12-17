@@ -108,13 +108,35 @@ WHERE pr.autor = 15;
 -----------------------------
  -- Ver todos los usuarios
 
-SELECT p.*
-FROM peticiones p
-JOIN proyectos_a_realizar pr ON p.id_proyecto = pr.id_proyecto
-JOIN usuarios u ON pr.autor = u.id_usuario
-WHERE p.id_proyecto = 1;
+-- SELECT * FROM usuarios;
+
+
+
+-- SELECT * FROM proyectos_acabados;
+-- DELETE FROM proyectos_acabados WHERE id_proyecto = 3;
+
+-- PRUEBAS DE DELIMITERS!!!! 
+DELIMITER //
+
+CREATE TRIGGER after_update_peticion
+AFTER UPDATE ON peticiones
+FOR EACH ROW
+BEGIN
+    -- Verificar si el estado de la petición ha cambiado
+    IF NEW.estado != OLD.estado THEN
+        -- Insertar un nuevo correo en la tabla de correos
+        INSERT INTO mails (mensaje, destinatario, origen)
+        VALUES (
+            CONCAT('El estado de tu petición "', NEW.titulo, '" ha cambiado a "', NEW.estado, '".'),
+            NEW.autor,
+            14 -- El admin
+        );
+    END IF;
+END //
+
+DELIMITER ;
+
+
 
 
     
-
-
