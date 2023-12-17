@@ -45,7 +45,7 @@ function ProyectoTerminado () {
         navigate('/proyectos/realizados')
         reset({
           titulo: '',
-          descripcion: ''
+          url: ''
         })
       }
     } catch (error) {

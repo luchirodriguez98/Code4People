@@ -11,7 +11,7 @@ async function addMail (req, res, next) {
 
     if (!success) {
         const errors = zodErrorMap(error);
-        return res.send({
+        return res.status(400).send({
         ok: false,
         data: null,
         error: errors

@@ -30,25 +30,32 @@ const query = {
   //Añaduir proyecto acabado
   addProyectoAcabado: 'INSERT INTO proyectos_acabados(titulo,url,autor) VALUES (?,?,?);',
   //Ver todas las peticiones de todos los usuarios
-  getAllProyectoARealizar: 'SELECT p.id_proyecto, p.titulo, p.descripcion, u.nombre as autor FROM proyectos_a_realizar p JOIN usuarios u ON p.autor = u.id_usuario;',
+  getAllProyectoARealizar: 'SELECT p.*, u.nombre as autor FROM proyectos_a_realizar p JOIN usuarios u ON p.autor = u.id_usuario WHERE p.estado IS null',
   //Proyecto por id 
   getAllProyectoARealizarbyId:'SELECT p.titulo, p.descripcion, u.nombre as autor FROM proyectos_a_realizar p JOIN usuarios u ON p.autor = u.id_usuario WHERE id_proyecto = ?; ',
   //Ver todas las peticiones segun el usuario conectado
   getAllProyectosAcabados:'SELECT id_proyecto, titulo, url FROM proyectos_acabados',
   //Eliminar proyecto acabado de usuario
   deleteProyectobyId: 'DELETE FROM proyectos_acabados WHERE id_proyecto =  ?',
-  aceptarPeticion: 'UPDATE peticiones SET estado = "aceptado" WHERE id_peticion = ?',
-  denegarPeticion: 'UPDATE peticiones SET estado = "denegado" WHERE id_peticion = ?',
-  neutrarPeticion: 'UPDATE peticiones SET estado = "nada" WHERE id_peticion = ?',
+  //Acabar proyecto
+  acabarProyecto: 'UPDATE proyectos_a_realizar SET estado = true WHERE id_proyecto = ?',
+  //Este de aqui es por si quieres ponerlo otra vez en no acabado, esta por si acaso
+  noAcabadoProyecto: 'UPDATE proyectos_a_realizar SET estado = null WHERE id_proyecto = ?',
+  
   //==================PETICIONES===========================
 
 
   //Obtener peticiones
    addPeticion: 'INSERT INTO peticiones(id_proyecto,autor,titulo,descripcion) VALUES (?,?,?,?) ',
    //Obtener peticiones hechas a tu proyecto del usuario conectado 
-   getPeticiones: 'SELECT p.*, pr.titulo as titulo_proyecto FROM proyectos_a_realizar pr LEFT JOIN peticiones p ON pr.id_proyecto = p.id_proyecto WHERE pr.autor = ?',
+   getPeticiones: 'SELECT p.*, pr.titulo as titulo_proyecto FROM proyectos_a_realizar pr LEFT JOIN peticiones p ON pr.id_proyecto = p.id_proyecto WHERE pr.autor = ? AND p.estado IS NULL',
   //Obtener peticiones hechas por el usuario
    getPeticionesUser: 'SELECT id_peticion,titulo,estado FROM peticiones where autor = ?',
+   //Aceptar peticion
+    aceptarPeticion: 'UPDATE peticiones SET estado = true WHERE id_peticion = ?',
+   //Denegar peticion
+    denegarPeticion: 'UPDATE peticiones SET estado = false WHERE id_peticion = ?',
+
 
   //=====================CORREOS==========================
 

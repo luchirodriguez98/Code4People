@@ -18,8 +18,8 @@ import {
     getPeticiones,
     deleteProyectobyId,
     aceptarPeticion,
-    denegarPeticion, 
-    neutrarPeticion
+    denegarPeticion
+    
 } from '../controllers/index.js';
 
 const projectRouter = express.Router();
@@ -38,7 +38,7 @@ projectRouter.delete('/delete/:proyectoId',userAuth, deleteProyectobyId);
 //UPDATE, se le llama update pero se utiliza patch
 projectRouter.patch('/peticiones/aceptar/:peticionId',userAuth, aceptarPeticion); //Aceptar petición
 projectRouter.patch('/peticiones/denegar/:peticionId', userAuth, denegarPeticion); //Denegar petición
-projectRouter.patch('/peticiones/neutrar/:peticionId',userAuth, neutrarPeticion); //Neutrar petición
+
 
 
 export { projectRouter }

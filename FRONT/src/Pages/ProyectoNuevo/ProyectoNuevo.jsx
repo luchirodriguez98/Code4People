@@ -78,7 +78,7 @@ function ProyectoNuevo () {
                 name="descripcion"
                 id='descripcion'
                 placeholder='Escribe la descripcion de lo que necesita tu pagina'
-                value={formValues.url}
+                value={formValues.descripcion}
                 onChange={handleFormChange}
                 className={errors?.descripcion ? formStyles.invalidInput : undefined}
               />
