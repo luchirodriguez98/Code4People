@@ -46,7 +46,7 @@ function PeticionNueva () {
         return
       }
       if (response.ok && response.status === 200) {
-        navigate('/peticiones/realizadas')
+        navigate('/peticion/realizadas')
         reset({
           titulo: '',
           descripcion: ''

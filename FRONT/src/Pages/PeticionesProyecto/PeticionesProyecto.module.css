@@ -8,6 +8,8 @@
   font-size: 25px;
   font-weight: 400;
   text-align: center;
+  width: 80%;
+  max-width: 545px;
 }
 .peticionesAprobadas{
   color: var(--primary-color);

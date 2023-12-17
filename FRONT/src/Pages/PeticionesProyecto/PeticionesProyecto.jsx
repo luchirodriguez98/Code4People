@@ -7,8 +7,6 @@ function PeticionesProyecto () {
   const [peticiones, setPeticiones] = useState([])
   const [errors, setErrors] = useState(null)
 
-  const peticionesAprobadas = peticiones.includes(peticiones.estado === true)
-
   useEffect(() => {
     const token = localStorage.getItem('token')
 
@@ -45,8 +43,8 @@ function PeticionesProyecto () {
 
   return (
     <div className={styles.body}>
-      <h1 className={styles.title}>Peticiones realizadas a tu proyecto</h1>
-      <NavLink to='/peticion/proyecto/aprobadas' state={peticionesAprobadas}>
+      <h1 className={styles.title}>Peticiones pendientes de modificar</h1>
+      <NavLink to='/peticion/proyecto/aprobadas'>
         <p className={styles.peticionesAprobadas}>PETICIONES QUE HAS APROBADO</p>
       </NavLink>
       <h2 className={styles.titleProject}>{peticiones[0]?.titulo_proyecto}</h2>

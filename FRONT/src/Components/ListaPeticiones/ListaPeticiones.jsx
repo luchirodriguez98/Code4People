@@ -15,9 +15,9 @@ function ListaPeticiones ({ toMap }) {
     <div className={styles.list}>
       {toMap.map(item => {
         return (
-          <span key={item.id_usuario} className={styles.item}>
+          <span key={item.autor} className={styles.item}>
             <p className={styles.text}>
-              {item.usuario}
+              {item.autor}
             </p>
             {iconToRender(item)}
           </span>
