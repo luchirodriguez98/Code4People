@@ -34,7 +34,7 @@ const query = {
   //Proyecto por id 
   getAllProyectoARealizarbyId:'SELECT p.titulo, p.descripcion, u.nombre as autor FROM proyectos_a_realizar p JOIN usuarios u ON p.autor = u.id_usuario WHERE id_proyecto = ?; ',
   //Ver todas las peticiones segun el usuario conectado
-  getAllProyectosAcabados:'SELECT titulo, url FROM proyectos_acabados',
+  getAllProyectosAcabados:'SELECT id_proyecto, titulo, url FROM proyectos_acabados',
   //Eliminar proyecto acabado de usuario
   deleteProyectobyId: 'DELETE FROM proyectos_acabados WHERE id_proyecto =  ?',
   aceptarPeticion: 'UPDATE peticiones SET estado = "aceptado" WHERE id_peticion = ?',
