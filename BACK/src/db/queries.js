@@ -54,7 +54,7 @@ const query = {
    //Obtener peticiones hechas a tu proyecto del usuario conectado 
    getPeticiones: 'SELECT p.*, pr.titulo as titulo_proyecto FROM proyectos_a_realizar pr LEFT JOIN peticiones p ON pr.id_proyecto = p.id_proyecto WHERE pr.autor = ? AND p.estado IS NULL',
   //Obtener peticiones hechas por el usuario
-   getPeticionesUser: 'SELECT id_peticion,titulo,estado FROM peticiones where autor = ?',
+   getPeticionesUser: 'SELECT p.*, pa.autor as autor_proyecto FROM peticiones p JOIN proyectos_a_realizar pa ON p.id_proyecto = pa.id_proyecto WHERE p.autor = ?',
    //Aceptar peticion
     aceptarPeticion: 'UPDATE peticiones SET estado = true WHERE id_peticion = ?',
    //Denegar peticion
