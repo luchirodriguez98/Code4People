@@ -41,6 +41,8 @@ const query = {
   acabarProyecto: 'UPDATE proyectos_a_realizar SET estado = true WHERE id_proyecto = ?',
   //Este de aqui es por si quieres ponerlo otra vez en no acabado, esta por si acaso
   noAcabadoProyecto: 'UPDATE proyectos_a_realizar SET estado = null WHERE id_proyecto = ?',
+  //Obtener proyectos y peticiones segun id usuario
+  obtenerProyectoPeticiones:'SELECT proyectos_a_realizar.id_proyecto, proyectos_a_realizar.titulo AS proyecto_titulo, proyectos_a_realizar.descripcion AS proyecto_descripcion, proyectos_a_realizar.estado AS proyecto_estado, peticiones.id_peticion, peticiones.titulo AS peticion_titulo, peticiones.descripcion AS peticion_descripcion, peticiones.estado AS peticion_estado FROM proyectos_a_realizar JOIN usuarios ON proyectos_a_realizar.autor = usuarios.id_usuario LEFT JOIN peticiones ON proyectos_a_realizar.id_proyecto = peticiones.id_proyecto WHERE usuarios.id_usuario = ?',
   
   //==================PETICIONES===========================
 

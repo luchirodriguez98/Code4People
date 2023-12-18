@@ -31,7 +31,7 @@ async function logIn (req, res, next) {
         return next(new HttpError(400, 'Email y/o contraseña incorrectos.'));
     }   
         if (user.estado === 0) { 
-        return next(new HttpError(400, 'Este usuario esta eliminado'));
+        return next(new HttpError(400, 'Este usuario esta eliminado, si quiere recuperar-lo pongase en contacto con nosotros'));
     } 
 
     // Comparamos las contraseñas

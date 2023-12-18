@@ -18,8 +18,9 @@ import { obtenerEstadoById } from './users/obtenerEstadoById.js';
 import { deleteProyectobyId } from './proyectos/deleteProyectoById.js';
 import { aceptarPeticion } from './peticiones/aceptarPeticion.js';
 import { denegarPeticion } from './peticiones/denegarPeticion.js';
+import { obtenerProyectoPeticiones } from './proyectos/obtenerProyectoPeticiones.js';
 
 
 
 
-export { addUser, getAllUsers, getUserById, logIn , getAllProyectoARealizar, getAllProyectoARealizarbyId, getAllProyectosAcabados, getPeticiones,getPeticionesUser,addProyectoNuevo, addProyectoAcabado,addPeticion, getMailsbyDestino, getMailsbyOrigen, addMail, deleteUserById,  obtenerEstadoById, deleteProyectobyId, aceptarPeticion, denegarPeticion };
+export { addUser, getAllUsers, getUserById, logIn , getAllProyectoARealizar, getAllProyectoARealizarbyId, getAllProyectosAcabados, getPeticiones,getPeticionesUser,addProyectoNuevo, addProyectoAcabado,addPeticion, getMailsbyDestino, getMailsbyOrigen, addMail, deleteUserById,  obtenerEstadoById, deleteProyectobyId, aceptarPeticion, denegarPeticion, obtenerProyectoPeticiones };

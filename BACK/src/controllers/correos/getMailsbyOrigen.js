@@ -5,7 +5,7 @@ async function getMailsbyOrigen(req, res) {
 
     const { id: idUsuarioConectado } = req.user;
     
-    const [mail] = await sendQuery(query.getMailsbyOrigen, [idUsuarioConectado])
+    const mail = await sendQuery(query.getMailsbyOrigen, [idUsuarioConectado])
 
     if (!mail) {
         return res.status(404).send({

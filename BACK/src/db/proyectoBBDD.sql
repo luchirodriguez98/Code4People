@@ -37,7 +37,8 @@ create table if not exists proyectos_acabados(
     FOREIGN KEY (autor) REFERENCES usuarios(id_usuario)
 );	
 
-	
+
+
 -- INSERT INTO proyectos_acabados(titulo,url,autor) VALUES ('Proyecto Final','https://github.com/luchirodriguez98/Proyecto-Final',3);
 --  INSERT INTO proyectos_acabados(titulo,url,autor) VALUES ('Bootcamp Info','https://github.com/Fundacio-Esplai-Enfocat/BOOTCAMP-S22-JAVASCRIPT',3);
 
@@ -76,10 +77,7 @@ FOREIGN KEY (id_proyecto) REFERENCES proyectos_a_realizar(id_proyecto)
 );
 
 
-SELECT p.*
-FROM proyectos_a_realizar pr
-LEFT JOIN peticiones p ON pr.id_proyecto = p.id_proyecto
-WHERE pr.autor = 15;
+
 
 
 -- Valor de prueba 

@@ -15,7 +15,7 @@ async function getPeticionesUser (req, res) {
     }
 
 
-    const [peticion] = await sendQuery(query.getPeticionesUser, [authorId])
+    const peticion = await sendQuery(query.getPeticionesUser, [authorId])
 
     if (!peticion) {
         return res.status(404).send({

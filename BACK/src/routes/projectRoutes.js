@@ -18,7 +18,8 @@ import {
     getPeticiones,
     deleteProyectobyId,
     aceptarPeticion,
-    denegarPeticion
+    denegarPeticion,
+    obtenerProyectoPeticiones
     
 } from '../controllers/index.js';
 
@@ -33,6 +34,7 @@ projectRouter.get('/proyectospendientes/:proyectoId', userAuth, getAllProyectoAR
 projectRouter.get('/proyectos', getAllProyectosAcabados);
 projectRouter.get('/peticiones', userAuth,  getPeticiones);
 projectRouter.get('/peticiones/:authorId', userAuth,  getPeticionesUser);
+projectRouter.get('/proyectopeticiones',userAuth, obtenerProyectoPeticiones);
 //DELETE 
 projectRouter.delete('/delete/:proyectoId',userAuth, deleteProyectobyId);
 //UPDATE, se le llama update pero se utiliza patch
