@@ -1,10 +1,14 @@
 import { NavLink } from 'react-router-dom'
 import styles from './ListaPeticiones.module.css'
-import { XMarkIcon, CheckIcon, ChevronRightIcon, EnvelopeIcon } from '@heroicons/react/24/solid'
+import { XMarkIcon, CheckIcon, ChevronRightIcon } from '@heroicons/react/24/solid'
+import { EnvelopeIcon } from '@heroicons/react/24/outline'
 
 function ListaPeticionesEmpresa ({ toMap, route }) {
   const iconToRender = ({ item, route }) => {
-    if (item?.estado === true) {
+    console.log(item)
+    if (
+      // item?.estado === true ||
+      item?.peticion_estado === 1) {
       return (
         <>
           <NavLink to='/mensajes/nuevo' state={item.autor}>
@@ -13,7 +17,9 @@ function ListaPeticionesEmpresa ({ toMap, route }) {
           <CheckIcon className={styles.greenIcon}/>
         </>
       )
-    } else if (item?.estado === false) {
+    } else if (
+      // item?.estado === false ||
+      item?.peticion_estado === 0) {
       return <XMarkIcon className={styles.redIcon}/>
     }
   }
@@ -30,7 +36,7 @@ function ListaPeticionesEmpresa ({ toMap, route }) {
               ? <NavLink to={route + item.id_usuario} state={item}>
               <ChevronRightIcon className={styles.blackIcon}/>
             </NavLink>
-              : iconToRender(item) }
+              : iconToRender({ item }) }
           </span>
         )
       })}

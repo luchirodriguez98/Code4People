@@ -21,11 +21,6 @@ function Login () {
 
   const navigate = useNavigate()
 
-  useEffect(() => {
-    closeModal()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
   const { email, pass } = formValues
 
   const handleSubmit = async (event) => {
@@ -45,8 +40,9 @@ function Login () {
       const response = await fetch(`${baseUrl}/users/login`, options)
       const data = await response.json()
       console.log(data)
-      if (!response.ok && response.status === 400) {
+      if (!response.ok) {
         setErrors(data.error)
+        console.log(errors)
         return
       }
       if (response.ok && response.status === 200) {
@@ -64,9 +60,11 @@ function Login () {
       setErrors('Hubo un problema al procesar la solicitud. Por favor, inténtalo de nuevo más tarde.')
     }
   }
+  console.log(errors)
+  closeModal()
   return (
     <div className={`${styles.body}`}>
-      { errors && <ErrorModal mensaje={errors}/> }
+      <ErrorModal mensaje={errors}/>
       <h1 className={styles.title}>Inicia sesion</h1>
       <form className={stylesForm.form} onSubmit={handleSubmit}>
           <label htmlFor="email">EMAIL</label>

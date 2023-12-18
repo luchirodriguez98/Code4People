@@ -6,7 +6,7 @@ function PeticionesRealizadas () {
   const [peticiones, setPeticiones] = useState([])
   const [errors, setErrors] = useState(null)
 
-  useEffect(() => {
+  useEffect((peticiones) => {
     const token = localStorage.getItem('token')
     const userInfo = JSON.parse(localStorage.getItem('userInfo'))
     const userID = userInfo.id
@@ -34,12 +34,16 @@ function PeticionesRealizadas () {
           return
         }
         setPeticiones(data.data)
+        if (data.data.length === 0) {
+          setErrors('No tienes peticiones realizadas')
+        }
       } catch (error) {
         console.error('Error:', error.message)
       }
     }
     fetchData()
   }, [])
+
   console.log(peticiones)
 
   return (

@@ -15,6 +15,7 @@
   margin-bottom: 20px;
   padding: 15px;
   justify-content: space-between;
+  align-items: center;
 }
 .text{
   width: 85%;
@@ -29,11 +30,15 @@
   width: 20px;
 }
 .item .blackIcon{
+  width: 25px;
   color: black;
+  margin-right: 5px;
 }
 .item .greenIcon{
+  width: 30px;
   color: green;
 }
 .redIcon{
+  width: 30px;
   color: red;
 }

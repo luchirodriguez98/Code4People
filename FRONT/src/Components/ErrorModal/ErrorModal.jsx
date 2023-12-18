@@ -7,7 +7,7 @@ function ErrorModal ({ mensaje }) {
   const { showErrorModal } = useContext(ErrorContext)
 
   if (showErrorModal) {
-    toast.error(mensaje || 'Formulario incompleto', {
+    toast.error(mensaje || 'Error en el formulario, vuelve a intentarlo', {
       position: 'bottom-right',
       theme: 'dark'
     })

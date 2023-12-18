@@ -11,6 +11,8 @@ function ProyectoTerminado () {
 
   const [errors, setErrors] = useState(null)
 
+  const formData = new FormData(event.target)
+
   const { formValues, reset, handleFormChange } = useForm({
     titulo: '',
     url: ''
@@ -21,8 +23,10 @@ function ProyectoTerminado () {
   const postProyect = async (event) => {
     event.preventDefault()
     const token = localStorage.getItem('token')
+    const baseUrl = 'http://localhost:5000'
 
-    const options = {
+    // POST
+    const optionsPOST = {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -31,10 +35,8 @@ function ProyectoTerminado () {
       body: JSON.stringify(formValues)
     }
 
-    const baseUrl = 'http://localhost:5000'
-
     try {
-      const response = await fetch(`${baseUrl}/nuevoAcabado`, options)
+      const response = await fetch(`${baseUrl}/nuevoAcabado`, optionsPOST)
       const data = await response.json()
       console.log(data)
       if (!response.ok) {
@@ -42,7 +44,6 @@ function ProyectoTerminado () {
         return
       }
       if (response.ok && response.status === 200) {
-        navigate('/proyectos/realizados')
         reset({
           titulo: '',
           url: ''
@@ -52,7 +53,30 @@ function ProyectoTerminado () {
       console.error('Error:', error.message)
       setErrors('Hubo un problema al procesar la solicitud. Por favor, inténtalo de nuevo más tarde.')
     }
+    // PUT
+    const optionsPUT = {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+      },
+      body: formData
+    }
+
+    try {
+      const response = await fetch(`${baseUrl}/nuevoAcabado`, optionsPUT)
+      const data = await response.json()
+      console.log(data)
+      if (!response.ok) {
+        setErrors(data.errors)
+      }
+      console.log(data)
+    } catch (error) {
+      console.error('Error:', error.message)
+      setErrors('Hubo un problema al procesar la solicitud. Por favor, inténtalo de nuevo más tarde.')
+    }
   }
+  navigate('/proyectos/realizados')
   errorContext.closeModal()
   return (
         <div className={styles.body}>
@@ -82,6 +106,14 @@ function ProyectoTerminado () {
                 className={errors?.url ? formStyles.invalidInput : undefined}
               />
               {errors?.url && <span>{errors.url}</span>}
+              <label htmlFor="imagen">URL</label>
+              <input
+                type="file"
+                name="imagen"
+                id='imagen'
+                value={formValues.imagen}
+                onChange={handleFormChange}
+              />
               <button
                 className={formStyles.button}
                 onClick={() => {

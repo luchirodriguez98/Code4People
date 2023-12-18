@@ -6,8 +6,6 @@ import { useUserContext } from '../../Hooks/useUserContext'
 function Cuenta () {
   const userContext = useUserContext()
 
-  const accountIsColab = userContext.usuario && userContext.usuario.role === 'usuario' ? '/peticion/realizadas' : '/peticion/proyecto'
-
   return (
     <div className={styles.body}>
         <h1 className={styles.title}>{`Hola ${userContext.usuario?.nombre}!`}</h1>
@@ -19,12 +17,20 @@ function Cuenta () {
             </div>
             <p className={styles.textButton}>MENSAJES</p>
           </NavLink>
-          {(userContext.usuario.role === 'empresa' || 'usuario') &&
-          <NavLink to={accountIsColab}>
+          {(userContext.usuario.role === 'usuario') &&
+          <NavLink to='/peticion/realizadas'>
             <div className={styles.button}>
               <ClipboardIcon />
             </div>
             <p className={styles.textButton}>PETICIONES</p>
+          </NavLink>
+          }
+          {(userContext.usuario.role === 'empresa') &&
+          <NavLink to='/peticion/proyecto'>
+            <div className={styles.button}>
+              <BriefcaseIcon />
+            </div>
+            <p className={styles.textButton}>PROYECTOS</p>
           </NavLink>
           }
           {userContext.usuario?.role === 'admin' &&
