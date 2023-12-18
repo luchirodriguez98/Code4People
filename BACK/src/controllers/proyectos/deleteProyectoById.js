@@ -1,6 +1,6 @@
 import { sendQuery } from '../../db/connect-db.js';
 import { query } from '../../db/queries.js';
-
+// Antes de tocar este codigo prueba si funciona, yo lo dejé en un estado que ni Dios ni el mismo diablo sabe como FUNCIONABA, porfavor no me hagas volver a este infierno y no toques nada. Horas sufriendo aqui:2h y media. 
 async function deleteProyectobyId(req, res) {
   const { proyectoId } = req.params;
   console.log(proyectoId);

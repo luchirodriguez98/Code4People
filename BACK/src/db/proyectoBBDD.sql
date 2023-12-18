@@ -24,7 +24,8 @@ create table if not exists usuarios(
     confirmation_code varchar(50) DEFAULT NULL,
     PRIMARY KEY (id_usuario)
 );
-
+-- Voy a dejar esto por aqui por si hace falta volver a revivir a un usuario jajaj
+-- UPDATE usuarios SET estado = true where id_usuario = ? ;
 
 
 -- Proyecto
