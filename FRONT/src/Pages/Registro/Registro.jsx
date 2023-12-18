@@ -2,7 +2,6 @@ import { useNavigate } from 'react-router-dom'
 import { useContext, useState } from 'react'
 import { ErrorContext } from '../../Context/ErrorContext'
 import { useForm } from '../../Hooks/useForm'
-import { ErrorModal } from '../../Components/ErrorModal/ErrorModal'
 import styles from './Registro.module.css'
 import stylesForm from '../../Styles/form.module.css'
 
@@ -55,7 +54,7 @@ function Registro () {
   errorContext.closeModal()
   return (
     <div className={`${styles.body}`}>
-      <ErrorModal />
+      {/* <ErrorModal /> */}
       <h1 className={`${styles.title}`}>Registra tu empresa!</h1>
       <form action="" className={`${stylesForm.form}`} onSubmit={saveNewUser}>
         <label htmlFor="nombre">NOMBRE</label>

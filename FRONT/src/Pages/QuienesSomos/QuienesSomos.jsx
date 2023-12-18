@@ -1,6 +1,10 @@
 import { NavLink } from 'react-router-dom'
 import styles from './QuienesSomos.module.css'
 import { useUserContext } from '../../Hooks/useUserContext'
+import quote from'../../../assets/comillas.png'
+import fotoLuis from'../../../assets/luis.jpg'
+import fotoDaniel from'../../../assets/daniel.jpg'
+import fotoLucia from'../../../assets/lucia.jpg'
 
 function QuienesSomos () {
   const context = useUserContext()
@@ -8,7 +12,7 @@ function QuienesSomos () {
   return (
         <div className={`${styles.body}`}>
         <span className={`${styles.quote}`}>
-            <img src="../../../assets/comillas.png" alt="" />
+            <img src={quote} alt="" />
             <p>El 40% de las compañías que no se digitalicen cerrarán en los próximos 5 años.</p>
         </span>
         <span className={`${styles.grid}`}>
@@ -50,17 +54,17 @@ function QuienesSomos () {
         <span className={styles.perfilesContainer}>
             <NavLink to="https://github.com/damigo98" target='blank'>
                 <div className={styles.perfil}>
-                    <img src="../../../assets/daniel.jpg" alt="Daniel Amigo" />
+                    <img src={fotoDaniel} alt="Daniel Amigo" />
                     <p>Daniel Amigo</p>
                 </div>
             </NavLink>
-            <NavLink to="https://github.com/LuisHenaoS" target='blank'>
+            <NavLink to={fotoLuis} target='blank'>
                 <div className={styles.perfil}>
                     <img src="../../../assets/luis.jpg" alt="Luis Henao" />
                     <p>Luis Henao</p>
                 </div>
             </NavLink>
-            <NavLink to="https://github.com/luchirodriguez98" target='blank'>
+            <NavLink to={fotoLucia} target='blank'>
                 <div className={styles.perfil}>
                     <img src="../../../assets/lucia.jpg" alt="Lucia Rodriguez" />
                     <p>Lucia Rodriguez</p>

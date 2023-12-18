@@ -2,7 +2,6 @@ import { useNavigate } from 'react-router-dom'
 import { useForm } from '../../Hooks/useForm'
 import styles from './ProyectoNuevo.module.css'
 import formStyles from '../../Styles/form.module.css'
-import { ErrorModal } from '../../Components/ErrorModal/ErrorModal'
 import { useContext, useState } from 'react'
 import { ErrorContext } from '../../Context/ErrorContext'
 
@@ -57,7 +56,7 @@ function ProyectoNuevo () {
   errorContext.closeModal()
   return (
         <div className={styles.body}>
-          <ErrorModal />
+          {/* <ErrorModal /> */}
           <h1 className={styles.title}>Publicar nuevo proyecto</h1>
           <div className={styles.container}>
             <form className={formStyles.form} onSubmit={postProyect}>

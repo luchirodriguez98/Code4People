@@ -28,6 +28,7 @@ import { TodosUsuarios } from '../TodosUsuarios/TodosUsuarios'
 import { PrivateRoute } from '../../Routes/PrivateRoute'
 import { PublicRoute } from '../../Routes/PublicRoute'
 import { ErrorContextProvider } from '../../Context/ErrorContext'
+import { ToastContainer } from 'react-toastify'
 
 const AppRoutes = () => {
   const routes = useRoutes([
@@ -242,7 +243,8 @@ function App () {
           <ErrorContextProvider>
             <Nav />
             <Layout>
-            <AppRoutes />
+              <AppRoutes />
+              <ToastContainer />
             </Layout>
           </ErrorContextProvider>
         </BrowserRouter>

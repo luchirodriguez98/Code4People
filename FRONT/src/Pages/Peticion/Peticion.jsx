@@ -2,7 +2,6 @@ import { useLocation } from 'react-router'
 import { NavLink, useNavigate } from 'react-router-dom'
 import styles from './Peticion.module.css'
 import { useState } from 'react'
-import { ErrorModal } from '../../Components/ErrorModal/ErrorModal'
 
 function Peticion () {
   // const [peticion, setPeticion] = useState()
@@ -78,7 +77,7 @@ function Peticion () {
 
   return (
     <div className={styles.body}>
-      <ErrorModal mensaje={errors}/>
+      {/* <ErrorModal mensaje={errors}/> */}
       <h1 className={styles.title}>Peticion del usuario &quot;{navigation.state.autor}&quot;</h1>
       <div className={styles.container}>
         <p>TITULO</p>

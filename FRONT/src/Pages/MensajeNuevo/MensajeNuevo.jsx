@@ -2,7 +2,6 @@ import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import styles from './MensajeNuevo.module.css'
 import formStyles from '../../Styles/form.module.css'
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/solid'
-import { ErrorModal } from '../../Components/ErrorModal/ErrorModal'
 import { useContext, useState } from 'react'
 import { ErrorContext } from '../../Context/ErrorContext'
 import { useForm } from '../../Hooks/useForm'
@@ -58,7 +57,7 @@ function MensajeNuevo () {
 
   return (
     <div className={styles.body}>
-       <ErrorModal />
+       {/* <ErrorModal /> */}
       <NavLink to="/mensajes">
         <div className={styles.backNav}>
           <ChevronLeftIcon className={styles.icon}/>

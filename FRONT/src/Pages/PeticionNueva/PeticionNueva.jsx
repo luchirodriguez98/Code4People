@@ -4,7 +4,6 @@ import styles from './PeticionNueva.module.css'
 import stylesForm from '../../Styles/form.module.css'
 import { useContext, useState } from 'react'
 import { ErrorContext } from '../../Context/ErrorContext'
-import { ErrorModal } from '../../Components/ErrorModal/ErrorModal'
 import { useLocation } from 'react-router-dom'
 
 function PeticionNueva () {
@@ -62,7 +61,7 @@ function PeticionNueva () {
   return (
     <div className={styles.body}>
         <h1 className={styles.title}>Solicitar Proyecto</h1>
-        <ErrorModal />
+        {/* <ErrorModal /> */}
         <form className={`${stylesForm.form}`} onSubmit={aplicarProyecto}>
             <label htmlFor="titulo">TITULO</label>
             <input

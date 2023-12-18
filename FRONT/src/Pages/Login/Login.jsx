@@ -1,12 +1,12 @@
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useForm } from '../../Hooks/useForm'
-import { ErrorModal } from '../../Components/ErrorModal/ErrorModal'
 import { FaGithub } from 'react-icons/fa6'
 import styles from './Login.module.css'
 import stylesForm from '../../Styles/form.module.css'
 import { useContext, useState } from 'react'
 import { ErrorContext } from '../../Context/ErrorContext'
 import { useUserContext } from '../../Hooks/useUserContext'
+import { toast } from 'react-toastify'
 
 function Login () {
   const userContext = useUserContext()
@@ -63,7 +63,7 @@ function Login () {
   closeModal()
   return (
     <div className={`${styles.body}`}>
-      <ErrorModal mensaje={errors}/>
+      {/* <ErrorModal mensaje={errors}/> */}
       <h1 className={styles.title}>Inicia sesion</h1>
       <form className={stylesForm.form} onSubmit={handleSubmit}>
           <label htmlFor="email">EMAIL</label>
@@ -95,6 +95,7 @@ function Login () {
             INICIA SESION
           </button>
       </form>
+      <button onClick={() => toast(errors)}>Toast</button>
       <span className={styles.redirectRegistro}>
         <p>No tienes cuenta?</p>
         <NavLink to="/registro">

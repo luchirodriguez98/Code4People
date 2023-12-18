@@ -4,7 +4,6 @@ import styles from './ProyectoTerminado.module.css'
 import formStyles from '../../Styles/form.module.css'
 import { useContext, useState } from 'react'
 import { ErrorContext } from '../../Context/ErrorContext'
-import { ErrorModal } from '../../Components/ErrorModal/ErrorModal'
 
 function ProyectoTerminado () {
   const errorContext = useContext(ErrorContext)
@@ -71,16 +70,16 @@ function ProyectoTerminado () {
         setErrors(data.errors)
       }
       console.log(data)
+      navigate('/proyectos/realizados')
     } catch (error) {
       console.error('Error:', error.message)
       setErrors('Hubo un problema al procesar la solicitud. Por favor, inténtalo de nuevo más tarde.')
     }
   }
-  navigate('/proyectos/realizados')
   errorContext.closeModal()
   return (
         <div className={styles.body}>
-          <ErrorModal />
+          {/* <ErrorModal /> */}
           <h1 className={styles.title}>Publicar proyecto terminado</h1>
           <div className={styles.container}>
             <form className={formStyles.form} onSubmit={postProyect}>
