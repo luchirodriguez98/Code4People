@@ -35,6 +35,8 @@ const query = {
   getAllProyectoARealizarbyId:'SELECT p.titulo, p.descripcion, u.nombre as autor FROM proyectos_a_realizar p JOIN usuarios u ON p.autor = u.id_usuario WHERE id_proyecto = ?; ',
   //Ver todas las peticiones segun el usuario conectado
   getAllProyectosAcabados:'SELECT id_proyecto, titulo, url FROM proyectos_acabados',
+  //Ver proyecto acabado por id
+  getProyectoAcabadoPorId: 'SELECT * from proyectos_acabados where id_proyecto = ?',
   //Eliminar proyecto acabado de usuario
   deleteProyectobyId: 'DELETE FROM proyectos_acabados WHERE id_proyecto =  ?',
   //Acabar proyecto
@@ -42,7 +44,7 @@ const query = {
   //Este de aqui es por si quieres ponerlo otra vez en no acabado, esta por si acaso
   noAcabadoProyecto: 'UPDATE proyectos_a_realizar SET estado = null WHERE id_proyecto = ?',
   //Obtener proyectos y peticiones segun id usuario
-  obtenerProyectoPeticiones:'SELECT proyectos_a_realizar.id_proyecto, proyectos_a_realizar.titulo AS proyecto_titulo, proyectos_a_realizar.descripcion AS proyecto_descripcion, proyectos_a_realizar.estado AS proyecto_estado, peticiones.id_peticion, peticiones.titulo AS peticion_titulo, peticiones.descripcion AS peticion_descripcion, peticiones.estado AS peticion_estado FROM proyectos_a_realizar JOIN usuarios ON proyectos_a_realizar.autor = usuarios.id_usuario LEFT JOIN peticiones ON proyectos_a_realizar.id_proyecto = peticiones.id_proyecto WHERE usuarios.id_usuario = ?',
+  obtenerProyectoPeticiones:'SELECT proyectos_a_realizar.id_proyecto, proyectos_a_realizar.titulo AS proyecto_titulo, proyectos_a_realizar.descripcion AS proyecto_descripcion, proyectos_a_realizar.estado AS proyecto_estado, peticiones.id_peticion, peticiones.autor, peticiones.titulo AS peticion_titulo, peticiones.descripcion AS peticion_descripcion, peticiones.estado AS peticion_estado FROM proyectos_a_realizar JOIN usuarios ON proyectos_a_realizar.autor = usuarios.id_usuario LEFT JOIN peticiones ON proyectos_a_realizar.id_proyecto = peticiones.id_proyecto WHERE usuarios.id_usuario = ?',
   
   //==================PETICIONES===========================
 

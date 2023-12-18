@@ -95,7 +95,6 @@ FOREIGN KEY (id_proyecto) REFERENCES proyectos_a_realizar(id_proyecto)
     );
     
     -- Tabla mensajes chat en linea
-    
      create table if not exists mensajes(
 	id_mensaje int auto_increment,
     mensaje VARCHAR(2000),
