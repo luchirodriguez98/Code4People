@@ -6,14 +6,16 @@ function ListaMensajes ({ toMap, icon }) {
     <div className={styles.messageList}>
       {toMap.map(item => {
         return (
-          <span key ={item.usuario} className={styles.messageItem}>
+          <span key ={item.id_mail} className={styles.messageItem}>
             <div className={styles.text}>
-              <p>USUARIO {item.usuario ? item.usuario : item.destinatario}</p>
+              <p>USUARIO {item.origen ? item.origen : item.destinatario}</p>
               <p>{item.mensaje}</p>
             </div>
-            <NavLink to="/mensajes/nuevo" state={item.usuario}>
-              {icon}
-            </NavLink>
+            {icon &&
+              <NavLink to="/mensajes/nuevo" state={item.origen}>
+                {icon}
+              </NavLink>
+            }
           </span>
         )
       })}

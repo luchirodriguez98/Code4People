@@ -2,12 +2,10 @@ import { useNavigate } from 'react-router-dom'
 import { useForm } from '../../Hooks/useForm'
 import styles from './ProyectoNuevo.module.css'
 import formStyles from '../../Styles/form.module.css'
-import { useContext, useState } from 'react'
-import { ErrorContext } from '../../Context/ErrorContext'
+import { useState } from 'react'
+import { toast } from 'react-toastify'
 
 function ProyectoNuevo () {
-  const errorContext = useContext(ErrorContext)
-
   const [errors, setErrors] = useState(null)
 
   const { formValues, reset, handleFormChange } = useForm({
@@ -37,12 +35,12 @@ function ProyectoNuevo () {
       const data = await response.json()
       console.log(data)
       if (!response.ok) {
-        setErrors(data.errors)
-        console.log('hola')
-        return
+        setErrors(data.error)
+        toast.error('Error en el formulario, vuelve a intentarlo')
       }
-      if (response.ok && response.status === 200) {
-        navigate('/proyectos/disponibles')
+      if (response.ok) {
+        toast.success('Proyecto publicado')
+        navigate('/peticion/proyecto')
         reset({
           titulo: '',
           descripcion: ''
@@ -51,12 +49,11 @@ function ProyectoNuevo () {
     } catch (error) {
       console.error('Error:', error.message)
       setErrors('Hubo un problema al procesar la solicitud. Por favor, inténtalo de nuevo más tarde.')
+      toast.error(errors)
     }
   }
-  errorContext.closeModal()
   return (
         <div className={styles.body}>
-          {/* <ErrorModal /> */}
           <h1 className={styles.title}>Publicar nuevo proyecto</h1>
           <div className={styles.container}>
             <form className={formStyles.form} onSubmit={postProyect}>
@@ -84,13 +81,7 @@ function ProyectoNuevo () {
               {errors?.descripcion && <span>{errors.descripcion}</span>}
               <button
                 className={formStyles.button}
-                onClick={() => {
-                  errorContext.openModal()
-                  setErrors(null)
-                }}
-              >
-                PUBLICAR NUEVO PROYECTO
-              </button>
+                onClick={() => { setErrors(null) }} >PUBLICAR NUEVO PROYECTO</button>
             </form>
           </div>
         </div>

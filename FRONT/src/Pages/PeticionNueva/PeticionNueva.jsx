@@ -2,13 +2,11 @@ import { useNavigate } from 'react-router'
 import { useForm } from '../../Hooks/useForm'
 import styles from './PeticionNueva.module.css'
 import stylesForm from '../../Styles/form.module.css'
-import { useContext, useState } from 'react'
-import { ErrorContext } from '../../Context/ErrorContext'
+import { useState } from 'react'
 import { useLocation } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 function PeticionNueva () {
-  const errorContext = useContext(ErrorContext)
-
   const [errors, setErrors] = useState(null)
 
   const navigate = useNavigate()
@@ -40,11 +38,12 @@ function PeticionNueva () {
       const data = await response.json()
       console.log(data)
       if (!response.ok) {
-        setErrors(data.errors)
-        console.log('hola')
+        setErrors(data.error)
+        toast.error('Hay errores en el formulario, intentelo nuevamente')
         return
       }
       if (response.ok && response.status === 200) {
+        toast.success('Peticion enviada')
         navigate('/peticion/realizadas')
         reset({
           titulo: '',
@@ -54,9 +53,9 @@ function PeticionNueva () {
     } catch (error) {
       console.error('Error:', error.message)
       setErrors('Hubo un problema al procesar la solicitud. Por favor, inténtalo de nuevo más tarde.')
+      toast.error(errors)
     }
   }
-  errorContext.closeModal()
 
   return (
     <div className={styles.body}>
@@ -65,7 +64,6 @@ function PeticionNueva () {
         <form className={`${stylesForm.form}`} onSubmit={aplicarProyecto}>
             <label htmlFor="titulo">TITULO</label>
             <input
-              required
               type="text"
               id="titulo"
               name="titulo"
@@ -77,7 +75,6 @@ function PeticionNueva () {
             {errors?.titulo && <span>{errors.titulo}</span>}
             <label htmlFor="descripcion">MENSAJE</label>
             <textarea
-              required
               type="text"
               id="descripcion"
               name="descripcion"
@@ -89,7 +86,6 @@ function PeticionNueva () {
             <button
               className={`${stylesForm.button}`}
               onClick={() => {
-                errorContext.openModal()
                 setErrors(null)
               }}
             >

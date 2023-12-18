@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { ListaAdmin } from '../../Components/ListaAdmin/ListaAdmin'
 import styles from './TodosUsuarios.module.css'
+import { toast } from 'react-toastify'
 
 function TodosUsuarios () {
   const [usuarios, setUsuarios] = useState([])
@@ -64,7 +65,11 @@ function TodosUsuarios () {
         } else {
           setErrors(data.message)
         }
+        toast.error(errors)
+        setErrors(null)
+        return
       }
+      toast.success('Usuario eliminado correctamente')
       getUsuarios()
     } catch (error) {
       console.error('Error:', error.message)

@@ -2,12 +2,10 @@ import { useNavigate } from 'react-router-dom'
 import { useForm } from '../../Hooks/useForm'
 import styles from './ProyectoTerminado.module.css'
 import formStyles from '../../Styles/form.module.css'
-import { useContext, useState } from 'react'
-import { ErrorContext } from '../../Context/ErrorContext'
+import { useState } from 'react'
+import { toast } from 'react-toastify'
 
 function ProyectoTerminado () {
-  const errorContext = useContext(ErrorContext)
-
   const [errors, setErrors] = useState(null)
 
   const formData = new FormData(event.target)
@@ -76,7 +74,6 @@ function ProyectoTerminado () {
       setErrors('Hubo un problema al procesar la solicitud. Por favor, inténtalo de nuevo más tarde.')
     }
   }
-  errorContext.closeModal()
   return (
         <div className={styles.body}>
           {/* <ErrorModal /> */}
@@ -116,7 +113,7 @@ function ProyectoTerminado () {
               <button
                 className={formStyles.button}
                 onClick={() => {
-                  errorContext.openModal()
+                  toast(errors)
                   setErrors(null)
                 }}
               >

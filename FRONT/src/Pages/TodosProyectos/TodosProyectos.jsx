@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { ListaAdmin } from '../../Components/ListaAdmin/ListaAdmin'
 import styles from './TodosProyectos.module.css'
+import { toast } from 'react-toastify'
 
 function TodosProyectos () {
   const [proyectos, setProyectos] = useState([])
@@ -29,6 +30,8 @@ function TodosProyectos () {
         } else {
           setErrors(data.message)
         }
+        toast.error(errors)
+        setErrors(null)
         return
       }
       setProyectos(data.data)
@@ -36,6 +39,7 @@ function TodosProyectos () {
       console.error('Error:', error.message)
     }
   }
+
   useEffect(() => {
     getProyectos()
   }, [])
@@ -66,6 +70,7 @@ function TodosProyectos () {
         }
         return
       }
+      toast.success('Proyecto eliminado correctamente')
       getProyectos()
     } catch (error) {
       console.error('Error:', error.message)
