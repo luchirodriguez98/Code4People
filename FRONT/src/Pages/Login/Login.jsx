@@ -4,7 +4,7 @@ import { ErrorModal } from '../../Components/ErrorModal/ErrorModal'
 import { FaGithub } from 'react-icons/fa6'
 import styles from './Login.module.css'
 import stylesForm from '../../Styles/form.module.css'
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useState } from 'react'
 import { ErrorContext } from '../../Context/ErrorContext'
 import { useUserContext } from '../../Hooks/useUserContext'
 
@@ -42,7 +42,6 @@ function Login () {
       console.log(data)
       if (!response.ok) {
         setErrors(data.error)
-        console.log(errors)
         return
       }
       if (response.ok && response.status === 200) {

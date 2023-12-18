@@ -6,6 +6,7 @@ import { Modal } from '../Modal/Modal'
 import { Bars3Icon } from '@heroicons/react/24/solid'
 import styles from './Nav.module.css'
 import { useUserContext } from '../../Hooks/useUserContext'
+import { logo } from '../../../assets/2.png'
 
 const Nav = () => {
   const [isModalOpen, toggleModal] = useToggle(false)
@@ -31,7 +32,7 @@ const Nav = () => {
                     <NavLink
                         to="/"
                     >
-                        <img src="../../../assets/2.png"></img>
+                        <img src={logo}></img>
                     </NavLink>
             </span>
             {/* parte centro */}

@@ -67,5 +67,7 @@
   .icon{
     margin: 0;
     border: none;
+    padding-right: 0;
+    width: 40px;
   }
 }

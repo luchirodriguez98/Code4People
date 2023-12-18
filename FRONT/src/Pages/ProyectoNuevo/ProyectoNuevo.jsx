@@ -72,7 +72,7 @@ function ProyectoNuevo () {
                 className={errors?.titulo ? formStyles.invalidInput : undefined}
               />
               {errors?.titulo && <span>{errors.titulo}</span>}
-              <label htmlFor="url">DESCRIPCION</label>
+              <label htmlFor="descripcion">DESCRIPCION</label>
               <textarea
                 type="text"
                 name="descripcion"
