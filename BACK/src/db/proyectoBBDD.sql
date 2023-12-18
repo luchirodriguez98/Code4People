@@ -32,6 +32,7 @@ create table if not exists proyectos_acabados(
 	id_proyecto int auto_increment,
     titulo varchar(255) not null,
     url VARCHAR(600)not null,
+    url_imagen TEXT,
     autor INT,
     PRIMARY KEY (id_proyecto),
     FOREIGN KEY (autor) REFERENCES usuarios(id_usuario)
