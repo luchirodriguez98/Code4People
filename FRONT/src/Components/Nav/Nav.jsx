@@ -6,7 +6,7 @@ import { Modal } from '../Modal/Modal'
 import { Bars3Icon } from '@heroicons/react/24/solid'
 import styles from './Nav.module.css'
 import { useUserContext } from '../../Hooks/useUserContext'
-import logo from '../../../assets/2.png'
+import logo from '../../../assets/logo.png'
 
 const Nav = () => {
   const [isModalOpen, toggleModal] = useToggle(false)
