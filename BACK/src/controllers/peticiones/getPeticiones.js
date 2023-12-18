@@ -6,7 +6,7 @@ async function getPeticiones (req, res) {
     const { id: idUsuarioConectado } = req.user;
     const results = await sendQuery(query.getPeticiones,idUsuarioConectado);
     
-    if (!results) {
+    if (!results || results.length === 0) {
         return res.status(404).send({
             ok: false,
             data: null,
