@@ -1,10 +1,10 @@
 import { NavLink } from 'react-router-dom'
 import styles from './QuienesSomos.module.css'
 import { useUserContext } from '../../Hooks/useUserContext'
-import quote from'../../../assets/comillas.png'
-import fotoLuis from'../../../assets/luis.jpg'
-import fotoDaniel from'../../../assets/daniel.jpg'
-import fotoLucia from'../../../assets/lucia.jpg'
+import quote from '../../../assets/comillas.png'
+import fotoLuis from '../../../assets/luis.jpg'
+import fotoDaniel from '../../../assets/daniel.jpg'
+import fotoLucia from '../../../assets/lucia.jpg'
 
 function QuienesSomos () {
   const context = useUserContext()
