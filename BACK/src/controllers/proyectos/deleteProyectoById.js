@@ -4,18 +4,29 @@ import { query } from '../../db/queries.js';
 async function deleteProyectobyId(req, res) {
   const { proyectoId } = req.params;
   console.log(proyectoId);
-
+  
   try {
-    const result = await sendQuery(query.deleteProyectobyId, [proyectoId]);
-
-    if (!Array.isArray(result) || result.length === 0) {
+    const compruebaId = await sendQuery (query.getProyectoAcabadoPorId, [proyectoId]);
+    console.log(compruebaId);
+    if (!compruebaId){
       res.status(404).json({
         success: false,
         data: null,
-        error: `No hay ningún proyecto con el id ${proyectoId}, o bien por alguna razón ha funcionado y se ha eliminado, guay, si ha funcionado y no te tira la web NO TOCAR`
+        error: `No se ha encontrado el id ${proyectoId}`
+      });
+
+    }
+    const result = await sendQuery(query.deleteProyectobyId, [proyectoId]);
+    console.log(result);
+
+    if (result.affectedRows === 0) {
+      res.status(404).json({
+        success: false,
+        data: null,
+        error: `No se ha eliminado nada`
       });
     } else {
-      const [proyecto] = result;
+      const proyecto = result;
 
       res.json({
         success: true,

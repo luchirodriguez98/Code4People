@@ -36,7 +36,7 @@ const query = {
   //Ver todas las peticiones segun el usuario conectado
   getAllProyectosAcabados:'SELECT id_proyecto, titulo, url, url_imagen FROM proyectos_acabados',
   //Ver proyecto acabado por id
-  getProyectoAcabadoPorId: 'SELECT * from proyectos_acabados where id_proyecto = ?',
+  getProyectoAcabadoPorId: 'SELECT id_proyecto from proyectos_acabados where id_proyecto = ?',
   //Eliminar proyecto acabado de usuario
   deleteProyectobyId: 'DELETE FROM proyectos_acabados WHERE id_proyecto =  ?',
   //Acabar proyecto
