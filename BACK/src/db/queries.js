@@ -38,7 +38,7 @@ const query = {
   //Ver todas las peticiones segun el usuario conectado
   getAllProyectosAcabados:'SELECT id_proyecto, titulo, url, url_imagen FROM proyectos_acabados',
   //Ver proyecto acabado por id
-  getProyectoAcabadoPorId: 'SELECT * from proyectos_acabados where id_proyecto = ?',
+  getProyectoAcabadoPorId: 'SELECT id_proyecto from proyectos_acabados where id_proyecto = ?',
   //Eliminar proyecto acabado de usuario
   deleteProyectobyId: 'DELETE FROM proyectos_acabados WHERE id_proyecto =  ?',
   //Acabar proyecto
@@ -56,7 +56,7 @@ const query = {
    //Obtener peticiones hechas a tu proyecto del usuario conectado 
    getPeticiones: 'SELECT p.*, pr.titulo as titulo_proyecto FROM proyectos_a_realizar pr LEFT JOIN peticiones p ON pr.id_proyecto = p.id_proyecto WHERE pr.autor = ? AND p.estado IS NULL',
   //Obtener peticiones hechas por el usuario
-   getPeticionesUser: 'SELECT id_peticion,titulo,estado FROM peticiones where autor = ?',
+   getPeticionesUser: 'SELECT p.*, pa.autor as autor_proyecto, pa.titulo as titulo_proyecto FROM peticiones p JOIN proyectos_a_realizar pa ON p.id_proyecto = pa.id_proyecto WHERE p.autor = ?',
    //Aceptar peticion
     aceptarPeticion: 'UPDATE peticiones SET estado = true WHERE id_peticion = ?',
    //Denegar peticion

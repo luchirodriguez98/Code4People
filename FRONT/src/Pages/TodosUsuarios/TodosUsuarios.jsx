@@ -1,43 +1,45 @@
 import { useEffect, useState } from 'react'
 import { ListaAdmin } from '../../Components/ListaAdmin/ListaAdmin'
 import styles from './TodosUsuarios.module.css'
+import { toast } from 'react-toastify'
 
 function TodosUsuarios () {
   const [usuarios, setUsuarios] = useState([])
   const [errors, setErrors] = useState(null)
 
-  useEffect(() => {
-    const token = localStorage.getItem('token')
+  const token = localStorage.getItem('token')
 
-    const fetchData = async () => {
-      const options = {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`
-        }
-      }
-
-      const baseUrl = 'http://localhost:5000'
-
-      try {
-        const response = await fetch(`${baseUrl}/users/usuarios`, options)
-        const data = await response.json()
-        console.log(data.data)
-        if (!response.ok) {
-          if (data.error) {
-            setErrors(data.error)
-          } else {
-            setErrors(data.message)
-          }
-          return
-        }
-        setUsuarios(data.data)
-      } catch (error) {
-        console.error('Error:', error.message)
+  const getUsuarios = async () => {
+    const options = {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
       }
     }
-    fetchData()
+
+    const baseUrl = 'http://localhost:5000'
+
+    try {
+      const response = await fetch(`${baseUrl}/users/usuarios`, options)
+      const data = await response.json()
+      console.log(data.data)
+      if (!response.ok) {
+        if (data.error) {
+          setErrors(data.error)
+        } else {
+          setErrors(data.message)
+        }
+        return
+      }
+      setUsuarios(data.data)
+    } catch (error) {
+      console.error('Error:', error.message)
+    }
+  }
+
+  useEffect(() => {
+    getUsuarios()
   }, [])
 
   const eliminarUsuario = async (id) => {
@@ -63,8 +65,12 @@ function TodosUsuarios () {
         } else {
           setErrors(data.message)
         }
+        toast.error(errors)
+        setErrors(null)
+        return
       }
-      window.location.reload()
+      toast.success('Usuario eliminado correctamente')
+      getUsuarios()
     } catch (error) {
       console.error('Error:', error.message)
     }

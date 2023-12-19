@@ -8,6 +8,7 @@
 .item{
   display: flex;
   width: 90%;
+  height: 60px;
   max-width: 400px;
   background-color: white;
   color: black;

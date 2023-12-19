@@ -1,16 +1,14 @@
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useForm } from '../../Hooks/useForm'
-import { ErrorModal } from '../../Components/ErrorModal/ErrorModal'
 import { FaGithub } from 'react-icons/fa6'
 import styles from './Login.module.css'
 import stylesForm from '../../Styles/form.module.css'
-import { useContext, useEffect, useState } from 'react'
-import { ErrorContext } from '../../Context/ErrorContext'
+import { useState } from 'react'
 import { useUserContext } from '../../Hooks/useUserContext'
+import { toast } from 'react-toastify'
 
 function Login () {
   const userContext = useUserContext()
-  const { openModal, closeModal } = useContext(ErrorContext)
 
   const [errors, setErrors] = useState(null)
 
@@ -21,8 +19,6 @@ function Login () {
 
   const navigate = useNavigate()
 
-  const { email, pass } = formValues
-
   const handleSubmit = async (event) => {
     event.preventDefault()
 
@@ -31,7 +27,7 @@ function Login () {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ email, pass })
+      body: JSON.stringify(formValues)
     }
 
     const baseUrl = 'http://localhost:5000'
@@ -41,8 +37,7 @@ function Login () {
       const data = await response.json()
       console.log(data)
       if (!response.ok) {
-        setErrors(data.error)
-        console.log(errors)
+        setErrors('Formulario con errores, vuelve a intentarlo')
         return
       }
       if (response.ok && response.status === 200) {
@@ -61,10 +56,8 @@ function Login () {
     }
   }
   console.log(errors)
-  closeModal()
   return (
     <div className={`${styles.body}`}>
-      <ErrorModal mensaje={errors}/>
       <h1 className={styles.title}>Inicia sesion</h1>
       <form className={stylesForm.form} onSubmit={handleSubmit}>
           <label htmlFor="email">EMAIL</label>
@@ -88,7 +81,7 @@ function Login () {
             className={errors?.pass ? stylesForm.invalidInput : undefined}
           />
           <button onClick={() => {
-            openModal()
+            toast.error(errors)
             setErrors(null)
           }}
             className={`${stylesForm.button}`}
@@ -96,6 +89,7 @@ function Login () {
             INICIA SESION
           </button>
       </form>
+      {/* <button onClick={() => toast(errors)}>Toast</button> */}
       <span className={styles.redirectRegistro}>
         <p>No tienes cuenta?</p>
         <NavLink to="/registro">

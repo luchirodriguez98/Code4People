@@ -2,10 +2,9 @@ import { useLocation } from 'react-router'
 import { NavLink, useNavigate } from 'react-router-dom'
 import styles from './Peticion.module.css'
 import { useState } from 'react'
-import { ErrorModal } from '../../Components/ErrorModal/ErrorModal'
+import { toast } from 'react-toastify'
 
 function Peticion () {
-  // const [peticion, setPeticion] = useState()
   const [errors, setErrors] = useState(null)
 
   const navigation = useLocation()
@@ -35,10 +34,13 @@ function Peticion () {
         } else {
           setErrors(data.message)
         }
+        toast.error(errors)
         return
       }
-      // setPeticion(data.data)
-      navigate('/peticion/proyecto')
+      if (response.ok) {
+        toast.success('Peticion aceptada')
+        navigate('/peticion/proyecto')
+      }
     } catch (error) {
       console.error('Error:', error.message)
     }
@@ -67,10 +69,13 @@ function Peticion () {
         } else {
           setErrors(data.message)
         }
+        toast.error(errors)
         return
       }
-      // setPeticion(data.data)
-      navigate('/peticion/proyecto')
+      if (response.ok) {
+        toast.success('Peticion denegada')
+        navigate('/peticion/proyecto')
+      }
     } catch (error) {
       console.error('Error:', error.message)
     }
@@ -78,23 +83,28 @@ function Peticion () {
 
   return (
     <div className={styles.body}>
-      <ErrorModal mensaje={errors}/>
       <h1 className={styles.title}>Peticion del usuario &quot;{navigation.state.autor}&quot;</h1>
       <div className={styles.container}>
         <p>TITULO</p>
         <div className={styles.whiteContainer}>
-          <p>{navigation.state.titulo}</p>
+          <p>{navigation.state.peticion_titulo}</p>
         </div>
         <p>DESCRIPCION</p>
         <div className={styles.whiteContainer}>
-          <p>{navigation.state.descripcion}</p>
+          <p>{navigation.state.peticion_descripcion}</p>
         </div>
         <div className={styles.buttonContainer}>
           <NavLink to="/peticion/proyecto">
-            <button className={styles.buttonDecline} onClick={() => rechazarPeticion(navigation.state.id_peticion)}>RECHAZAR</button>
+            <button className={styles.buttonDecline} onClick={() => { rechazarPeticion(navigation.state.id_peticion) }}
+            >
+              RECHAZAR
+            </button>
           </NavLink>
           <NavLink to="/peticion/proyecto">
-            <button className={styles.buttonAccept} onClick={() => aceptarPeticion(navigation.state.id_peticion)}>ACEPTAR</button>
+            <button className={styles.buttonAccept} onClick={() => { aceptarPeticion(navigation.state.id_peticion) }}
+            >
+              ACEPTAR
+            </button>
           </NavLink>
         </div>
       </div>

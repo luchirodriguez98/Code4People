@@ -2,13 +2,11 @@ import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import styles from './MensajeNuevo.module.css'
 import formStyles from '../../Styles/form.module.css'
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/solid'
-import { ErrorModal } from '../../Components/ErrorModal/ErrorModal'
-import { useContext, useState } from 'react'
-import { ErrorContext } from '../../Context/ErrorContext'
+import { useState } from 'react'
 import { useForm } from '../../Hooks/useForm'
+import { toast } from 'react-toastify'
 
 function MensajeNuevo () {
-  const errorContext = useContext(ErrorContext)
   const navigation = useLocation()
 
   const [errors, setErrors] = useState(null)
@@ -40,10 +38,12 @@ function MensajeNuevo () {
       const data = await response.json()
       console.log(data)
       if (!response.ok) {
-        setErrors(data.errors)
+        setErrors(data.error)
+        toast.error('Debes escribir un mensaje, vuelve a intentarlo')
         return
       }
       if (response.ok && response.status === 200) {
+        toast.success('Mensaje enviado')
         navigate('/mensajes/enviados')
         reset({
           mensaje: ''
@@ -54,11 +54,9 @@ function MensajeNuevo () {
       setErrors('Hubo un problema al procesar la solicitud. Por favor, inténtalo de nuevo más tarde.')
     }
   }
-  errorContext.closeModal()
 
   return (
     <div className={styles.body}>
-       <ErrorModal />
       <NavLink to="/mensajes">
         <div className={styles.backNav}>
           <ChevronLeftIcon className={styles.icon}/>
@@ -82,20 +80,15 @@ function MensajeNuevo () {
             id="mensaje"
             cols="30"
             rows="10"
+            placeholder='Escribe aqui tu mensaje'
             value={formValues.cuerpo}
             onChange={handleFormChange}
             className={errors?.cuerpo ? formStyles.invalidInput : undefined}
           ></textarea>
-          <button
-          className={styles.button}
-          onClick={() => {
-            errorContext.openModal()
-            setErrors(null)
-          }}
-          >
-            <p>ENVIAR</p>
+          <div className={styles.button} >
+            <button onClick={() => { setErrors(null) }}>ENVIAR</button>
             <ChevronRightIcon className={styles.icon}/>
-          </button>
+          </div>
         </form>
       </div>
     </div>

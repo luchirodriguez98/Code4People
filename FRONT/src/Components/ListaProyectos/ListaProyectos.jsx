@@ -2,32 +2,46 @@ import { NavLink } from 'react-router-dom'
 import styles from './ListaProyecto.module.css'
 import { ChevronDownIcon } from '@heroicons/react/24/solid'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { EffectCoverflow, Pagination } from 'swiper/modules'
+import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules'
+import SwiperCore from 'swiper'
 
 // Import Swiper styles
 import 'swiper/css'
 import 'swiper/css/effect-coverflow'
 import 'swiper/css/pagination'
+import 'swiper/css/navigation'
 import './ListaProyectos.css'
 
+SwiperCore.use([EffectCoverflow, Pagination, Navigation])
+
+SwiperCore.use([EffectCoverflow, Pagination, Navigation])
+
 function ListaProyectos ({ toMap }) {
+  const swiperParams = {
+    effect: 'coverflow',
+    grabCursor: true,
+    centeredSlides: true,
+    slidesPerView: 'auto',
+    initialSlide: 2,
+    coverflowEffect: {
+      rotate: 50,
+      stretch: 0,
+      depth: 100,
+      modifier: 1,
+      slideShadows: true
+    },
+    pagination: true,
+    navigation: { // Agrega estas opciones de navegación
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev'
+    },
+    modules: [EffectCoverflow, Pagination, Navigation], // Asegúrate de incluir Navigation aquí
+    className: styles.mySwiper
+  }
   return (
     <div className={styles.proyectoList}>
     <Swiper
-        effect={'coverflow'}
-        grabCursor={true}
-        centeredSlides={true}
-        slidesPerView={'auto'}
-        initialSlide={2}
-        coverflowEffect={{
-          rotate: 50,
-          stretch: 0,
-          depth: 100,
-          modifier: 1,
-          slideShadows: true
-        }}
-        pagination={true}
-        modules={[EffectCoverflow, Pagination]}
+        {...swiperParams}
         className={styles.mySwiper}
       >
       {toMap.map(item => {
@@ -48,6 +62,8 @@ function ListaProyectos ({ toMap }) {
           </SwiperSlide>
         )
       })}
+      <div className="swiper-button-next"></div>
+      <div className="swiper-button-prev"></div>
       </Swiper>
       </div>
   )

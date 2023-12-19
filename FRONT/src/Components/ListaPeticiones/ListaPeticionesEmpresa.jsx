@@ -28,11 +28,11 @@ function ListaPeticionesEmpresa ({ toMap, route }) {
       {toMap.map(item => {
         console.log(item)
         return (
-          <span key={item.autor ? item.autor : item.id_peticion} className={styles.item}>
+          <span key={item.autor} className={styles.item}>
             <p className={styles.text}>
-              USUARIO {item.autor ? item.autor : item.titulo}
+              USUARIO {item.autor}
             </p>
-            {item.estado === null
+            {item.peticion_estado === null
               ? <NavLink to={route + item.id_usuario} state={item}>
               <ChevronRightIcon className={styles.blackIcon}/>
             </NavLink>

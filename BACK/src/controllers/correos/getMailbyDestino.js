@@ -5,7 +5,7 @@ async function getMailsbyDestino(req, res) {
 
     const { id: idUsuarioConectado } = req.user;
     
-    const [mail] = await sendQuery(query.getMailsbyDestino, [idUsuarioConectado])
+    const mail = await sendQuery(query.getMailsbyDestino, [idUsuarioConectado])
 
     if (!mail) {
         return res.status(404).send({

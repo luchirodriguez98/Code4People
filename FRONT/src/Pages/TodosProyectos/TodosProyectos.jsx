@@ -1,43 +1,47 @@
 import { useEffect, useState } from 'react'
 import { ListaAdmin } from '../../Components/ListaAdmin/ListaAdmin'
 import styles from './TodosProyectos.module.css'
+import { toast } from 'react-toastify'
 
 function TodosProyectos () {
   const [proyectos, setProyectos] = useState([])
   const [errors, setErrors] = useState(null)
 
-  useEffect(() => {
-    const token = localStorage.getItem('token')
+  const token = localStorage.getItem('token')
 
-    const fetchData = async () => {
-      const options = {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`
-        }
-      }
-
-      const baseUrl = 'http://localhost:5000'
-
-      try {
-        const response = await fetch(`${baseUrl}/proyectos`, options)
-        const data = await response.json()
-        console.log(data.data)
-        if (!response.ok) {
-          if (data.error) {
-            setErrors(data.error)
-          } else {
-            setErrors(data.message)
-          }
-          return
-        }
-        setProyectos(data.data)
-      } catch (error) {
-        console.error('Error:', error.message)
+  const getProyectos = async () => {
+    const options = {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
       }
     }
-    fetchData()
+
+    const baseUrl = 'http://localhost:5000'
+
+    try {
+      const response = await fetch(`${baseUrl}/proyectos`, options)
+      const data = await response.json()
+      console.log(data.data)
+      if (!response.ok) {
+        if (data.error) {
+          setErrors(data.error)
+        } else {
+          setErrors(data.message)
+        }
+        toast.error(errors)
+        setErrors(null)
+        return
+      }
+      setProyectos(data.data)
+    } catch (error) {
+      console.error('Error:', error.message)
+    }
+  }
+
+  useEffect(() => {
+    getProyectos()
   }, [])
 
   const eliminarProyecto = async (id) => {
@@ -66,7 +70,8 @@ function TodosProyectos () {
         }
         return
       }
-      window.location.reload()
+      toast.success('Proyecto eliminado correctamente')
+      getProyectos()
     } catch (error) {
       console.error('Error:', error.message)
     }

@@ -5,14 +5,15 @@ function ListaAdmin ({ toMap, toDelete }) {
   return (
     <div className={styles.adminList}>
       {toMap.map(item => {
-        console.log(item)
         return (
           <span key={item.id_usuario ? item.id_usuario : item.id_proyecto} className={styles.item}>
             <div className={styles.text}>
               <p>{item.nombre ? item.nombre : item.titulo}</p>
               <p>{item.email ? item.email : item.url}</p>
             </div>
-            <div onClick={() => toDelete(item.id_usuario ? item.id_usuario : item.id_proyecto)}>
+            <div onClick={() => {
+              toDelete(item.id_usuario ? item.id_usuario : item.id_proyecto)
+            }}>
               <XMarkIcon className={styles.icon}/>
             </div>
           </span>

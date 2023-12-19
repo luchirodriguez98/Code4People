@@ -1,6 +1,7 @@
 .body{
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 a{
   color: white;
@@ -10,6 +11,8 @@ a{
   width: 100%;
   padding-left: 10px;
   display: flex;
+  background-color: black;
+  position: fixed;
 }
 .backNav p{
   font-size: 16px;

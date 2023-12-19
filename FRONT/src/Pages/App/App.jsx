@@ -27,7 +27,8 @@ import { TodosProyectos } from '../TodosProyectos/TodosProyectos'
 import { TodosUsuarios } from '../TodosUsuarios/TodosUsuarios'
 import { PrivateRoute } from '../../Routes/PrivateRoute'
 import { PublicRoute } from '../../Routes/PublicRoute'
-import { ErrorContextProvider } from '../../Context/ErrorContext'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const AppRoutes = () => {
   const routes = useRoutes([
@@ -239,12 +240,22 @@ function App () {
   return (
       <UserContextProvider>
         <BrowserRouter>
-          <ErrorContextProvider>
             <Nav />
             <Layout>
-            <AppRoutes />
+              <AppRoutes />
+              <ToastContainer
+                position="bottom-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark"
+              />
             </Layout>
-          </ErrorContextProvider>
         </BrowserRouter>
       </UserContextProvider>
   )

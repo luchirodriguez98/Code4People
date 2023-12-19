@@ -8,7 +8,6 @@
 @media (min-width:768px) {
     .container{
         padding-inline: 60px;
-        /* background: archivo posicion tamaño repeat clip; */
-        background: url(/assets/background-complete.png) 0% 0%/1330px no-repeat border-box;
+        background: url(/assets/background.png) 0% 0%/1330px no-repeat border-box;
     }
 }

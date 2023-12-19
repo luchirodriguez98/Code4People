@@ -1,15 +1,13 @@
 import { useNavigate } from 'react-router-dom'
-import { useContext, useState } from 'react'
-import { ErrorContext } from '../../Context/ErrorContext'
+import { useState } from 'react'
 import { useForm } from '../../Hooks/useForm'
-import { ErrorModal } from '../../Components/ErrorModal/ErrorModal'
 import styles from './Registro.module.css'
 import stylesForm from '../../Styles/form.module.css'
+import { toast } from 'react-toastify'
 
 function Registro () {
-  const errorContext = useContext(ErrorContext)
-
   const [errors, setErrors] = useState(null)
+  const [ok, setOk] = useState(null)
 
   const { formValues, reset, handleFormChange } = useForm({
     nombre: '',
@@ -39,23 +37,41 @@ function Registro () {
       console.log(data)
       if (!response.ok && response.status === 400) {
         setErrors(data.errors)
+        toast.error('Hay errores en el formulario, intentelo nuevamente')
         return
       }
-      navigate('/')
-      reset({
-        nombre: '',
-        email: '',
-        pass: '',
-        role: ''
-      })
+      if (!response.ok && response.status === 500) {
+        setErrors(data.error)
+        return
+      }
+      if (response.ok) {
+        toast.success(data.message)
+        navigate('/login')
+        reset({
+          nombre: '',
+          email: '',
+          pass: '',
+          role: ''
+        })
+      }
     } catch (error) {
       console.error('Error:', error.message)
     }
   }
-  errorContext.closeModal()
+  const showModal = () => {
+    if (errors) {
+      console.log('no agregado')
+      toast.error(errors)
+      setErrors(null)
+    }
+    if (ok) {
+      console.log('agregado')
+      toast.success(ok)
+      setOk(null)
+    }
+  }
   return (
     <div className={`${styles.body}`}>
-      <ErrorModal />
       <h1 className={`${styles.title}`}>Registra tu empresa!</h1>
       <form action="" className={`${stylesForm.form}`} onSubmit={saveNewUser}>
         <label htmlFor="nombre">NOMBRE</label>
@@ -119,10 +135,7 @@ function Registro () {
         </span>
         {errors?.role && <span>Debes seleccionar un tipo de usuario</span>}
         <button
-          onClick={() => {
-            errorContext.openModal()
-            setErrors(null)
-          }}
+          onClick={showModal}
           className={`${stylesForm.button}`}
         >
           GUARDAR

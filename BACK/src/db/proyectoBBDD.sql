@@ -1,6 +1,6 @@
-	-------------------------
+-- -----------------------
 -- CREACIÓN DE LA BBDD --
--------------------------
+-- -----------------------
 drop database if exists proyectosplai;
 create database if not exists proyectosplai;
 
@@ -24,7 +24,8 @@ create table if not exists usuarios(
     confirmation_code varchar(50) DEFAULT NULL,
     PRIMARY KEY (id_usuario)
 );
-
+-- Voy a dejar esto por aqui por si hace falta volver a revivir a un usuario jajaj
+-- UPDATE usuarios SET estado = true where id_usuario = ? ;
 
 
 -- Proyecto
@@ -132,7 +133,7 @@ BEGIN
         -- Insertar un nuevo correo en la tabla de correos
         INSERT INTO mails (mensaje, destinatario, origen)
         VALUES (
-            CONCAT('El estado de tu petición "', NEW.titulo, '" ha cambiado a "', NEW.estado, '".'),
+            CONCAT('El estado de tu petición "', NEW.titulo, '" ha cambiado"".'),
             NEW.autor,
             14 -- El admin
         );
