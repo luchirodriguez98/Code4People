@@ -7,10 +7,10 @@ async function getPeticiones (req, res) {
     const results = await sendQuery(query.getPeticiones,idUsuarioConectado);
     
     if (!results || results.length === 0) {
-        return res.status(404).send({
+        return res.send({
             ok: false,
             data: null,
-            error: `No se han encontrado peticiones para ${idUsuarioConectado}`
+            error: `No se han encontrado peticiones`
         })
 }
 
