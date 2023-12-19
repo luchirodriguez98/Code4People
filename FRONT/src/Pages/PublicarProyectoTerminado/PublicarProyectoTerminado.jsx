@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from 'react-router-dom'
-import styles from './ProyectoTerminado.module.css'
+import styles from './PublicarProyectoTerminado.module.css'
 import formStyles from '../../Styles/form.module.css'
 import { useState } from 'react'
 import { publicarProyectoTerminado } from '../../services/proyectos/publicarProyectoTerminado.js'
