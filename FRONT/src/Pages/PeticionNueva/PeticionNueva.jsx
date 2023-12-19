@@ -4,7 +4,7 @@ import styles from './PeticionNueva.module.css'
 import stylesForm from '../../Styles/form.module.css'
 import { useState } from 'react'
 import { useLocation } from 'react-router-dom'
-import { nuevaPeticion } from '../../services/peticiones/nuevaPeticion'
+import { nuevaPeticion } from '../../services/peticiones/nuevaPeticion.js'
 
 function PeticionNueva () {
   const [errors, setErrors] = useState(null)

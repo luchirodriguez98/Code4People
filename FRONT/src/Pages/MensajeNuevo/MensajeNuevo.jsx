@@ -4,7 +4,7 @@ import formStyles from '../../Styles/form.module.css'
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/solid'
 import { useState } from 'react'
 import { useForm } from '../../Hooks/useForm'
-import { mensajeNuevo } from '../../services/mensajes/MensajeNuevo'
+import { mensajeNuevo } from '../../services/mensajes/mensajeNuevo.js'
 
 function MensajeNuevo () {
   const [errors, setErrors] = useState(null)

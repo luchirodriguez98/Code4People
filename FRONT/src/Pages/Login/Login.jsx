@@ -5,7 +5,7 @@ import styles from './Login.module.css'
 import stylesForm from '../../Styles/form.module.css'
 import { useState } from 'react'
 import { useUserContext } from '../../Hooks/useUserContext'
-import { logInUser } from '../../services/logInUser'
+import { logInUser } from '../../services/logInUser.js'
 
 function Login () {
   const context = useUserContext()

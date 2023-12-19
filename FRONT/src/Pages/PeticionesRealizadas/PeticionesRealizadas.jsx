@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { ListaPeticiones } from '../../Components/ListaPeticiones/ListaPeticiones'
 import styles from './PeticionesRealizadas.module.css'
-import { peticionRealizadas } from '../../services/peticiones/peticionRealizadas'
+import { peticionRealizadas } from '../../services/peticiones/peticionRealizadas.js'
 
 function PeticionesRealizadas () {
   const [peticiones, setPeticiones] = useState([])

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { ListaAdmin } from '../../Components/ListaAdmin/ListaAdmin'
 import styles from './TodosProyectos.module.css'
-import { todosProyectos } from '../../services/admin/todosProyectos'
+import { todosProyectos } from '../../services/admin/todosProyectos.js'
 
 function TodosProyectos () {
   const [proyectos, setProyectos] = useState([])

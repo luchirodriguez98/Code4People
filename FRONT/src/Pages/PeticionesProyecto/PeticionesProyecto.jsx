@@ -3,7 +3,7 @@ import { ListaPeticionesEmpresa } from '../../Components/ListaPeticiones/ListaPe
 import styles from './PeticionesProyecto.module.css'
 import { NavLink } from 'react-router-dom'
 import { PlusIcon } from '@heroicons/react/24/solid'
-import { proyectosEmpresa } from '../../services/proyectos/proyectosEmpresa'
+import { proyectosEmpresa } from '../../services/proyectos/proyectosEmpresa.js'
 
 function PeticionesProyecto () {
   const [proyectos, setProyectos] = useState([])

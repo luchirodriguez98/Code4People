@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { useForm } from '../../Hooks/useForm'
 import styles from './Registro.module.css'
 import stylesForm from '../../Styles/form.module.css'
-import { registro } from '../../services/user/registro'
+import { registro } from '../../services/user/registro.js'
 
 function Registro () {
   const [errors, setErrors] = useState(null)

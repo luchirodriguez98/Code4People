@@ -1,5 +1,5 @@
 import { ListaProyectos } from '../../Components/ListaProyectos/ListaProyectos'
-import { proyectosRealizados } from '../../services/proyectos/proyectosRealizados'
+import { proyectosRealizados } from '../../services/proyectos/proyectosRealizados.js'
 import styles from './ProyectosRealizados.module.css'
 import { useEffect, useState } from 'react'
 

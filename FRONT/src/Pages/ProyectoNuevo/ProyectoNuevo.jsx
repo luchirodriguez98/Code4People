@@ -3,7 +3,7 @@ import { useForm } from '../../Hooks/useForm'
 import styles from './ProyectoNuevo.module.css'
 import formStyles from '../../Styles/form.module.css'
 import { useState } from 'react'
-import { proyectoNuevo } from '../../services/proyectos/proyectoNuevo'
+import { proyectoNuevo } from '../../services/proyectos/proyectoNuevo.js'
 
 function ProyectoNuevo () {
   const [errors, setErrors] = useState(null)

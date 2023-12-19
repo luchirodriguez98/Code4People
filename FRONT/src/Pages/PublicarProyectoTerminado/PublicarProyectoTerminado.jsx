@@ -2,7 +2,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import styles from './ProyectoTerminado.module.css'
 import formStyles from '../../Styles/form.module.css'
 import { useState } from 'react'
-import { publicarProyectoTerminado } from '../../services/proyectos/publicarProyectoTerminado'
+import { publicarProyectoTerminado } from '../../services/proyectos/publicarProyectoTerminado.js'
 
 function PublicarProyectoTerminado () {
   const [errors, setErrors] = useState(null)
