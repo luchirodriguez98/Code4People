@@ -8,7 +8,7 @@ import { useUserContext } from '../../Hooks/useUserContext'
 import { logInUser } from '../../services/logInUser'
 
 function Login () {
-  const userContext = useUserContext()
+  const context = useUserContext()
 
   const [errors, setErrors] = useState(null)
 
@@ -57,7 +57,7 @@ function Login () {
   return (
     <div className={`${styles.body}`}>
       <h1 className={styles.title}>Inicia sesion</h1>
-      <form className={stylesForm.form} onSubmit={(event) => logInUser({ event, formValues, reset, userContext })}>
+      <form className={stylesForm.form} onSubmit={(event) => logInUser({ event, formValues, reset, context })}>
           <label htmlFor="email">EMAIL</label>
           <input
             type="email"

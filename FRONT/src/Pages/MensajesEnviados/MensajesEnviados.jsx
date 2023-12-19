@@ -43,7 +43,7 @@ function MensajesEnviados () {
   useEffect(() => {
     mensajesEnviados({ setErrors, setMensajes })
   }, [])
-  console.log(mensajes)
+
   return (
         <div className={styles.body}>
           <NavLink to="/mensajes">

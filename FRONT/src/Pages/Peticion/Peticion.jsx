@@ -8,7 +8,7 @@ import { rechazarPeticion } from '../../services/peticiones/rechazarPeticion'
 function Peticion () {
   const [errors, setErrors] = useState(null)
 
-  const { state } = useLocation()
+  const navigation = useLocation()
   const navigate = useNavigate()
 
   const token = localStorage.getItem('token')
@@ -84,25 +84,25 @@ function Peticion () {
 
   return (
     <div className={styles.body}>
-      <h1 className={styles.title}>Peticion del usuario &quot;{state.autor}&quot;</h1>
+      <h1 className={styles.title}>Peticion del usuario &quot;{navigation.state.autor}&quot;</h1>
       <div className={styles.container}>
         <p>TITULO</p>
         <div className={styles.whiteContainer}>
-          <p>{state.peticion_titulo}</p>
+          <p>{navigation.state.peticion_titulo}</p>
         </div>
         <p>DESCRIPCION</p>
         <div className={styles.whiteContainer}>
-          <p>{state.peticion_descripcion}</p>
+          <p>{navigation.state.peticion_descripcion}</p>
         </div>
         <div className={styles.buttonContainer}>
           <NavLink to="/peticion/proyecto">
-            <button className={styles.buttonDecline} onClick={() => rechazarPeticion({ idPeticion: state.id_peticion, setErrors, errors, navigate, token })}
+            <button className={styles.buttonDecline} onClick={() => rechazarPeticion({ idPeticion: navigation.state.id_peticion, setErrors, errors, navigate, token })}
             >
               RECHAZAR
             </button>
           </NavLink>
           <NavLink to="/peticion/proyecto">
-            <button className={styles.buttonAccept} onClick={() => aceptarPeticion({ idPeticion: state.id_peticion, setErrors, errors, navigate, token })}>
+            <button className={styles.buttonAccept} onClick={() => aceptarPeticion({ idPeticion: navigation.state.id_peticion, setErrors, errors, navigate, token })}>
               ACEPTAR
             </button>
           </NavLink>

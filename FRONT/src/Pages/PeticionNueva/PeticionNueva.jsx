@@ -10,7 +10,7 @@ function PeticionNueva () {
   const [errors, setErrors] = useState(null)
 
   const navigate = useNavigate()
-  const { state } = useLocation()
+  const navigation = useLocation()
 
   const { formValues, reset, handleFormChange } = useForm({
     titulo: '',
@@ -59,7 +59,7 @@ function PeticionNueva () {
   return (
     <div className={styles.body}>
         <h1 className={styles.title}>Solicitar Proyecto</h1>
-        <form className={`${stylesForm.form}`} onSubmit={(event) => nuevaPeticion({ event, proyectoId: state.id_proyecto, formValues, setErrors, navigate, reset })}>
+        <form className={`${stylesForm.form}`} onSubmit={(event) => nuevaPeticion({ event, proyectoId: navigation.state.id_proyecto, formValues, setErrors, navigate, reset })}>
             <label htmlFor="titulo">TITULO</label>
             <input
               type="text"

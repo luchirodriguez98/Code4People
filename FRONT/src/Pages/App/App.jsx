@@ -18,7 +18,7 @@ import { MensajesRecibidos } from '../MensajesRecibidos/MensajesRecibidos'
 import { PeticionesRealizadas } from '../PeticionesRealizadas/PeticionesRealizadas'
 import { Peticion } from '../Peticion/Peticion'
 import { NotFound } from '../NotFound/NotFound'
-import { ProyectoTerminado } from '../ProyectoTerminado/ProyectoTerminado'
+import { PublicarProyectoTerminado } from '../PublicarProyectoTerminado/PublicarProyectoTerminado'
 import { ProyectoNuevo } from '../ProyectoNuevo/ProyectoNuevo'
 import { MensajeNuevo } from '../MensajeNuevo/MensajeNuevo'
 import { PeticionesProyecto } from '../PeticionesProyecto/PeticionesProyecto'
@@ -80,7 +80,7 @@ const AppRoutes = () => {
       children: [
         {
           path: '',
-          element: <ProyectoTerminado />
+          element: <PublicarProyectoTerminado />
         }
       ]
     },

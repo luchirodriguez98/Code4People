@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { ListaAdmin } from '../../Components/ListaAdmin/ListaAdmin'
 import styles from './TodosUsuarios.module.css'
 import { todosUsuarios } from '../../services/admin/todosUsuarios'
-import { eliminarUsuarios } from '../../services/admin/eliminarUsuarios'
 
 function TodosUsuarios () {
   const [usuarios, setUsuarios] = useState([])

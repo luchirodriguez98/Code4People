@@ -8,7 +8,7 @@ function PublicarProyectoTerminado () {
   const [errors, setErrors] = useState(null)
 
   const navigate = useNavigate()
-  const { state: proyectoId } = useLocation()
+  const navigation = useLocation()
 
   // const postProyect = async (event) => {
   //   const formData = new FormData(event.target)
@@ -48,7 +48,7 @@ function PublicarProyectoTerminado () {
         <div className={styles.body}>
           <h1 className={styles.title}>Publicar proyecto terminado</h1>
           <div className={styles.container}>
-            <form className={formStyles.form} onSubmit={(event) => publicarProyectoTerminado({ event, setErrors, navigate, proyectoId })}>
+            <form className={formStyles.form} onSubmit={(event) => publicarProyectoTerminado({ event, setErrors, navigate, proyectoId: navigation.state })}>
               <label htmlFor="url">URL DE TU PAGINA</label>
               <input
                 type="text"

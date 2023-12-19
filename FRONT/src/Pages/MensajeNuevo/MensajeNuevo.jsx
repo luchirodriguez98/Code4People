@@ -7,17 +7,15 @@ import { useForm } from '../../Hooks/useForm'
 import { mensajeNuevo } from '../../services/mensajes/MensajeNuevo'
 
 function MensajeNuevo () {
-  const navigation = useLocation()
-
   const [errors, setErrors] = useState(null)
+
+  const navigation = useLocation()
+  const navigate = useNavigate()
 
   const { formValues, reset, handleFormChange } = useForm({
     destinatario: `USUARIO ${navigation.state}`,
     mensaje: ''
   })
-
-  const navigate = useNavigate()
-
   // const sendMail = async (event) => {
   //   event.preventDefault()
   //   const token = localStorage.getItem('token')

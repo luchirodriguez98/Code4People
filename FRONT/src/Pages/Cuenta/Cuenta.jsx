@@ -4,20 +4,20 @@ import styles from './Cuenta.module.css'
 import { useUserContext } from '../../Hooks/useUserContext'
 
 function Cuenta () {
-  const userContext = useUserContext()
+  const context = useUserContext()
 
   return (
     <div className={styles.body}>
-        <h1 className={styles.title}>{`Hola ${userContext.usuario?.nombre}!`}</h1>
+        <h1 className={styles.title}>{`Hola ${context.usuario?.nombre}!`}</h1>
         <p className={styles.subTitle}>Aquí tienes acceso a todo lo que necesitas para administrar tu cuenta y aprovechar al máximo nuestra plataforma.</p>
-        <span className={userContext.usuario?.role === 'admin' ? styles.gridAdmin : styles.grid}>
+        <span className={context.usuario?.role === 'admin' ? styles.gridAdmin : styles.grid}>
           <NavLink to="/mensajes">
             <div className={styles.button}>
               <ChatBubbleLeftRightIcon />
             </div>
             <p className={styles.textButton}>MENSAJES</p>
           </NavLink>
-          {(userContext.usuario.role === 'usuario') &&
+          {(context.usuario.role === 'usuario') &&
           <NavLink to='/peticion/realizadas'>
             <div className={styles.button}>
               <ClipboardIcon />
@@ -25,7 +25,7 @@ function Cuenta () {
             <p className={styles.textButton}>PETICIONES</p>
           </NavLink>
           }
-          {(userContext.usuario.role === 'empresa') &&
+          {(context.usuario.role === 'empresa') &&
           <NavLink to='/peticion/proyecto'>
             <div className={styles.button}>
               <BriefcaseIcon />
@@ -33,7 +33,7 @@ function Cuenta () {
             <p className={styles.textButton}>PROYECTOS</p>
           </NavLink>
           }
-          {userContext.usuario?.role === 'admin' &&
+          {context.usuario?.role === 'admin' &&
             <>
               <NavLink to='/admin/proyectos'>
                 <div className={styles.button}>
@@ -50,7 +50,7 @@ function Cuenta () {
             </>
           }
           <NavLink to="/">
-            <div className={styles.button} onClick={() => userContext.logOut()}>
+            <div className={styles.button} onClick={() => context.logOut()}>
               <ArrowRightOnRectangleIcon />
             </div>
             <p className={styles.textButton}>CERRAR SESION</p>
