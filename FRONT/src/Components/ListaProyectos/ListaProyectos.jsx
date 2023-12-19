@@ -59,6 +59,11 @@ function ListaProyectos ({ toMap }) {
                   <ChevronDownIcon className={styles.icon}/>
                 </NavLink>
             }
+            {item.url_imagen &&
+              <div className={styles.imageContainer}>
+                <img src={item.url_imagen} className={styles.image}></img>
+              </div>
+            }
           </SwiperSlide>
         )
       })}

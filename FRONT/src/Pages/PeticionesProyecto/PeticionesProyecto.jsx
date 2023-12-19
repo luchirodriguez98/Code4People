@@ -104,10 +104,13 @@ function PeticionesProyecto () {
       {proyectos.map(proyecto => {
         return (
           <div key={proyecto.id_proyecto} className={styles.proyectoContainer}>
-          <h2 className={styles.titleProject}>{proyecto.proyecto_titulo}</h2>
-          <NavLink to="/proyectos/publicarTerminado" className={styles.nuevoProy} state={proyecto.id_proyecto}>
-            <p>MARCAR COMO TERMINADO</p>
-          </NavLink>
+          <h2 className={styles.titleProject}>PROYECTO {proyecto.proyecto_titulo}</h2>
+          {proyecto.proyecto_estado === null
+            ? <NavLink to="/proyectos/publicarTerminado" className={styles.nuevoProy} state={proyecto.id_proyecto}>
+                <p>MARCAR COMO TERMINADO</p>
+              </NavLink>
+            : <p className={styles.nuevoProy}>PROYECTO FINALIZADO</p>
+          }
           { errors
             ? <span className='errorSpan'>Hubo un error, recarga la pagina</span>
             : (proyecto.peticiones.length === 0

@@ -12,7 +12,7 @@
   max-width: 545px;
 }
 .proyectoContainer{
-  margin: 20px 0;
+  margin: 25px 0;
 }
 .nuevoProy{
   text-align: center;
@@ -22,12 +22,18 @@
 .titleProject{
   font-weight: 600;
   font-size: 20px;
-  margin-bottom: 2px;
+  margin-bottom: 10px;
   text-transform: uppercase;
+  text-align: center;
 }
 .textSinPeticiones{
-  margin: 20px 0 40px;
+  width: 340px;
+  margin: 10px auto;
   text-transform: uppercase;
+  border: 1px solid var(--primary-color);
+  padding: 11px;
+  border-radius: 20px;
+  text-align: center;
 }
 .icon{
   position: fixed;
