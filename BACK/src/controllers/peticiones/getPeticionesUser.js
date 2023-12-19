@@ -18,10 +18,10 @@ async function getPeticionesUser (req, res) {
     const peticion = await sendQuery(query.getPeticionesUser, [authorId])
 
     if (!peticion) {
-        return res.status(404).send({
+        return res.send({
             ok: false,
             data: null,
-            error: `No se han encontrado peticiones hechas por el user  id ${authorId}`
+            error: `No se han encontrado peticiones hechas por el user`
         })
 }
 
