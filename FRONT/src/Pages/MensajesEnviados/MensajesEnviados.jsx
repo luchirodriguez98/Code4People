@@ -49,7 +49,13 @@ function MensajesEnviados () {
             </div>
           </NavLink>
           <h1 className={styles.title}>Mensajes enviados</h1>
-          {errors ? <span className='errorSpan'>{errors}</span> : <ListaMensajes toMap={mensajes}/>}
+          {errors
+            ? <span className='errorSpan'>{errors}</span>
+            : (mensajes.length === 0
+                ? <p className='errorSpan'>No tienes mensajes</p>
+                : <ListaMensajes toMap={mensajes}/>
+              )
+          }
         </div>
   )
 }

@@ -11,6 +11,9 @@
   width: 80%;
   max-width: 545px;
 }
+.proyectoContainer{
+  margin: 20px 0;
+}
 .nuevoProy{
   text-align: center;
   color: var(--primary-color);

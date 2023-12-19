@@ -28,6 +28,7 @@ function PeticionesProyecto () {
         if (!response.ok) {
           if (data.error) {
             setErrors(data.error)
+            return
           } else {
             setErrors(data.message)
           }
@@ -102,7 +103,7 @@ function PeticionesProyecto () {
       <h1 className={styles.title}>Tus proyectos</h1>
       {proyectos.map(proyecto => {
         return (
-          <>
+          <div key={proyecto.id_proyecto} className={styles.proyectoContainer}>
           <h2 className={styles.titleProject}>{proyecto.proyecto_titulo}</h2>
           <NavLink to="/proyectos/publicarTerminado" className={styles.nuevoProy} state={proyecto.id_proyecto}>
             <p>MARCAR COMO TERMINADO</p>
@@ -114,7 +115,7 @@ function PeticionesProyecto () {
                 : <ListaPeticionesEmpresa toMap={proyecto.peticiones} route={'/peticion/proyecto/'}/>
               )
             }
-          </>
+          </div>
         )
       })}
     </div>

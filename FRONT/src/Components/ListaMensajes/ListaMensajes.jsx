@@ -1,7 +1,14 @@
 import { NavLink } from 'react-router-dom'
 import styles from './ListaMensajes.module.css'
+import { useState } from 'react'
 
 function ListaMensajes ({ toMap, icon }) {
+  const [mostrarMensajeCompleto, setMostrarMensajeCompleto] = useState(false)
+
+  const mensajeCompleto = () => {
+    setMostrarMensajeCompleto(true)
+  }
+
   return (
     <div className={styles.messageList}>
       {toMap.map(item => {
@@ -10,7 +17,7 @@ function ListaMensajes ({ toMap, icon }) {
             <div className={styles.text}>
               <p>USUARIO {item.origen ? item.origen : item.destinatario}</p>
               <p onClick={mensajeCompleto}>{item.mensaje}</p>
-              <p className={styles.completeMessege}>{item.mensaje}</p>
+              <p className={mostrarMensajeCompleto && styles.completeMessege}>{item.mensaje}</p>
             </div>
             {icon &&
               <NavLink to="/mensajes/nuevo" state={item.origen}>
