@@ -104,7 +104,7 @@ function PeticionesProyecto () {
         return (
           <>
           <h2 className={styles.titleProject}>{proyecto.proyecto_titulo}</h2>
-          <NavLink to="/proyectos/publicarTerminado" className={styles.nuevoProy}>
+          <NavLink to="/proyectos/publicarTerminado" className={styles.nuevoProy} state={proyecto.id_proyecto}>
             <p>MARCAR COMO TERMINADO</p>
           </NavLink>
           { errors

@@ -19,6 +19,9 @@
 .text{
   width: 85%;
 }
+.completeMessege {
+  display: none;
+}
 .text p:nth-child(1){
   font-weight: 600;
 }

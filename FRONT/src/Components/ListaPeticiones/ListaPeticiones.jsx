@@ -26,7 +26,7 @@ function ListaPeticiones ({ toMap }) {
         return (
           <span key={item.id_peticion} className={styles.item}>
             <p className={styles.text}>
-              PETICION NUMERO #{item.id_peticion}
+              PETICION AL PROYECTO  &quot;{item.titulo_proyecto}&quot;
             </p>
             {iconToRender({ item })}
           </span>

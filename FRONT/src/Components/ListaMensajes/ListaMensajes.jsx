@@ -9,7 +9,8 @@ function ListaMensajes ({ toMap, icon }) {
           <span key ={item.id_mail} className={styles.messageItem}>
             <div className={styles.text}>
               <p>USUARIO {item.origen ? item.origen : item.destinatario}</p>
-              <p>{item.mensaje}</p>
+              <p onClick={mensajeCompleto}>{item.mensaje}</p>
+              <p className={styles.completeMessege}>{item.mensaje}</p>
             </div>
             {icon &&
               <NavLink to="/mensajes/nuevo" state={item.origen}>
