@@ -19,16 +19,13 @@
 .text{
   width: 85%;
 }
-.completeMessege {
-  display: none;
-}
-.text p:nth-child(1){
-  font-weight: 600;
-}
-.text p:nth-child(2){
+.mensajeCorto{
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+.text p:nth-child(1){
+  font-weight: 600;
 }
 .messageItem a{
   display: flex;

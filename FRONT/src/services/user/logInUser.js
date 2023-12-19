@@ -1,6 +1,6 @@
 import { toast } from 'react-toastify'
 
-const logInUser = async ({ event, formValues, reset, userContext }) => {
+const logInUser = async ({ event, formValues, context, reset, navigate, setErrors, errors }) => {
   event.preventDefault()
 
   const options = {
@@ -16,13 +16,19 @@ const logInUser = async ({ event, formValues, reset, userContext }) => {
     const data = await response.json()
     console.log(data)
     if (!response.ok) {
-      toast.error('Formulario con errores, vuelve a intentarlo')
+      setErrors(data.error)
+      toast.error(errors || 'Formulario con errores, vuelve a intentarlo')
       return
     }
-    if (response.ok && response.status === 200) {
+    if (!response.ok && response.status === 500) {
+      setErrors(data.error)
+      return
+    }
+    if (response.ok) {
       localStorage.setItem('token', data.data.token)
       localStorage.setItem('userInfo', JSON.stringify(data.data.user))
-      userContext.logIn(data.data.user)
+      context.logIn(data.data.user)
+      navigate('/cuenta')
       reset({
         email: '',
         pass: ''

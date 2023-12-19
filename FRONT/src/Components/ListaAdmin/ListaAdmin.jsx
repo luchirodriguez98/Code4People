@@ -9,18 +9,17 @@ function ListaAdmin ({ toMap }) {
 
   const token = localStorage.getItem('token')
 
+  const toDelete = (item) => { item.id_usuario ? eliminarUsuarios({ token, setErrors, errors, idToDelete: item.id_usuario }) : eliminarProyectos({ token, setErrors, idToDelete: item.id_proyecto }) }
   return (
     <div className={styles.adminList}>
       {toMap.map(item => {
-        const toDelete = item.id_usuario ? eliminarUsuarios({ token, setErrors, errors, idToDelete: item.id_usuario }) : eliminarProyectos({ token, setErrors, idToDelete: item.id_proyecto })
-
         return (
           <span key={item.id_usuario ? item.id_usuario : item.id_proyecto} className={styles.item}>
             <div className={styles.text}>
               <p>{item.nombre ? item.nombre : item.titulo}</p>
               <p>{item.email ? item.email : item.url}</p>
             </div>
-            <div onClick={() => toDelete}>
+            <div onClick={() => toDelete(item)}>
               <XMarkIcon className={styles.icon}/>
             </div>
           </span>

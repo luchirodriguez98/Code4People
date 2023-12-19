@@ -28,7 +28,7 @@ const registro = async ({ event, formValues, setErrors, errors, navigate, reset 
     if (response.ok) {
       toast.success(data.message)
       navigate('/login')
-      reset({
+      await reset({
         nombre: '',
         email: '',
         pass: '',

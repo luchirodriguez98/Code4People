@@ -4,8 +4,10 @@
   align-items: center;
 }
 .title{
-  font-weight: var(--font-weight-sm);
-  margin-bottom: 14px;
+  margin: 20px 0;
+  font-size: 30px;
+  font-weight: 400;
+  text-align: center;
 }
 .subTitle{
   color: var(--secondary-color);

@@ -59,7 +59,7 @@ function MensajesRecibidos () {
             ? <span className='errorSpan'>{errors}</span>
             : (mensajes.length === 0
                 ? <p className='errorSpan'>No tienes mensajes</p>
-                : <ListaMensajes toMap={mensajes} icon={icon()}/>
+                : <ListaMensajes toMap={mensajes} icon={icon}/>
               )
           }
         </div>

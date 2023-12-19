@@ -1,6 +1,6 @@
 // import { FaGithub } from 'react-icons/fa6'
 import { useForm } from '../../Hooks/useForm'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import styles from './Login.module.css'
 import stylesForm from '../../Styles/form.module.css'
 import { useState } from 'react'
@@ -16,7 +16,7 @@ function Login () {
     email: '',
     pass: ''
   })
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
 
   // const handleSubmit = async ({ event, formValues, reset }) => {
   //   event.preventDefault()
@@ -57,7 +57,7 @@ function Login () {
   return (
     <div className={`${styles.body}`}>
       <h1 className={styles.title}>Inicia sesion</h1>
-      <form className={stylesForm.form} onSubmit={(event) => logInUser({ event, formValues, reset, context })}>
+      <form className={stylesForm.form} onSubmit={(event) => logInUser({ event, formValues, reset, context, navigate, setErrors, errors })}>
           <label htmlFor="email">EMAIL</label>
           <input
             type="email"

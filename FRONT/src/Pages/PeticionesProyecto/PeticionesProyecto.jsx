@@ -105,26 +105,29 @@ function PeticionesProyecto () {
         <PlusIcon className={styles.icon}/>
       </NavLink>
       <h1 className={styles.title}>Tus proyectos</h1>
-      {proyectos.map(proyecto => {
-        return (
-          <div key={proyecto.id_proyecto} className={styles.proyectoContainer}>
-          <h2 className={styles.titleProject}>PROYECTO {proyecto.proyecto_titulo}</h2>
-          {proyecto.proyecto_estado === null
-            ? <NavLink to="/proyectos/publicarTerminado" className={styles.nuevoProy} state={proyecto.id_proyecto}>
-                <p>MARCAR COMO TERMINADO</p>
-              </NavLink>
-            : <p className={styles.nuevoProy}>PROYECTO FINALIZADO</p>
-          }
-          { errors
-            ? <span className='errorSpan'>Hubo un error, recarga la pagina</span>
-            : (proyecto.peticiones.length === 0
-                ? <p className={styles.textSinPeticiones}>Este proyecto no tiene peticiones</p>
-                : <ListaPeticionesEmpresa toMap={proyecto.peticiones} route={'/peticion/proyecto/'}/>
-              )
+      {proyectos.length === 0
+        ? <p className='errorSpan'>No tienes proyectos publicados</p>
+        : proyectos.map(proyecto => {
+          return (
+            <div key={proyecto.id_proyecto} className={styles.proyectoContainer}>
+            <h2 className={styles.titleProject}>PROYECTO {proyecto.proyecto_titulo}</h2>
+            {proyecto.proyecto_estado === null
+              ? <NavLink to="/proyectos/publicarTerminado" className={styles.nuevoProy} state={proyecto.id_proyecto}>
+                  <p className={styles.subtitleViolet}>MARCAR COMO TERMINADO</p>
+                </NavLink>
+              : <p className={styles.subtitleWhite}>PROYECTO FINALIZADO</p>
             }
-          </div>
-        )
-      })}
+            { errors
+              ? <span className='errorSpan'>Hubo un error, recarga la pagina</span>
+              : (proyecto.peticiones.length === 0
+                  ? <p className={styles.textSinPeticiones}>Este proyecto no tiene peticiones</p>
+                  : <ListaPeticionesEmpresa toMap={proyecto.peticiones} route={'/peticion/proyecto/'}/>
+                )
+              }
+            </div>
+          )
+        })
+    }
     </div>
   )
 }

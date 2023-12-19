@@ -79,7 +79,12 @@ function TodosUsuarios () {
   return (
     <div>
       <h1 className={styles.title}>Usuarios</h1>
-      {errors ? <span className='errorSpan'>Hubo un error, recarga la pagina</span> : <ListaAdmin toMap={usuarios} />}
+      {errors
+        ? <span className='errorSpan'>Hubo un error, recarga la pagina</span>
+        : (usuarios.length === 0
+            ? <p className='errorSpan'>No hay usuarios</p>
+            : <ListaAdmin toMap={usuarios} />)
+      }
     </div>
   )
 }

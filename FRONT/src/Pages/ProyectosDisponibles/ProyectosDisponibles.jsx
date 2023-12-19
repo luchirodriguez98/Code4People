@@ -45,7 +45,12 @@ function ProyectosDisponibles () {
   return (
     <div className={styles.body}>
       <h1 className={styles.title}>Proyectos para realizar</h1>
-      {errors ? <span className='errorSpan'>Hubo un error, recarga la pagina</span> : <ListaProyectos toMap={proyectos}/>}
+      {errors
+        ? <span className='errorSpan'>Hubo un error, recarga la pagina</span>
+        : (proyectos.length === 0
+            ? <p className='errorSpan'>No hay proyectos</p>
+            : <ListaProyectos toMap={proyectos}/>)
+      }
     </div>
   )
 }

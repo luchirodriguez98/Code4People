@@ -80,7 +80,12 @@ function TodosProyectos () {
   return (
     <div>
       <h1 className={styles.title}>Proyectos</h1>
-      {errors ? <span className='errorSpan'>Hubo un error, recarga la pagina</span> : <ListaAdmin toMap={proyectos} />}
+      {errors
+        ? <span className='errorSpan'>Hubo un error, recarga la pagina</span>
+        : (proyectos.length === 0
+            ? <p className='errorSpan'>No hay proyectos para eliminar</p>
+            : <ListaAdmin toMap={proyectos} />)
+      }
     </div>
   )
 }

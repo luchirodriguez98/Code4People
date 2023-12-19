@@ -4,8 +4,8 @@
   align-items: center;
 }
 .title{
-  margin-bottom: 20px;
-  font-size: 25px;
+  margin: 20px 0;
+  font-size: 30px;
   font-weight: 400;
   text-align: center;
   width: 80%;
@@ -13,10 +13,20 @@
 }
 .proyectoContainer{
   margin: 25px 0;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--secondary-color);
 }
-.nuevoProy{
+.proyectoContainer:last-child{
+  border: none;
+}
+.subtitleViolet{
   text-align: center;
   color: var(--primary-color);
+  margin-bottom: 20px;
+}
+.subtitleWhite{
+  text-align: center;
+  color: var white;
   margin-bottom: 20px;
 }
 .titleProject{

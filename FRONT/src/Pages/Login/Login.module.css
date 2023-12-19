@@ -5,11 +5,11 @@
     align-items: center;
 }
 .title{
-    font-size: var(--font-size-md);
-    font-weight: var(--font-weight-md);
+    margin: 20px 0;
+    font-size: 30px;
+    font-weight: 400;
     text-align: center;
-    margin-bottom: 30px;
-}
+  }
 .redirectRegistro{
     display: inline-flex;
     justify-content: center;

@@ -13,12 +13,7 @@ const proyectosEmpresa = async ({ setErrors, setProyectos }) => {
     const data = await response.json()
     console.log(data)
     if (!response.ok) {
-      if (data.error) {
-        setErrors(data.error)
-        return
-      } else {
-        setErrors(data.message)
-      }
+      setErrors(data.error)
       return
     }
 

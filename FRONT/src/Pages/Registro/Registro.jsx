@@ -123,7 +123,7 @@ function Registro () {
         </span>
         {errors?.role && <span>Debes seleccionar un tipo de usuario</span>}
         <button
-          onClick={setErrors(null)}
+          onClick={() => setErrors(null)}
           className={`${stylesForm.button}`}
         >
           GUARDAR
