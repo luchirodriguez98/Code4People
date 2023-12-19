@@ -9,7 +9,7 @@ async function obtenerProyectoPeticiones (req, res) {
 
     if (!proyecto || proyecto.length === 0) {
         return res.send({
-            ok: false,
+            ok: true,
             data: null,
             error: `No se ha encontrado ningún proyecto ni peticiones  ${idUsuarioConectado}`
         })
