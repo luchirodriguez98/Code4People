@@ -8,10 +8,10 @@ async function getMailsbyDestino(req, res) {
     const mail = await sendQuery(query.getMailsbyDestino, [idUsuarioConectado])
 
     if (!mail) {
-        return res.status(404).send({
+        return res.send({
             ok: false,
             data: null,
-            error: `No se han encontrado mails del usuario con id ${idUsuarioConectado}`
+            error: `No se han encontrado mails para el usuario`
         })
 } 
 

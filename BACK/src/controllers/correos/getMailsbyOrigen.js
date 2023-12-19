@@ -8,10 +8,10 @@ async function getMailsbyOrigen(req, res) {
     const mail = await sendQuery(query.getMailsbyOrigen, [idUsuarioConectado])
 
     if (!mail) {
-        return res.status(404).send({
+        return res.send({
             ok: false,
             data: null,
-            error: `No hay enviados de  id ${idUsuarioConectado}`
+            error: `No hay correos enviados `
         })
 } 
 
