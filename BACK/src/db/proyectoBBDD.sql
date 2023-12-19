@@ -29,17 +29,6 @@ create table if not exists usuarios(
 
 
 -- Proyecto
-create table if not exists proyectos_acabados(
-	id_proyecto int auto_increment,
-    titulo varchar(255) not null,
-    url VARCHAR(600)not null,
-    url_imagen TEXT,
-    autor INT,
-    PRIMARY KEY (id_proyecto),
-    FOREIGN KEY (autor) REFERENCES usuarios(id_usuario)
-);	
-
-
 
 -- INSERT INTO proyectos_acabados(titulo,url,autor) VALUES ('Proyecto Final','https://github.com/luchirodriguez98/Proyecto-Final',3);
 --  INSERT INTO proyectos_acabados(titulo,url,autor) VALUES ('Bootcamp Info','https://github.com/Fundacio-Esplai-Enfocat/BOOTCAMP-S22-JAVASCRIPT',3);
@@ -52,6 +41,8 @@ create table if not exists proyectos_a_realizar(
     descripcion varchar(600) not null,
     autor int,
     estado BOOLEAN default null,
+    url VARCHAR(255) default null,
+    url_imagen VARCHAR(255) default null,
     FOREIGN KEY (autor) REFERENCES usuarios(id_usuario),
     PRIMARY KEY (id_proyecto)
 );
