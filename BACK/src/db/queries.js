@@ -36,7 +36,7 @@ const query = {
   //Proyecto por id 
   getAllProyectoARealizarbyId:'SELECT p.titulo, p.descripcion, u.nombre as autor FROM proyectos_a_realizar p JOIN usuarios u ON p.autor = u.id_usuario WHERE id_proyecto = ?; ',
   //Ver todas las peticiones segun el usuario conectado
-  getAllProyectosAcabados:'SELECT id_proyecto, titulo, url, url_imagen FROM proyectos_a_realizar',
+  getAllProyectosAcabados:'SELECT id_proyecto, titulo, url, url_imagen FROM proyectos_a_realizar WHERE estado = 1',
   //Ver proyecto acabado por id
   getProyectoAcabadoPorId: 'SELECT id_proyecto from proyectos_a_realizar where id_proyecto = ?',
   //Eliminar proyecto acabado de usuario
