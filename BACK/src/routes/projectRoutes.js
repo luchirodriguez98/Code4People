@@ -22,12 +22,17 @@ import {
     obtenerProyectoPeticiones
     
 } from '../controllers/index.js';
+import { addFotoProyectoAcabado } from '../controllers/proyectos/addFotoProyectoAcabado.js';
 
 const projectRouter = express.Router();
 //POST
 projectRouter.post('/nuevoProyecto', userAuth, addProyectoNuevo);
-projectRouter.post('/nuevoAcabado',userAuth,addProyectoAcabado);
+projectRouter.post('/nuevoAcabado',userAuth, addProyectoAcabado);
 projectRouter.post('/nuevaPeticion/:proyectoId',userAuth, addPeticion);
+
+// PUT
+projectRouter.put('/nuevoAcabado/addFoto/:proyectoId', userAuth, addFotoProyectoAcabado);
+
 //GET
 projectRouter.get('/proyectospendientes', userAuth,  getAllProyectoARealizar);
 projectRouter.get('/proyectospendientes/:proyectoId', userAuth, getAllProyectoARealizarbyId);
@@ -43,4 +48,4 @@ projectRouter.patch('/peticiones/denegar/:peticionId', userAuth, denegarPeticion
 
 
 
-export { projectRouter }
+export { projectRouter, addFotoProyectoAcabado, userAuth };

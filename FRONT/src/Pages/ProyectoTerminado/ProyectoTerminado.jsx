@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { useForm } from '../../Hooks/useForm'
 import styles from './ProyectoTerminado.module.css'
 import formStyles from '../../Styles/form.module.css'
@@ -11,14 +11,13 @@ function ProyectoTerminado () {
 
   const [errors, setErrors] = useState(null)
 
-  const formData = new FormData(event.target)
-
   const { formValues, reset, handleFormChange } = useForm({
     titulo: '',
     url: ''
   })
 
   const navigate = useNavigate()
+  const { state: proyectoId } = useLocation()
 
   const postProyect = async (event) => {
     event.preventDefault()
@@ -53,30 +52,32 @@ function ProyectoTerminado () {
       console.error('Error:', error.message)
       setErrors('Hubo un problema al procesar la solicitud. Por favor, inténtalo de nuevo más tarde.')
     }
+
+    const formData = new FormData(event.target)
+
     // PUT
     const optionsPUT = {
       method: 'PUT',
       headers: {
-        'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`
       },
       body: formData
     }
 
     try {
-      const response = await fetch(`${baseUrl}/nuevoAcabado`, optionsPUT)
+      const response = await fetch(`${baseUrl}/nuevoAcabado/addFoto/${proyectoId}`, optionsPUT)
       const data = await response.json()
       console.log(data)
       if (!response.ok) {
         setErrors(data.errors)
       }
       console.log(data)
+      navigate('/proyectos/realizados')
     } catch (error) {
       console.error('Error:', error.message)
       setErrors('Hubo un problema al procesar la solicitud. Por favor, inténtalo de nuevo más tarde.')
     }
   }
-  navigate('/proyectos/realizados')
   errorContext.closeModal()
   return (
         <div className={styles.body}>

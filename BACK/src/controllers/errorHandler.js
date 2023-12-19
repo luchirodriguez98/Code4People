@@ -1,6 +1,7 @@
 import { HttpError } from '../models/HttpError.js'
 
 function errorHandler(error, req, res, next) {
+    console.log(error);
     if(error instanceof HttpError) {
         return res.status(error.statusCode).send({
             ok: false,

@@ -28,7 +28,9 @@ const query = {
   //Añadir proyecto nuevo
   addProyectoNuevo:'INSERT INTO proyectos_a_realizar(titulo,descripcion,autor) VALUES (?,?,?);',
   //Añaduir proyecto acabado
-  addProyectoAcabado: 'INSERT INTO proyectos_acabados(titulo,url,autor) VALUES (?,?,?);',
+  addProyectoAcabado: 'UPDATE proyectos_a_realizar SET url = ?, url_imagen = ?, estado = 1 WHERE id_proyecto = ?;',
+  //test
+  addFotoProyectoAcabado: 'UPDATE proyectos_acabados SET url_imagen = ? WHERE id_proyecto = ?;',
   //Ver todas las peticiones de todos los usuarios
   getAllProyectoARealizar: 'SELECT p.*, u.nombre as autor FROM proyectos_a_realizar p JOIN usuarios u ON p.autor = u.id_usuario WHERE p.estado IS null',
   //Proyecto por id 
