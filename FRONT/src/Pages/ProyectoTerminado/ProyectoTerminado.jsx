@@ -1,5 +1,4 @@
-import { useNavigate } from 'react-router-dom'
-import { useForm } from '../../Hooks/useForm'
+import { useLocation, useNavigate } from 'react-router-dom'
 import styles from './ProyectoTerminado.module.css'
 import formStyles from '../../Styles/form.module.css'
 import { useState } from 'react'
@@ -8,16 +7,11 @@ import { toast } from 'react-toastify'
 function ProyectoTerminado () {
   const [errors, setErrors] = useState(null)
 
-  const formData = new FormData(event.target)
-
-  const { formValues, reset, handleFormChange } = useForm({
-    titulo: '',
-    url: ''
-  })
-
   const navigate = useNavigate()
+  const { state: proyectoId } = useLocation()
 
   const postProyect = async (event) => {
+    const formData = new FormData(event.target)
     event.preventDefault()
     const token = localStorage.getItem('token')
     const baseUrl = 'http://localhost:5000'
@@ -26,94 +20,53 @@ function ProyectoTerminado () {
     const optionsPOST = {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`
-      },
-      body: JSON.stringify(formValues)
-    }
-
-    try {
-      const response = await fetch(`${baseUrl}/nuevoAcabado`, optionsPOST)
-      const data = await response.json()
-      console.log(data)
-      if (!response.ok) {
-        setErrors(data.errors)
-        return
-      }
-      if (response.ok && response.status === 200) {
-        reset({
-          titulo: '',
-          url: ''
-        })
-      }
-    } catch (error) {
-      console.error('Error:', error.message)
-      setErrors('Hubo un problema al procesar la solicitud. Por favor, inténtalo de nuevo más tarde.')
-    }
-    // PUT
-    const optionsPUT = {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`
       },
       body: formData
     }
 
     try {
-      const response = await fetch(`${baseUrl}/nuevoAcabado`, optionsPUT)
+      const response = await fetch(`${baseUrl}/nuevoAcabado/${proyectoId}`, optionsPOST)
       const data = await response.json()
       console.log(data)
       if (!response.ok) {
         setErrors(data.errors)
+        toast.error('Hay errores en el formulario, vuelve a intentarlo')
+        return
       }
-      console.log(data)
-      navigate('/proyectos/realizados')
+      if (response.ok && response.status === 200) {
+        toast.success('Proyecto publicado correctamente')
+        navigate('/')
+      }
     } catch (error) {
       console.error('Error:', error.message)
       setErrors('Hubo un problema al procesar la solicitud. Por favor, inténtalo de nuevo más tarde.')
+      toast.error(errors)
     }
   }
   return (
         <div className={styles.body}>
-          {/* <ErrorModal /> */}
           <h1 className={styles.title}>Publicar proyecto terminado</h1>
           <div className={styles.container}>
             <form className={formStyles.form} onSubmit={postProyect}>
-              <label htmlFor="titulo">TITULO</label>
-              <input
-                type="text"
-                name="titulo"
-                id='titulo'
-                placeholder='Escribe el titulo de tu proyecto'
-                value={formValues.titulo}
-                onChange={handleFormChange}
-                className={errors?.titulo ? formStyles.invalidInput : undefined}
-              />
-              {errors?.titulo && <span>{errors.titulo}</span>}
-              <label htmlFor="url">URL</label>
+              <label htmlFor="url">URL DE TU PAGINA</label>
               <input
                 type="text"
                 name="url"
                 id='url'
                 placeholder='Escribe la url de tu pagina'
-                value={formValues.url}
-                onChange={handleFormChange}
                 className={errors?.url ? formStyles.invalidInput : undefined}
               />
               {errors?.url && <span>{errors.url}</span>}
-              <label htmlFor="imagen">URL</label>
+              <label htmlFor="imagen">ENVIANOS UNA IMAGEN DE TU PAGINA!</label>
               <input
                 type="file"
                 name="imagen"
                 id='imagen'
-                value={formValues.imagen}
-                onChange={handleFormChange}
               />
               <button
                 className={formStyles.button}
                 onClick={() => {
-                  toast(errors)
                   setErrors(null)
                 }}
               >
