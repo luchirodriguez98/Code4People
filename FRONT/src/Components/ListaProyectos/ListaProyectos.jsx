@@ -4,8 +4,6 @@ import { ChevronDownIcon } from '@heroicons/react/24/solid'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules'
 import SwiperCore from 'swiper'
-
-// Import Swiper styles
 import 'swiper/css'
 import 'swiper/css/effect-coverflow'
 import 'swiper/css/pagination'
@@ -31,11 +29,11 @@ function ListaProyectos ({ toMap }) {
       slideShadows: true
     },
     pagination: true,
-    navigation: { // Agrega estas opciones de navegación
+    navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev'
     },
-    modules: [EffectCoverflow, Pagination, Navigation], // Asegúrate de incluir Navigation aquí
+    modules: [EffectCoverflow, Pagination, Navigation],
     className: styles.mySwiper
   }
   return (

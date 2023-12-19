@@ -1,11 +1,11 @@
-import { NavLink, useNavigate } from 'react-router-dom'
+// import { FaGithub } from 'react-icons/fa6'
 import { useForm } from '../../Hooks/useForm'
-import { FaGithub } from 'react-icons/fa6'
+import { NavLink } from 'react-router-dom'
 import styles from './Login.module.css'
 import stylesForm from '../../Styles/form.module.css'
 import { useState } from 'react'
 import { useUserContext } from '../../Hooks/useUserContext'
-import { toast } from 'react-toastify'
+import { logInUser } from '../../services/logInUser'
 
 function Login () {
   const userContext = useUserContext()
@@ -16,50 +16,48 @@ function Login () {
     email: '',
     pass: ''
   })
+  // const navigate = useNavigate()
 
-  const navigate = useNavigate()
+  // const handleSubmit = async ({ event, formValues, reset }) => {
+  //   event.preventDefault()
 
-  const handleSubmit = async (event) => {
-    event.preventDefault()
+  //   const options = {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify(formValues)
+  //   }
 
-    const options = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(formValues)
-    }
+  //   const baseUrl = 'http://localhost:5000'
 
-    const baseUrl = 'http://localhost:5000'
-
-    try {
-      const response = await fetch(`${baseUrl}/users/login`, options)
-      const data = await response.json()
-      console.log(data)
-      if (!response.ok) {
-        setErrors('Formulario con errores, vuelve a intentarlo')
-        return
-      }
-      if (response.ok && response.status === 200) {
-        localStorage.setItem('token', data.data.token)
-        localStorage.setItem('userInfo', JSON.stringify(data.data.user))
-        userContext.logIn(data.data.user)
-        navigate('/cuenta')
-        reset({
-          email: '',
-          pass: ''
-        })
-      }
-    } catch (error) {
-      console.error(error)
-      setErrors('Hubo un problema al procesar la solicitud. Por favor, inténtalo de nuevo más tarde.')
-    }
-  }
-  console.log(errors)
+  //   try {
+  //     const response = await fetch(`${baseUrl}/users/login`, options)
+  //     const data = await response.json()
+  //     console.log(data)
+  //     if (!response.ok) {
+  //       toast.error('Formulario con errores, vuelve a intentarlo')
+  //       return
+  //     }
+  //     if (response.ok && response.status === 200) {
+  //       localStorage.setItem('token', data.data.token)
+  //       localStorage.setItem('userInfo', JSON.stringify(data.data.user))
+  //       userContext.logIn(data.data.user)
+  //       navigate('/cuenta')
+  //       reset({
+  //         email: '',
+  //         pass: ''
+  //       })
+  //     }
+  //   } catch (error) {
+  //     console.error(error)
+  //     toast.error('Hubo un problema al procesar la solicitud. Por favor, inténtalo de nuevo más tarde.')
+  //   }
+  // }
   return (
     <div className={`${styles.body}`}>
       <h1 className={styles.title}>Inicia sesion</h1>
-      <form className={stylesForm.form} onSubmit={handleSubmit}>
+      <form className={stylesForm.form} onSubmit={(event) => logInUser({ event, formValues, reset, userContext })}>
           <label htmlFor="email">EMAIL</label>
           <input
             type="email"
@@ -81,7 +79,6 @@ function Login () {
             className={errors?.pass ? stylesForm.invalidInput : undefined}
           />
           <button onClick={() => {
-            toast.error(errors)
             setErrors(null)
           }}
             className={`${stylesForm.button}`}
@@ -89,16 +86,15 @@ function Login () {
             INICIA SESION
           </button>
       </form>
-      {/* <button onClick={() => toast(errors)}>Toast</button> */}
       <span className={styles.redirectRegistro}>
         <p>No tienes cuenta?</p>
         <NavLink to="/registro">
           <p>Registrate </p>
         </NavLink>
       </span>
-      <span className={styles.icon}>
+      {/* <span className={styles.icon}>
         <FaGithub />
-      </span>
+      </span> */}
     </div>
   )
 }

@@ -1,4 +1,3 @@
-// import { useContext } from "react";
 import { NavLink, useLocation } from 'react-router-dom'
 import { useToggle } from '../../Hooks/useToggle'
 import { BotonNav } from '../BotonNav/BotonNav'
@@ -76,6 +75,7 @@ const Nav = () => {
                     <BotonNav texto={context.buttonToRender} />
                 </NavLink>
             </span>
+            {/* menu mobile */}
             <div className={`${styles.menuMobile}`}>
                 <Bars3Icon className={`${styles.menuMobileIcon}`} onClick={toggleModal}></Bars3Icon>
                 {isModalOpen &&

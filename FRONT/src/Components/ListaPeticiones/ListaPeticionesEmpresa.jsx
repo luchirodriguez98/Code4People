@@ -7,7 +7,6 @@ function ListaPeticionesEmpresa ({ toMap, route }) {
   const iconToRender = ({ item, route }) => {
     console.log(item)
     if (
-      // item?.estado === true ||
       item?.peticion_estado === 1) {
       return (
         <>
@@ -18,7 +17,6 @@ function ListaPeticionesEmpresa ({ toMap, route }) {
         </>
       )
     } else if (
-      // item?.estado === false ||
       item?.peticion_estado === 0) {
       return <XMarkIcon className={styles.redIcon}/>
     }
