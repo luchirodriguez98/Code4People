@@ -1,6 +1,6 @@
-	-------------------------
+-- -----------------------
 -- CREACIÓN DE LA BBDD --
--------------------------
+-- -----------------------
 drop database if exists proyectosplai;
 create database if not exists proyectosplai;
 
@@ -133,7 +133,7 @@ BEGIN
         -- Insertar un nuevo correo en la tabla de correos
         INSERT INTO mails (mensaje, destinatario, origen)
         VALUES (
-            CONCAT('El estado de tu petición "', NEW.titulo, '" ha cambiado a "', NEW.estado, '".'),
+            CONCAT('El estado de tu petición "', NEW.titulo, '" ha cambiado"".'),
             NEW.autor,
             14 -- El admin
         );
