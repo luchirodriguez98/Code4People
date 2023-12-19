@@ -36,11 +36,11 @@ const query = {
   //Proyecto por id 
   getAllProyectoARealizarbyId:'SELECT p.titulo, p.descripcion, u.nombre as autor FROM proyectos_a_realizar p JOIN usuarios u ON p.autor = u.id_usuario WHERE id_proyecto = ?; ',
   //Ver todas las peticiones segun el usuario conectado
-  getAllProyectosAcabados:'SELECT id_proyecto, titulo, url, url_imagen FROM proyectos_acabados',
+  getAllProyectosAcabados:'SELECT id_proyecto, titulo, url, url_imagen FROM proyectos_a_realizar',
   //Ver proyecto acabado por id
-  getProyectoAcabadoPorId: 'SELECT id_proyecto from proyectos_acabados where id_proyecto = ?',
+  getProyectoAcabadoPorId: 'SELECT id_proyecto from proyectos_a_realizar where id_proyecto = ?',
   //Eliminar proyecto acabado de usuario
-  deleteProyectobyId: 'DELETE FROM proyectos_acabados WHERE id_proyecto =  ?',
+  deleteProyectobyId: 'DELETE FROM proyectos_a_realizar WHERE id_proyecto =  ?',
   //Acabar proyecto
   acabarProyecto: 'UPDATE proyectos_a_realizar SET estado = true WHERE id_proyecto = ?',
   //Este de aqui es por si quieres ponerlo otra vez en no acabado, esta por si acaso

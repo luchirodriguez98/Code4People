@@ -8,6 +8,11 @@ cloudinary.config({
   });
 
 
+async function deleteImage (publicId) {
+    await cloudinary.uploader.destroy(publicId);
+}
+
+
 async function uploadImage (imagenPath) {
 
     // Use the uploaded file's name as the asset's public ID and 
@@ -27,4 +32,4 @@ async function uploadImage (imagenPath) {
     }
 };
 
-export { uploadImage };
+export { uploadImage, deleteImage };

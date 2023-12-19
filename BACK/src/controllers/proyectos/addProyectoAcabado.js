@@ -26,6 +26,7 @@ async function addProyectoAcabado (req, res, next) {
         return next(new HttpError(400, 'No has enviado ninguna foto de avatar.'))
     }
 
+    
 
     const cloudinnaryResponse = await uploadImage(photo.tempFilePath)      
  

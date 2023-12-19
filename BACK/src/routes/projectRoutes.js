@@ -27,11 +27,8 @@ import { addFotoProyectoAcabado } from '../controllers/proyectos/addFotoProyecto
 const projectRouter = express.Router();
 //POST
 projectRouter.post('/nuevoProyecto', userAuth, addProyectoNuevo);
-projectRouter.post('/nuevoAcabado',userAuth, addProyectoAcabado);
+projectRouter.post('/nuevoAcabado/:proyectoId',userAuth, addProyectoAcabado);
 projectRouter.post('/nuevaPeticion/:proyectoId',userAuth, addPeticion);
-
-// PUT
-projectRouter.put('/nuevoAcabado/addFoto/:proyectoId', userAuth, addFotoProyectoAcabado);
 
 //GET
 projectRouter.get('/proyectospendientes', userAuth,  getAllProyectoARealizar);
