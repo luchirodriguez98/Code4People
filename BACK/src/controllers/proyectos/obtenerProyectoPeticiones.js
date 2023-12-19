@@ -7,12 +7,7 @@ async function obtenerProyectoPeticiones (req, res) {
 
     const proyecto = await sendQuery(query.obtenerProyectoPeticiones,idUsuarioConectado)
 
-    if (!proyecto || proyecto.length === 0) {
-        return res.send({
-            ok: false,
-            data: null,
-            error: `No se ha encontrado ningún proyecto ni peticiones`
-        })
+
 }
     
 
@@ -21,6 +16,6 @@ async function obtenerProyectoPeticiones (req, res) {
         data: proyecto,
     error: null
 })
-}
+
 
 export { obtenerProyectoPeticiones};
