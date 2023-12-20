@@ -1,7 +1,7 @@
+import { useEffect, useState } from 'react'
 import { ListaProyectos } from '../../Components/ListaProyectos/ListaProyectos'
 import { proyectosParaRealizar } from '../../services/proyectos/proyectosParaRealizar.js'
 import styles from './ProyectosDisponibles.module.css'
-import { useEffect, useState } from 'react'
 
 function ProyectosDisponibles () {
   const [proyectos, setProyectos] = useState([])

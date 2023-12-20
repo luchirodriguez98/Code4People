@@ -1,7 +1,7 @@
-import { ChevronLeftIcon } from '@heroicons/react/24/solid'
 import { NavLink, useLocation } from 'react-router-dom'
-import styles from './DetalleProyecto.module.css'
 import { useEffect, useState } from 'react'
+import { ChevronLeftIcon } from '@heroicons/react/24/solid'
+import styles from './DetalleProyecto.module.css'
 
 function DetalleProyecto () {
   const [proyecto, setProyecto] = useState([])

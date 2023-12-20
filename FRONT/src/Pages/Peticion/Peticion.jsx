@@ -1,9 +1,9 @@
 import { useLocation } from 'react-router'
 import { NavLink, useNavigate } from 'react-router-dom'
-import styles from './Peticion.module.css'
 import { useState } from 'react'
 import { aceptarPeticion } from '../../services/peticiones/aceptarPeticion.js'
 import { rechazarPeticion } from '../../services/peticiones/rechazarPeticion.js'
+import styles from './Peticion.module.css'
 
 function Peticion () {
   const [errors, setErrors] = useState(null)

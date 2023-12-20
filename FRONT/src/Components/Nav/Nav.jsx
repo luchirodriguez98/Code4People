@@ -1,11 +1,11 @@
 import { NavLink, useLocation } from 'react-router-dom'
+import { useUserContext } from '../../Hooks/useUserContext'
 import { useToggle } from '../../Hooks/useToggle'
 import { BotonNav } from '../BotonNav/BotonNav'
 import { Modal } from '../Modal/Modal'
 import { Bars3Icon } from '@heroicons/react/24/solid'
-import styles from './Nav.module.css'
-import { useUserContext } from '../../Hooks/useUserContext'
 import logo from '../../../assets/logo.png'
+import styles from './Nav.module.css'
 
 const Nav = () => {
   const [isModalOpen, toggleModal] = useToggle(false)

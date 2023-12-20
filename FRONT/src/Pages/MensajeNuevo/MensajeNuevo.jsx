@@ -1,10 +1,10 @@
 import { NavLink, useLocation, useNavigate } from 'react-router-dom'
-import styles from './MensajeNuevo.module.css'
-import formStyles from '../../Styles/form.module.css'
-import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/solid'
 import { useState } from 'react'
 import { useForm } from '../../Hooks/useForm'
 import { mensajeNuevo } from '../../services/mensajes/mensajeNuevo.js'
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/solid'
+import styles from './MensajeNuevo.module.css'
+import formStyles from '../../Styles/form.module.css'
 
 function MensajeNuevo () {
   const [errors, setErrors] = useState(null)

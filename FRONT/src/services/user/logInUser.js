@@ -10,7 +10,6 @@ const logInUser = async ({ event, formValues, context, reset, navigate, setError
     },
     body: JSON.stringify(formValues)
   }
-
   try {
     const response = await fetch(`${import.meta.env.VITE_BASE_URL}/users/login`, options)
     const data = await response.json()

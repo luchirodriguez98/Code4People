@@ -1,5 +1,5 @@
-import styles from './Contacto.module.css'
 import { EnvelopeIcon, PhoneIcon, UserIcon } from '@heroicons/react/24/solid'
+import styles from './Contacto.module.css'
 
 function Contacto () {
   return (

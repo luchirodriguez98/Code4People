@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom'
-import styles from './ListaProyecto.module.css'
 import { ChevronDownIcon } from '@heroicons/react/24/solid'
+import styles from './ListaProyecto.module.css'
+
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules'
 import SwiperCore from 'swiper'
@@ -9,8 +10,6 @@ import 'swiper/css/effect-coverflow'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
 import './ListaProyectos.css'
-
-SwiperCore.use([EffectCoverflow, Pagination, Navigation])
 
 SwiperCore.use([EffectCoverflow, Pagination, Navigation])
 

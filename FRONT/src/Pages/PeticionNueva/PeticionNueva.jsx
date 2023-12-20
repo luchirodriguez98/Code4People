@@ -1,10 +1,10 @@
 import { useNavigate } from 'react-router'
-import { useForm } from '../../Hooks/useForm'
-import styles from './PeticionNueva.module.css'
-import stylesForm from '../../Styles/form.module.css'
 import { useState } from 'react'
 import { useLocation } from 'react-router-dom'
+import { useForm } from '../../Hooks/useForm'
 import { nuevaPeticion } from '../../services/peticiones/nuevaPeticion.js'
+import styles from './PeticionNueva.module.css'
+import stylesForm from '../../Styles/form.module.css'
 
 function PeticionNueva () {
   const [errors, setErrors] = useState(null)

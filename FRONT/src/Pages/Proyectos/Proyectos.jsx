@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom'
-import styles from './Proyectos.module.css'
 import { ChevronRightIcon } from '@heroicons/react/24/solid'
+import styles from './Proyectos.module.css'
 
 function Proyectos () {
   // const context = useUserContext()

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { ListaAdmin } from '../../Components/ListaAdmin/ListaAdmin'
-import styles from './TodosUsuarios.module.css'
 import { todosUsuarios } from '../../services/admin/todosUsuarios.js'
+import styles from './TodosUsuarios.module.css'
 
 function TodosUsuarios () {
   const [usuarios, setUsuarios] = useState([])

@@ -1,5 +1,5 @@
-import { toast } from 'react-toastify'
 import { todosProyectos } from './todosProyectos'
+import { toast } from 'react-toastify'
 
 const eliminarProyectos = async ({ token, setErrors, errors, idToDelete }) => {
   const options = {

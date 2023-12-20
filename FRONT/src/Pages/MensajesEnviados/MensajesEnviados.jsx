@@ -1,9 +1,9 @@
 import { NavLink } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { ListaMensajes } from '../../Components/ListaMensajes/ListaMensajes'
+import { mensajesEnviados } from '../../services/mensajes/mensajesEnviados.js'
 import { ChevronLeftIcon } from '@heroicons/react/24/solid'
 import styles from './MensajesEnviados.module.css'
-import { ListaMensajes } from '../../Components/ListaMensajes/ListaMensajes'
-import { useEffect, useState } from 'react'
-import { mensajesEnviados } from '../../services/mensajes/mensajesEnviados.js'
 
 function MensajesEnviados () {
   const [mensajes, setMensajes] = useState([])

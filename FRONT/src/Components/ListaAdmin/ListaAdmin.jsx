@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { eliminarProyectos } from '../../services/admin/eliminarProyectos'
 import { eliminarUsuarios } from '../../services/admin/eliminarUsuarios'
-import styles from './ListaAdmin.module.css'
 import { XMarkIcon } from '@heroicons/react/24/solid'
+import styles from './ListaAdmin.module.css'
 
 function ListaAdmin ({ toMap }) {
   const [errors, setErrors] = useState(null)

@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
-import { ListaPeticionesEmpresa } from '../../Components/ListaPeticiones/ListaPeticionesEmpresa'
-import styles from './PeticionesProyecto.module.css'
 import { NavLink } from 'react-router-dom'
-import { PlusIcon } from '@heroicons/react/24/solid'
+import { ListaPeticionesEmpresa } from '../../Components/ListaPeticiones/ListaPeticionesEmpresa'
 import { proyectosEmpresa } from '../../services/proyectos/proyectosEmpresa.js'
+import { PlusIcon } from '@heroicons/react/24/solid'
+import styles from './PeticionesProyecto.module.css'
 
 function PeticionesProyecto () {
   const [proyectos, setProyectos] = useState([])

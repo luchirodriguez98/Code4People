@@ -1,9 +1,9 @@
 import { NavLink } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { ListaMensajes } from '../../Components/ListaMensajes/ListaMensajes'
+import { mensajesRecibidos } from '../../services/mensajes/mensajesRecibidos.js'
 import { ChevronLeftIcon, ArrowUturnRightIcon } from '@heroicons/react/24/solid'
 import styles from './MensajesRecibidos.module.css'
-import { ListaMensajes } from '../../Components/ListaMensajes/ListaMensajes'
-import { useEffect, useState } from 'react'
-import { mensajesRecibidos } from '../../services/mensajes/mensajesRecibidos.js'
 
 const icon = <ArrowUturnRightIcon className={styles.icon}/>
 

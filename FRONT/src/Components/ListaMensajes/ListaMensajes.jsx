@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom'
-import styles from './ListaMensajes.module.css'
 import { useState } from 'react'
+import styles from './ListaMensajes.module.css'
 
 function ListaMensajes ({ toMap, icon }) {
   const [mostrarMensajeCompleto, setMostrarMensajeCompleto] = useState(false)

@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom'
-import styles from './ListaPeticiones.module.css'
 import { XMarkIcon, CheckIcon } from '@heroicons/react/24/solid'
 import { EnvelopeIcon } from '@heroicons/react/24/outline'
+import styles from './ListaPeticiones.module.css'
 
 function ListaPeticiones ({ toMap }) {
   const iconToRender = ({ item }) => {

@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom'
-import styles from './Mensajes.module.css'
 import { ChevronRightIcon } from '@heroicons/react/24/solid'
+import styles from './Mensajes.module.css'
 
 function Mensajes () {
   return (
