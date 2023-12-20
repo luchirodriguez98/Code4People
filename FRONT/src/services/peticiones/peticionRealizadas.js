@@ -23,9 +23,6 @@ const peticionRealizadas = async ({ setErrors, setPeticiones }) => {
       return
     }
     setPeticiones(data.data)
-    if (data.data.length === 0) {
-      setErrors('No tienes peticiones realizadas')
-    }
   } catch (error) {
     console.error('Error:', error.message)
   }

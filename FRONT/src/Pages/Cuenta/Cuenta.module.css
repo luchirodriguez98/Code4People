@@ -53,9 +53,6 @@
 }
 
 @media (min-width:768px) {
-  .body{
-    margin-top: 70px;
-  }
   .title{
     font-weight: var(--font-weight-sm);
     margin-bottom: 20px;

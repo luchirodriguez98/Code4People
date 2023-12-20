@@ -51,7 +51,12 @@ function PeticionesRealizadas () {
   return (
     <div className={styles.body}>
       <h1 className={styles.title}>Peticiones Realizadas</h1>
-      {errors ? <span className='errorSpan'>Hubo un error, recarga la pagina</span> : <ListaPeticiones toMap={peticiones} />}
+      {errors
+        ? <span className='errorSpan'>Hubo un error, recarga la pagina</span>
+        : (peticiones.length === 0
+            ? <p className='errorSpan'>No tienes peticiones</p>
+            : <ListaPeticiones toMap={peticiones} />)
+      }
     </div>
   )
 }

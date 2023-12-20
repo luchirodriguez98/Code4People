@@ -11,8 +11,8 @@ a{
   width: 100%;
   padding-left: 10px;
   display: flex;
-  background-color: black;
-  position: fixed;
+  position: absolute;
+  top: -170px;
 }
 .backNav p{
   font-size: 16px;

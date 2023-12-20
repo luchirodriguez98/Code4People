@@ -58,15 +58,15 @@ function QuienesSomos () {
                     <p>Daniel Amigo</p>
                 </div>
             </NavLink>
-            <NavLink to={fotoLuis} target='blank'>
+            <NavLink to="https://github.com/LuisHenaoS" target='blank'>
                 <div className={styles.perfil}>
-                    <img src="../../../assets/luis.jpg" alt="Luis Henao" />
+                    <img src={fotoLuis} alt="Luis Henao" />
                     <p>Luis Henao</p>
                 </div>
             </NavLink>
-            <NavLink to={fotoLucia} target='blank'>
+            <NavLink to="https://github.com/luchirodriguez98" target='blank'>
                 <div className={styles.perfil}>
-                    <img src="../../../assets/lucia.jpg" alt="Lucia Rodriguez" />
+                    <img src={fotoLucia} alt="Lucia Rodriguez" />
                     <p>Lucia Rodriguez</p>
                 </div>
             </NavLink>
