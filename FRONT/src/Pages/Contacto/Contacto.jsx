@@ -18,7 +18,7 @@ function Contacto () {
               <EnvelopeIcon className={styles.icon}/>
               <div className={styles.textContainer}>
                 <p>EMAIL</p>
-                <p>code4people@gmail.com</p>
+                <a href='code4people@gmail.com'>code4people@gmail.com</a>
               </div>
             </div>
             <div className={styles.item}>

@@ -42,6 +42,9 @@
   padding-right: 20px;
   border-right: 1px solid var(--secondary-color);
 }
+.textContainer a{
+  color: var(--secondary-color);
+}
 @media (min-width:768px) {
   .subTitle{
     max-width: 490px;

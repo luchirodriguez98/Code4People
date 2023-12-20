@@ -9,6 +9,16 @@
   font-weight: 400;
   text-align: center;
 }
+.body{
+    margin-top: 50px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.list{
+  margin-top: 100px;
+}
 .item{
   list-style: none;
   display: flex;
@@ -27,8 +37,8 @@
 }
 
 @media (min-width:768px) {
-  .title{
-    margin-top: 60px;
+  .body{
+    margin-top: 0;
   }
   .item{
     margin-bottom: 25px;
