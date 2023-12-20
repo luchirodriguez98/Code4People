@@ -9,6 +9,9 @@
   font-weight: 400;
   text-align: center;
 }
+.list{
+  margin-top: 100px;
+}
 .item{
   list-style: none;
   display: flex;

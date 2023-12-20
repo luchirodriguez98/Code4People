@@ -69,6 +69,7 @@ a{
   padding: 5px;
   border-radius: 20px;
   width: 20%;
+  min-width: 115px;
   border: 1px solid var(--primary-color);
   background-color: transparent;
   margin-left: auto;

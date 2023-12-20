@@ -4,7 +4,7 @@
   align-items: center;
 }
 .title{
-  margin: 20px 0;
+  margin: 50px 0 20px;
   font-size: 30px;
   font-weight: 400;
   text-align: center;
@@ -47,7 +47,15 @@
 }
 .icon{
   position: fixed;
-  right: 60px;
+  right: 20px;
   width: 50px;
   color: var(--primary-color);
+}
+@media (min-width:768px) {
+  .title{
+    margin: 20px 0;
+  }
+  .icon{
+    right: 60px;
+  }
 }
