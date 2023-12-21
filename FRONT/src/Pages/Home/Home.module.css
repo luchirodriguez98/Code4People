@@ -1,7 +1,6 @@
 @import url('https://fonts.cdnfonts.com/css/blanka');
 
 .body{
-    margin-top: 50px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -52,7 +51,7 @@
     .body{
         align-items: start;
         height: 80vh;
-        margin-top: 0;
+        margin-top: 50px;
     }
     .body .title{
         margin: 50px 0 10px;

@@ -4,7 +4,6 @@ const publicarProyectoTerminado = async ({ event, setErrors, navigate, proyectoI
   const formData = new FormData(event.target)
   event.preventDefault()
   const token = localStorage.getItem('token')
-  const baseUrl = 'http://localhost:5000'
 
   const options = {
     method: 'POST',
@@ -15,7 +14,7 @@ const publicarProyectoTerminado = async ({ event, setErrors, navigate, proyectoI
   }
 
   try {
-    const response = await fetch(`${baseUrl}/nuevoAcabado/${proyectoId}`, options)
+    const response = await fetch(`${import.meta.env.VITE_BASE_URL}/nuevoAcabado/${proyectoId}`, options)
     const data = await response.json()
     console.log(data)
     if (!response.ok) {
