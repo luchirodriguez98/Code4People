@@ -9,73 +9,9 @@ function TodosProyectos () {
 
   const token = localStorage.getItem('token')
 
-  // const getProyectos = async () => {
-  //   const options = {
-  //     method: 'GET',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       Authorization: `Bearer ${token}`
-  //     }
-  //   }
-
-  //   const baseUrl = 'http://localhost:5000'
-
-  //   try {
-  //     const response = await fetch(`${baseUrl}/proyectos`, options)
-  //     const data = await response.json()
-  //     console.log(data.data)
-  //     if (!response.ok) {
-  //       if (data.error) {
-  //         setErrors(data.error)
-  //       } else {
-  //         setErrors(data.message)
-  //       }
-  //       toast.error(errors)
-  //       setErrors(null)
-  //       return
-  //     }
-  //     setProyectos(data.data)
-  //   } catch (error) {
-  //     console.error('Error:', error.message)
-  //   }
-  // }
-
   useEffect(() => {
     todosProyectos({ setErrors, errors, setProyectos, token })
   }, [])
-
-  // const eliminarProyecto = async (id) => {
-  //   console.log(id)
-  //   const token = localStorage.getItem('token')
-
-  //   const options = {
-  //     method: 'DELETE',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       Authorization: `Bearer ${token}`
-  //     }
-  //   }
-
-  //   const baseUrl = 'http://localhost:5000'
-
-  //   try {
-  //     const response = await fetch(`${baseUrl}/delete/${id}`, options)
-  //     const data = await response.json()
-  //     console.log(data.data)
-  //     if (!response.ok) {
-  //       if (data.error) {
-  //         setErrors(data.error)
-  //       } else {
-  //         setErrors(data.message)
-  //       }
-  //       return
-  //     }
-  //     toast.success('Proyecto eliminado correctamente')
-  //     getProyectos()
-  //   } catch (error) {
-  //     console.error('Error:', error.message)
-  //   }
-  // }
 
   return (
     <div>

@@ -17,45 +17,6 @@ function PeticionNueva () {
     descripcion: ''
   })
 
-  // const aplicarProyecto = async (event) => {
-  //   event.preventDefault()
-  //   const token = localStorage.getItem('token')
-
-  //   const options = {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       Authorization: `Bearer ${token}`
-  //     },
-  //     body: JSON.stringify(formValues)
-  //   }
-
-  //   const baseUrl = 'http://localhost:5000'
-
-  //   try {
-  //     const response = await fetch(`${baseUrl}/nuevaPeticion/${navigation.state.id_proyecto}`, options)
-  //     const data = await response.json()
-  //     console.log(data)
-  //     if (!response.ok) {
-  //       setErrors(data.error)
-  //       toast.error('Hay errores en el formulario, intentelo nuevamente')
-  //       return
-  //     }
-  //     if (response.ok && response.status === 200) {
-  //       toast.success('Peticion enviada')
-  //       navigate('/peticion/realizadas')
-  //       reset({
-  //         titulo: '',
-  //         descripcion: ''
-  //       })
-  //     }
-  //   } catch (error) {
-  //     console.error('Error:', error.message)
-  //     setErrors('Hubo un problema al procesar la solicitud. Por favor, inténtalo de nuevo más tarde.')
-  //     toast.error(errors)
-  //   }
-  // }
-
   return (
     <div className={styles.body}>
         <h1 className={styles.title}>Solicitar Proyecto</h1>

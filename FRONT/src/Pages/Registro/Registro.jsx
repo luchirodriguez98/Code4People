@@ -17,47 +17,6 @@ function Registro () {
 
   const navigate = useNavigate()
 
-  // const saveNewUser = async (event) => {
-  //   event.preventDefault()
-
-  //   const options = {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify(formValues)
-  //   }
-
-  //   const baseUrl = 'http://localhost:5000'
-
-  //   try {
-  //     const response = await fetch(`${baseUrl}/users/registro`, options)
-  //     const data = await response.json()
-  //     console.log(data)
-  //     if (!response.ok && response.status === 400) {
-  //       setErrors(data.errors)
-  //       toast.error('Hay errores en el formulario, intentelo nuevamente')
-  //       return
-  //     }
-  //     if (!response.ok && response.status === 500) {
-  //       setErrors(data.error)
-  //       return
-  //     }
-  //     if (response.ok) {
-  //       toast.success(data.message)
-  //       navigate('/login')
-  //       reset({
-  //         nombre: '',
-  //         email: '',
-  //         pass: '',
-  //         role: ''
-  //       })
-  //     }
-  //   } catch (error) {
-  //     console.error('Error:', error.message)
-  //   }
-  // }
-
   return (
     <div className={`${styles.body}`}>
       <h1 className={`${styles.title}`}>Registra tu empresa!</h1>

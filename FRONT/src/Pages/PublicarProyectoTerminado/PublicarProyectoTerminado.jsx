@@ -10,40 +10,6 @@ function PublicarProyectoTerminado () {
   const navigate = useNavigate()
   const navigation = useLocation()
 
-  // const postProyect = async (event) => {
-  //   const formData = new FormData(event.target)
-  //   event.preventDefault()
-  //   const token = localStorage.getItem('token')
-  //   const baseUrl = 'http://localhost:5000'
-
-  //   // POST
-  //   const optionsPOST = {
-  //     method: 'POST',
-  //     headers: {
-  //       Authorization: `Bearer ${token}`
-  //     },
-  //     body: formData
-  //   }
-
-  //   try {
-  //     const response = await fetch(`${baseUrl}/nuevoAcabado/${proyectoId}`, optionsPOST)
-  //     const data = await response.json()
-  //     console.log(data)
-  //     if (!response.ok) {
-  //       setErrors(data.errors)
-  //       toast.error('Hay errores en el formulario, vuelve a intentarlo')
-  //       return
-  //     }
-  //     if (response.ok && response.status === 200) {
-  //       toast.success('Proyecto publicado correctamente')
-  //       navigate('/')
-  //     }
-  //   } catch (error) {
-  //     console.error('Error:', error.message)
-  //     setErrors('Hubo un problema al procesar la solicitud. Por favor, inténtalo de nuevo más tarde.')
-  //     toast.error(errors)
-  //   }
-  // }
   return (
         <div className={styles.body}>
           <h1 className={styles.title}>Publicar proyecto terminado</h1>
