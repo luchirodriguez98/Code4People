@@ -19,7 +19,7 @@ function ListaProyectos ({ toMap }) {
     grabCursor: true,
     centeredSlides: true,
     slidesPerView: 'auto',
-    initialSlide: 2,
+    initialSlide: 1,
     coverflowEffect: {
       rotate: 50,
       stretch: 0,
