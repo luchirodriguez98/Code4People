@@ -7,37 +7,6 @@ function ProyectosDisponibles () {
   const [proyectos, setProyectos] = useState([])
   const [errors, setErrors] = useState(null)
 
-  // useEffect(() => {
-  //   const token = localStorage.getItem('token')
-  //   const fetchData = async () => {
-  //     const options = {
-  //       method: 'GET',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //         Authorization: `Bearer ${token}`
-  //       }
-  //     }
-  //     const baseUrl = 'http://localhost:5000'
-
-  //     try {
-  //       const response = await fetch(`${baseUrl}/proyectospendientes`, options)
-  //       const data = await response.json()
-  //       console.log(data)
-  //       if (!response.ok) {
-  //         if (data.error) {
-  //           setErrors(data.error)
-  //         } else {
-  //           setErrors(data.message)
-  //         }
-  //         return
-  //       }
-  //       setProyectos(data.data)
-  //     } catch (error) {
-  //       console.error('Error:', error.message)
-  //     }
-  //   }
-  //   fetchData()
-  // }, [])
   useEffect(() => {
     proyectosParaRealizar({ setErrors, setProyectos })
   }, [])

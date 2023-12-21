@@ -15,43 +15,6 @@ function ProyectoNuevo () {
 
   const navigate = useNavigate()
 
-  // const postProyect = async (event) => {
-  //   event.preventDefault()
-  //   const token = localStorage.getItem('token')
-
-  //   const options = {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       Authorization: `Bearer ${token}`
-  //     },
-  //     body: JSON.stringify(formValues)
-  //   }
-
-  //   const baseUrl = 'http://localhost:5000'
-
-  //   try {
-  //     const response = await fetch(`${baseUrl}/nuevoProyecto`, options)
-  //     const data = await response.json()
-  //     console.log(data)
-  //     if (!response.ok) {
-  //       setErrors(data.error)
-  //       toast.error('Error en el formulario, vuelve a intentarlo')
-  //     }
-  //     if (response.ok) {
-  //       toast.success('Proyecto publicado')
-  //       navigate('/peticion/proyecto')
-  //       reset({
-  //         titulo: '',
-  //         descripcion: ''
-  //       })
-  //     }
-  //   } catch (error) {
-  //     console.error('Error:', error.message)
-  //     setErrors('Hubo un problema al procesar la solicitud. Por favor, inténtalo de nuevo más tarde.')
-  //     toast.error(errors)
-  //   }
-  // }
   return (
         <div className={styles.body}>
           <h1 className={styles.title}>Publicar nuevo proyecto</h1>

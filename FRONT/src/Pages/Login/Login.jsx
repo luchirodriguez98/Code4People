@@ -18,42 +18,6 @@ function Login () {
   })
   const navigate = useNavigate()
 
-  // const handleSubmit = async ({ event, formValues, reset }) => {
-  //   event.preventDefault()
-
-  //   const options = {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify(formValues)
-  //   }
-
-  //   const baseUrl = 'http://localhost:5000'
-
-  //   try {
-  //     const response = await fetch(`${baseUrl}/users/login`, options)
-  //     const data = await response.json()
-  //     console.log(data)
-  //     if (!response.ok) {
-  //       toast.error('Formulario con errores, vuelve a intentarlo')
-  //       return
-  //     }
-  //     if (response.ok && response.status === 200) {
-  //       localStorage.setItem('token', data.data.token)
-  //       localStorage.setItem('userInfo', JSON.stringify(data.data.user))
-  //       userContext.logIn(data.data.user)
-  //       navigate('/cuenta')
-  //       reset({
-  //         email: '',
-  //         pass: ''
-  //       })
-  //     }
-  //   } catch (error) {
-  //     console.error(error)
-  //     toast.error('Hubo un problema al procesar la solicitud. Por favor, inténtalo de nuevo más tarde.')
-  //   }
-  // }
   return (
     <div className={`${styles.body}`}>
       <h1 className={styles.title}>Inicia sesion</h1>
@@ -92,9 +56,6 @@ function Login () {
           <p>Registrate </p>
         </NavLink>
       </span>
-      {/* <span className={styles.icon}>
-        <FaGithub />
-      </span> */}
     </div>
   )
 }
