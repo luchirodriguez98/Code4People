@@ -19,7 +19,7 @@ function Registro () {
 
   return (
     <div className={`${styles.body}`}>
-      <h1 className={`${styles.title}`}>Registra tu empresa!</h1>
+      <h1 className={`${styles.title}`}>Registrate!</h1>
       <form action="" className={`${stylesForm.form}`} onSubmit={(event) => registro({ event, formValues, setErrors, errors, navigate, reset })}>
         <label htmlFor="nombre">NOMBRE</label>
         <input
